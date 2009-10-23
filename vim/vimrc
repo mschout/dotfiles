@@ -1,0 +1,89 @@
+set nocompatible   " no vi compatibility
+set ruler
+set showmode
+set showcmd
+set smarttab
+set showmatch " flashes matching brackets and paren's
+set matchpairs+=<:>
+set autowrite " automatically write contents on :make, :rewind :last, ...
+set laststatus=2
+set list
+set listchars=tab:»·,trail:·
+set wildmenu
+set background=light
+syntax on
+
+filetype plugin indent on
+
+set visualbell t_vb= " turn off the bell
+set scrolloff=8 " keep lines below the cursor 
+
+" Tabs
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set expandtab
+set backspace=start,indent,eol
+autocmd FileType make   set noexpandtab
+autocmd FileType python set noexpandtab
+
+set viminfo=%,'50,\"100,:100,n~/.viminfo
+
+" directories
+" set backup locations and enable
+set backup
+set backupdir=~/.backups//
+set directory=~/.backup//
+
+" always jump to the last cursor position
+autocmd BufReadPost * if line("'\"") | exe "normal '\"" | endif
+
+" searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+" press space to turn off highlighting and clear any messages displayed
+noremap <silent> <Space> :silent noh<Bar>echo<CR>
+
+" svn plugin
+let SVNCommandEdit = "split"
+let SVNCommandSplit = "horizontal"
+
+" Taglist plugin
+let Tlist_Show_One_File = 1
+let Tlist_Show_Menu = 1
+nnoremap <silent> <F8> :TlistToggle<CR>
+
+" closetag plugin
+autocmd FileType html,xml,tt2html,xsl source ~/.vim/plugin/closetag.vim
+
+"let perl_fold=1
+let perl_include_pod=1
+
+" set up file explorer to split right.
+let g:explVertical=1    " Split vertically
+let g:explSplitRight=1  " Put new window right of the explorer window
+
+set statusline=\ Buffer\ %n:\ %([%R%M%H]%)\ %f\ %y%=%(\[Line:\ %l\ Col:\ %c\ (%v)]%)\ \[%L\ lines]\ %P\ 
+
+autocmd BufEnter svn-commit.* set filetype=svn
+
+" window movement
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l
+
+" tab cycle
+nnoremap <silent> <C-S-h> :tabprev<CR>
+nnoremap <silent> <C-S-l> :tabnext<CR>
+
+" buffer cycling
+nnoremap <silent> <S-h> :bprev<CR>
+nnoremap <silent> <S-l> :bnext<CR>
+
+" ,e opens file in current file's directory
+map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
+" ,cd change to current file's directory
+map ,cd :cd %:p:h <CR>
