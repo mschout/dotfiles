@@ -32,7 +32,7 @@ set viminfo=%,'50,\"100,:100,n~/.viminfo
 " directories
 " set backup locations and enable
 set backup
-set backupdir=~/.backups//
+set backupdir=~/.backup//
 set directory=~/.backup//
 
 " always jump to the last cursor position
