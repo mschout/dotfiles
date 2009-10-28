@@ -1,11 +1,14 @@
-if [ -d /opt/local/sbin ]
-then
-    PATH=/opt/local/sbin:$PATH
+# .bashrc
+
+# User specific aliases and functions
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
 fi
 
-if [ -d /opt/local/bin ]
-then
-    PATH=/opt/local/bin:$PATH
-fi
+# macports
+[ -d /opt/local/sbin ] && PATH=/opt/local/sbin:$PATH
+[ -d /opt/local/bin ]  && PATH=/opt/local/bin:$PATH
 
 export PATH
