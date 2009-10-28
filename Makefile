@@ -2,6 +2,7 @@ CONFIGS = \
 	bashrc \
 	cshrc \
 	gitconfig \
+	cvsrc \
 	login
 
 INSTALLOPTS=-m 0644 -p
