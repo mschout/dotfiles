@@ -12,10 +12,10 @@ set path = ($HOME/bin $path /usr/sbin /sbin /usr/local/bin)
 set cdpath = (. $HOME)
 
 # aliases
-alias rm        rm -i
-alias logoff    exit
-alias renew     'source ~/.cshrc; source ~/.login'
+alias rm        'rm -i'
 alias ls        'ls -F'
+alias logoff    'exit'
+alias renew     'source ~/.cshrc; source ~/.login'
 alias ..        'cd ..'
 alias ....      'cd ../..'
 alias ......    'cd ../../..'
@@ -70,6 +70,15 @@ if ( ! $?JAVA_HOME ) then
     else if (-l /etc/alternatives/java_sdk) then
         # RHEL/CentOS
         setenv JAVA_HOME `readlink /etc/alternatives/java_sdk`
+    endif
+endif
+
+# put user@host in window title/tab
+if ( $?TERM == 1 ) then
+    if ( $TERM == xterm ) then
+        alias cwdcmd 'echo -n "]2;${LOGNAME}@${HOST}:$cwd"'
+        alias ssh    '\ssh \!*; cwdcmd'
+        cwdcmd
     endif
 endif
 
