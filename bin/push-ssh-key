@@ -2,6 +2,17 @@
 #
 # adds your ssh public key to the remote host
 
+while getopts ":p" OPT; do
+    case $OPT in
+        p)
+            copy_private=1
+            ;;
+        *)
+            ;;
+    esac
+done
+shift $(( OPTIND -1 ))
+
 if [ $# -eq 0 ]; then
 	echo "usage: $0 host [, ... hostN ]"
 	echo
@@ -19,6 +30,19 @@ fi
 if ! test -r "$public_key_file"; then
 	echo "public key not found"
 	exit
+fi
+
+# find private key if necessary
+if test -n "$copy_private"; then
+    if test -r $HOME/.ssh/id_dsa; then
+        private_key_file=$HOME/.ssh/id_dsa
+    elif test -r $HOME/.ssh/id_rsa; then
+        private_key_file=$HOME/.ssh/id_rsa
+    fi
+
+    if ! test -r "$private_key_file"; then
+        echo "private key not found"
+    fi
 fi
 
 for remote in $@; do
@@ -41,6 +65,27 @@ for remote in $@; do
 		exit 1
 	fi
 EOF
+
+    if test -n "$copy_private"; then
+        private_key_name="$(basename $private_key_file)"
+        private_key="$(cat $private_key_file)"
+
+        echo "copy $private_key_name to $remote"
+
+        ssh $remote '/bin/sh -f' <<EOF
+        set -e
+        if test ! -f "\$HOME/.ssh/$private_key_name";
+        then
+            echo "+++ private key installed."
+            echo '$private_key' >> "\$HOME/.ssh/$private_key_name"
+            chmod 600 "\$HOME/.ssh/$private_key_name"
+            exit 0
+        else
+            echo "+++ private key already installed."
+            exit 1
+        fi
+EOF
+    fi
 done
 
 # vim: ft=sh
