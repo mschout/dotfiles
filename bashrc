@@ -26,6 +26,15 @@ export CVSROOT=mschout@cvs.gkg.net:/usr/local/cvsroot
 export CVS_RSH=ssh
 # use less by default
 export PAGER=less
+
+# use vim if possible, otherwise vi
+which vim >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+    export EDITOR=vim
+else
+    export EDITOR=vi
+fi
+
 # on CentOS LESSOPEN causes sorrow
 unset LESSOPEN
 
