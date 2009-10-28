@@ -3,7 +3,7 @@ CONFIGS = \
 	gitconfig \
 	login
 
-INSTALLOPTS=--mode 0644 --preserve-timestamps
+INSTALLOPTS=-m 0644 -p
 DIFF=colordiff
 
 default: all
