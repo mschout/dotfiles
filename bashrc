@@ -73,7 +73,7 @@ if [ -z "$JAVA_HOME" ]; then
     if [ -x /usr/sbin/update-java-alternatives ]; then
         # Ubuntu
         export JAVA_HOME=`/usr/sbin/update-java-alternatives -l | head -1 | awk '{print $3}'`
-    elif [ -l /etc/alternatives/java_sdk ]; then
+    elif [ -e /etc/alternatives/java_sdk ]; then
         # RHEL/CentOS
         export JAVA_HOME=`readlink /etc/alternatives/java_sdk`
     fi
