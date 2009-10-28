@@ -19,7 +19,7 @@ install-dir-bin:
 install: install-dir-bin
 
 diff-file-%: %
-	@$(DIFF) -u $(BINDIR)/$* $*
+	$(DIFF) -u $(BINDIR)/$* $*
 
 pull-file-%: %
 	@install $(INSTALLOPTS) $(BINDIR)/$* $*
