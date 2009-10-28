@@ -8,4 +8,3 @@ diff: $(foreach f, $(CONFIGS), diff-file-$(f)) $(SUBDIRS)
 
 pull: $(foreach f, $(CONFIGS), pull-file-$(f)) $(SUBDIRS)
 
-
