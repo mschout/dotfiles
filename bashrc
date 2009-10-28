@@ -11,6 +11,14 @@ fi
 [ -d /opt/local/sbin ] && PATH=/opt/local/sbin:$PATH
 [ -d /opt/local/bin ]  && PATH=/opt/local/bin:$PATH
 
+# look for /opt/maven on RHEL/CentOS
+if [ -e /etc/redhat-release ]; then
+    if [ -d /opt/maven/bin ]; then
+        export M2_HOME=/opt/maven
+        PATH=$M2_HOME/bin:$PATH
+    fi
+fi
+
 export PATH
 
 export LANG=en_US.UTF-8

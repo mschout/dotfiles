@@ -26,6 +26,14 @@ if (-d /var/lib/gems/1.8/bin) then
     set path = ($path /var/lib/gems/1.8/bin)
 endif
 
+# look for /opt/maven on RHEL/CentOS
+if (-e /etc/redhat-release) then
+    if (-d /opt/maven/bin) then
+        setenv M2_HOME /opt/maven
+        set path = ($M2_HOME/bin $path)
+    endif
+endif
+
 # OSX macports
 if (-d /opt/local/sbin) then
     set path = (/opt/local/sbin $path)
