@@ -4,6 +4,7 @@ set MYHOST=`echo $HOST | sed 's/\./ /g' | awk '{print $1}'`
 
 set noclobber
 set nobeep
+set autocorrect
 set promptchars = ">#"
 set prompt = "%n@%m %#"
 set path = ($HOME/bin $path /usr/sbin /sbin /usr/local/bin)
