@@ -26,6 +26,14 @@ if (-d /var/lib/gems/1.8/bin) then
     set path = ($path /var/lib/gems/1.8/bin)
 endif
 
+# OSX macports
+if (-d /opt/local/sbin) then
+    set path = (/opt/local/sbin $path)
+endif
+if (-d /opt/local/bin) then
+    set path = (/opt/local/bin $path)
+endif
+
 # enable vi-line bindings
 bindkey -v
 bindkey -a "k" history-search-backward
@@ -38,13 +46,11 @@ if ( -x /usr/bin/ack-grep ) then
     alias ack /usr/bin/ack-grep
 endif
 
-# GKG CVSROOT.
-setenv CVSROOT mschout@cvs.gkg.net:/usr/local/cvsroot
-setenv CVS_RSH ssh
-
+setenv LANG     en_US.UTF-8
+setenv CVSROOT  mschout@cvs.gkg.net:/usr/local/cvsroot
+setenv CVS_RSH  ssh
 # use less as default pager
 setenv PAGER less
-
 # on CentOS, LESSOPEN causes sorrow
 unsetenv LESSOPEN
 
