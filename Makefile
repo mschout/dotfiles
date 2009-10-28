@@ -1,5 +1,6 @@
 CONFIGS = \
 	cshrc \
+	gitconfig \
 	login
 
 INSTALLOPTS=--mode 0644 --preserve-timestamps

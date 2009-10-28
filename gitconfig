@@ -1,0 +1,14 @@
+[alias]
+	ci = commit
+	st = status
+	di = diff
+	co = checkout
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+
+[user]
+	name = Michael Schout
+	email = mschout@gkg.net
