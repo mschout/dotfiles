@@ -1,0 +1,46 @@
+#!/bin/sh
+#
+# adds your ssh public key to the remote host
+
+if [ $# -eq 0 ]; then
+	echo "usage: $0 host [, ... hostN ]"
+	echo
+	echo "    host can be a hostname, or user@hostname"
+	exit 1
+fi
+
+# find public key
+if test -r $HOME/.ssh/id_dsa.pub ; then
+	public_key_file=$HOME/.ssh/id_dsa.pub
+elif test -r $HOME/.ssh/id_rsa.pub ; then
+	public_key_file=$HOME/.ssh/id_rsa.pub
+fi
+
+if ! test -r "$public_key_file"; then
+	echo "public key not found"
+	exit
+fi
+
+for remote in $@; do
+	echo "authorizing on $remote '$public_key_file'"
+	public_key="$(cat $public_key_file)"
+	ssh $remote '/bin/sh -f' <<EOF
+	set -e
+	test -d "\$HOME/.ssh" || {
+		mkdir ~/.ssh &&
+		chmod 0700 ~/.ssh
+	}
+	if test ! -f "\$HOME/.ssh/authorized_keys" ||
+		test -z "\$(grep -F '$public_key' "\$HOME/.ssh/authorized_keys")" ;
+	then
+		echo "+++ public key added."
+		echo '$public_key' >> "\$HOME/.ssh/authorized_keys"
+		exit 0
+	else
+		echo "+++ public key already authorized."
+		exit 1
+	fi
+EOF
+done
+
+# vim: ft=sh

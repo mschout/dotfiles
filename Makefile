@@ -6,7 +6,8 @@ CONFIGS = \
 	login
 
 SUBDIRS = \
-	subversion
+	subversion \
+	bin
 
 include Mk/config.mk
 
