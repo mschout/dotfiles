@@ -1,4 +1,5 @@
 CONFIGS = \
+	bashrc \
 	cshrc \
 	gitconfig \
 	login
