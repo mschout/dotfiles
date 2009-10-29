@@ -37,7 +37,7 @@ pathadd /usr/local/sbin
 if [ -e /etc/redhat-release ]; then
     if [ -d /opt/maven/bin ]; then
         export M2_HOME=/opt/maven
-        PATH=$M2_HOME/bin:$PATH
+        pathadd $M2_HOME/bin
     fi
 fi
 
