@@ -1,0 +1,23 @@
+#!/usr/bin/env perl
+#
+# print installed version of a perl module
+#
+
+die "usage: $0 module1 [, ... moduleN]\n"
+    unless @ARGV;
+
+for my $name (@ARGV) {
+    eval "require $name";
+    if ($@) {
+        print "$name is not installed\n";
+        next;
+    }
+    elsif (defined(my $ver = ${"$name\::VERSION"})) {
+        print "$name: $ver\n";
+    }
+    else {
+        print "$name: no version\n";
+    }
+}
+
+# set ft=perl

@@ -1,5 +1,6 @@
 CONFIGS = \
-	push-ssh-key
+	push-ssh-key \
+	perl-module-version
 
 include ../Mk/config.mk
 
