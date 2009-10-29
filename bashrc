@@ -7,19 +7,39 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# macports
-[ -d /opt/local/sbin ] && PATH=/opt/local/sbin:$PATH
-[ -d /opt/local/bin ]  && PATH=/opt/local/bin:$PATH
+# append an entry to PATH if it is a dir, and not already in path.
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="$PATH:$1"
+    fi
+}
 
-# look for /opt/maven on RHEL/CentOS
+# csh style setenv
+setenv() {
+    export ${1}=${2}
+}
+
+pathadd $HOME/bin
+
+# macports
+pathadd /opt/local/sbin
+pathadd /opt/local/bin
+
+# add sbin dirs
+pathadd /usr/sbin
+pathadd /sbin
+
+# add /usr/local bindirs
+pathadd /usr/local/bin
+pathadd /usr/local/sbin
+
+# CentOS 5 doesn't have a maven2 package.  I put it in /opt/maven.
 if [ -e /etc/redhat-release ]; then
     if [ -d /opt/maven/bin ]; then
         export M2_HOME=/opt/maven
         PATH=$M2_HOME/bin:$PATH
     fi
 fi
-
-export PATH
 
 export LANG=en_US.UTF-8
 export CVSROOT=mschout@cvs.gkg.net:/usr/local/cvsroot
@@ -62,11 +82,6 @@ alias 4..='cd ../../../..'
 
 # csh style source
 alias source='.'
-
-# csh style setenv
-setenv() {
-    export ${1}=${2}
-}
 
 # try to set JAVA_HOME to something sensible
 if [ -z "$JAVA_HOME" ]; then
