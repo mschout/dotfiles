@@ -25,6 +25,10 @@ alias ....      'cd ../..'
 alias ......    'cd ../../..'
 alias ........  'cd ../../../..'
 
+# common typo aliases
+alias grpe grep
+alias maek make
+
 # Ubuntu ruby gems
 if (-d /var/lib/gems/1.8/bin) then
     set path = ($path /var/lib/gems/1.8/bin)

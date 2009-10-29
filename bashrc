@@ -80,6 +80,10 @@ alias 2..='cd ../..'
 alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
 
+# common typo aliases
+alias grpe='grep'
+alias maek='make'
+
 # csh style source
 alias source='.'
 
