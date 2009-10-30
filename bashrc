@@ -112,7 +112,7 @@ fi
 # set up completion
 if [ -z "$BASH_COMPLETION" ]; then
     bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
-    if [ "$PS1" ] && [ $bmajor -eq 2 ] && [ $bminor '>' 04 ] ; then
+    if [ "$PS1" ] && [ \( $bmajor -eq 2 -a $bminor '>' 04 \) -o $bmajor -ge 3 ] ; then
       if [ -f $HOME/bin/bash_completion   ] ; then
         BASH_COMPLETION=$HOME/bin/bash_completion
         BASH_COMPLETION_DIR=$HOME/.bash_completion.d
