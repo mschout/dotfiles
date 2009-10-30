@@ -8,6 +8,7 @@ CONFIGS = \
 	inputrc \
 	hushlogin \
 	gitk \
+	plan \
 	login
 
 SUBDIRS = \
