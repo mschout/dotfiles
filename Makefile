@@ -1,5 +1,6 @@
 CONFIGS = \
 	bashrc \
+	bash_profile \
 	cshrc \
 	gitconfig \
 	cvsrc \
