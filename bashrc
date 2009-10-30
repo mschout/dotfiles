@@ -118,6 +118,9 @@ if [ -z "$BASH_COMPLETION" ]; then
         BASH_COMPLETION_DIR=$HOME/.bash_completion.d
         export BASH_COMPLETION BASH_COMPLETION_DIR
         . $HOME/bin/bash_completion
+
+        # set prompt to show git branch
+        PS1='\h:\W \u$(__git_ps1 " (%s)")\$'
       fi
     fi
     unset bash bmajor bminor
