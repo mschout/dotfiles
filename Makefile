@@ -9,7 +9,8 @@ CONFIGS = \
 
 SUBDIRS = \
 	subversion \
-	bin
+	bin \
+	bash_completion.d
 
 include Mk/config.mk
 
