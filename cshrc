@@ -86,6 +86,9 @@ if ( ! $?JAVA_HOME ) then
     else if (-l /etc/alternatives/java_sdk) then
         # RHEL/CentOS
         setenv JAVA_HOME `readlink /etc/alternatives/java_sdk`
+    else if (-e /System/Library/Frameworks/JavaVM.framework/Home) then
+        # MacOS X
+        setenv JAVA_HOME /System/Library/Frameworks/JavaVM.framework/Home
     endif
 endif
 
