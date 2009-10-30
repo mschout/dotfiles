@@ -33,7 +33,10 @@ pathadd /sbin
 pathadd /usr/local/bin
 pathadd /usr/local/sbin
 
-# CentOS 5 doesn't have a maven2 package.  I put it in /opt/maven.
+# ruby gems
+pathadd /var/lib/gems/1.8/bin
+
+# CentOS 5 doesn't have a maven2 package, so look for it in /opt/maven.
 if [ -e /etc/redhat-release ]; then
     if [ -d /opt/maven/bin ]; then
         export M2_HOME=/opt/maven
@@ -75,6 +78,10 @@ fi
 
 # use vi style keybindings
 set -o vi
+set -o noclobber
+
+CDPATH=$HOME
+HISTSIZE=500
 
 # aliases
 alias ls='ls -F'
@@ -91,6 +98,10 @@ alias maek='make'
 
 # csh style source
 alias source='.'
+
+if [ -x /usr/bin/ack-grep ]; then
+    alias ack='/usr/bin/ack-grep'
+fi
 
 # try to set JAVA_HOME to something sensible
 if [ -z "$JAVA_HOME" ]; then
