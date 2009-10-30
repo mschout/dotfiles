@@ -9,18 +9,31 @@ SUBDIRS = after/ftplugin \
 	plugin \
 	syntax
 
-default:
-	@echo There is no default target.
+CONFIGS = $(foreach d, $(SUBDIRS), $(wildcard $(d)/*))
 
-dirs:
-	@for dir in $(SUBDIRS) ; do \
-		mkdir -p $(HOME)/.vim/$$dir ;\
-	done
+VIMDIR = $(HOME)/.vim
 
-install: dirs
-	@for dir in $(SUBDIRS) ; do \
-		cp -Rv $$dir/* $(HOME)/.vim/$$dir ; \
-	done
-	cp filetype.vim $(HOME)/.vim
-	cp vimrc $(HOME)/.vimrc
-	cp gvimrc $(HOME)/.gvimrc
+include ../Mk/config.mk
+
+all: $(CONFIGS) $(SUBDIRS)
+
+$(VIMDIR)/%: %
+	@echo installed $*
+	@install $(INSTALLOPTS) $* $@
+
+install-dirs:
+	@for dir in $(SUBDIRS); do mkdir -p $(VIMDIR)/$$dir; done
+
+install: install-dirs $(foreach f, $(CONFIGS), $(VIMDIR)/$(f))
+	@echo installed vimrc
+	@install $(INSTALLOPTS) vimrc $(HOME)/.vimrc
+	@echo installed gvimrc
+	@install $(INSTALLOPTS) gvimrc $(HOME)/.gvimrc
+	@echo installed filetype.vim
+	@install $(INSTALLOPTS) filetype.vim $(VIMDIR)
+
+diff:
+	@for f in $(CONFIGS); do $(DIFF) $(VIMDIR)/$$f $$f; done
+
+pull:
+	@echo pull not supported for vim files
