@@ -98,4 +98,7 @@ if ( $?TERM == 1 ) then
     endif
 endif
 
+# remove duplicate entries from path
+set path = `echo $path | awk -F' ' '{ for (i=1; i < NF; i++) { if (x[$i]++ == 0) { print $i } } }'`
+
 # vim: ft=csh
