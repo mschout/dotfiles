@@ -3,6 +3,7 @@ CONFIGS = \
 	cshrc \
 	gitconfig \
 	cvsrc \
+	perltidyrc \
 	login
 
 SUBDIRS = \
