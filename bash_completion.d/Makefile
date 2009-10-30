@@ -1,4 +1,5 @@
 CONFIGS = \
+	svn \
 	git
 
 include ../Mk/config.mk
