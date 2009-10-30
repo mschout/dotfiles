@@ -6,6 +6,7 @@ CONFIGS = \
 	cvsrc \
 	perltidyrc \
 	inputrc \
+	hushlogin \
 	login
 
 SUBDIRS = \
