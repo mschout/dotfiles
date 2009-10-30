@@ -92,6 +92,11 @@ if ( ! $?JAVA_HOME ) then
     endif
 endif
 
+# set CATALINA_HOME if appropriate
+if ( ! $?CATALINA_HOME && -d $HOME/tomcat5 ) then
+    setenv CATALINA_HOME $HOME/tomcat5
+endif
+
 # put user@host in window title/tab
 if ( $?TERM == 1 ) then
     if ( $TERM == xterm ) then
