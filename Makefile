@@ -7,6 +7,7 @@ CONFIGS = \
 	perltidyrc \
 	inputrc \
 	hushlogin \
+	gitk \
 	login
 
 SUBDIRS = \
