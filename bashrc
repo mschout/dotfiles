@@ -44,12 +44,14 @@ fi
 export LANG=en_US.UTF-8
 export CVSROOT=mschout@cvs.gkg.net:/usr/local/cvsroot
 export CVS_RSH=ssh
+
 # use less by default
-export PAGER=less
+if [ -x `which less` ]; then
+    export PAGER=less
+fi
 
 # use vim if possible, otherwise vi
-which vim >/dev/null 2>&1
-if [ $? -eq 0 ]; then
+if [ -x `which vim` ]; then
     export EDITOR=vim
 else
     export EDITOR=vi
