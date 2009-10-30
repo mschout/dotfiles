@@ -5,6 +5,7 @@ CONFIGS = \
 	gitconfig \
 	cvsrc \
 	perltidyrc \
+	inputrc \
 	login
 
 SUBDIRS = \

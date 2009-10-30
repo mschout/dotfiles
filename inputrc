@@ -1,0 +1,15 @@
+$if Bash
+    # show completions with only one Tab
+    set show-all-if-ambiguous on
+
+    # setup vi key bindings
+    set editing-mode vi
+    set keymap vi
+
+    # ignore beep
+    set bell-style none
+
+    # historical backward search with linehead string bind to up/down
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+$endif
