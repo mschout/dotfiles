@@ -109,4 +109,18 @@ if [ -z "$CATALINA_HOME" ] && [ -d $HOME/tomcat5 ]; then
     export CATALINA_HOME=$HOME/tomcat5
 fi
 
+# set up completion
+if [ -z "$BASH_COMPLETION" ]; then
+    bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
+    if [ "$PS1" ] && [ $bmajor -eq 2 ] && [ $bminor '>' 04 ] ; then
+      if [ -f $HOME/bin/bash_completion   ] ; then
+        BASH_COMPLETION=$HOME/bin/bash_completion
+        BASH_COMPLETION_DIR=$HOME/.bash_completion.d
+        export BASH_COMPLETION BASH_COMPLETION_DIR
+        . $HOME/bin/bash_completion
+      fi
+    fi
+    unset bash bmajor bminor
+fi
+
 # vim: ft=sh
