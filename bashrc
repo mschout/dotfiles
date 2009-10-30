@@ -71,6 +71,9 @@ if [ "$PS1" ]; then
     fi
 fi
 
+# use vi style keybindings
+set -o vi
+
 # aliases
 alias ls='ls -F'
 alias rm='rm -i'
@@ -95,7 +98,15 @@ if [ -z "$JAVA_HOME" ]; then
     elif [ -e /etc/alternatives/java_sdk ]; then
         # RHEL/CentOS
         export JAVA_HOME=`readlink /etc/alternatives/java_sdk`
+    elif [ -e /System/Library/Frameworks/JavaVM.framework/Home ]; then
+        # MacOS X
+        export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
     fi
+fi
+
+# set CATALINA_HOME if appropriate
+if [ -z "$CATALINA_HOME" ] && [ -d $HOME/tomcat5 ]; then
+    export CATALINA_HOME=$HOME/tomcat5
 fi
 
 # vim: ft=sh
