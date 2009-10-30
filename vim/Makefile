@@ -23,6 +23,7 @@ $(VIMDIR)/%: %
 
 install-dirs:
 	@for dir in $(SUBDIRS); do mkdir -p $(VIMDIR)/$$dir; done
+	@[ -d $(HOME)/backup ] || mkdir $(HOME)/.backup
 
 install: install-dirs $(foreach f, $(CONFIGS), $(VIMDIR)/$(f))
 	@echo installed vimrc
