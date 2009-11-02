@@ -1,0 +1,7 @@
+# OSX specific overrides for bashrc
+
+if [ -x `which mvim` ]; then
+    EDITOR=mvim
+fi
+
+# vim: ft=sh

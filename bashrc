@@ -139,4 +139,8 @@ if [ -z "$BASH_COMPLETION" ]; then
     unset bash bmajor bminor
 fi
 
+if [[ $OSTYPE == darwin* ]]; then
+    . $HOME/.bashrc.darwin
+fi
+
 # vim: ft=sh

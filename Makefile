@@ -1,5 +1,6 @@
 CONFIGS = \
 	bashrc \
+	bashrc.darwin \
 	bash_profile \
 	cshrc \
 	gitconfig \
