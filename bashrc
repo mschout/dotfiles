@@ -81,7 +81,7 @@ set -o vi
 set -o noclobber
 
 CDPATH=$HOME
-HISTSIZE=500
+HISTSIZE=5000
 
 # aliases
 alias ls='ls -F'
