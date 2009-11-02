@@ -13,3 +13,11 @@ set cindent
 set cinkeys=0{,0},!^F,o,O,e
 set cinoptions=(1s
 
+" ctrl-c ctrl-c to compile
+nmap <C-c><C-c> :!perl -Wc %<CR>
+
+" indent with tab/shift-tab
+nmap <tab>   v>
+nmap <s-tab> v<
+vmap <tab>   >gv
+vmap <s-tab> <gv
