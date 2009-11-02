@@ -2,18 +2,29 @@ set completion-ignore-case on
 
 # set blink-matching-paren on
 
+# setup vi key bindings
+set editing-mode vi
+
 $if Bash
     # show completions with only one Tab
     set show-all-if-ambiguous on
 
-    # setup vi key bindings
-    set editing-mode vi
-    set keymap vi
-
     # ignore beep
     set bell-style none
 
+    set keymap vi-command
     # historical backward search with linehead string bind to up/down
     "\e[A": history-search-backward
     "\e[B": history-search-forward
+
+    set keymap vi-insert
+    # historical backward search with linehead string bind to up/down
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+
+    # edit options of previous command ls a b c -> ls -al a b c
+    "\C-o": "\e-0ea "
+
+    # glob patterns without executing, eg: 'rm *x'
+    "\C-e": glob-expand-word
 $endif
