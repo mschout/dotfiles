@@ -12,6 +12,7 @@ CONFIGS = \
 	gitk \
 	plan \
 	login \
+	signature \
 	vimrc \
 	gvimrc
 
