@@ -1,3 +1,7 @@
+set completion-ignore-case on
+
+# set blink-matching-paren on
+
 $if Bash
     # show completions with only one Tab
     set show-all-if-ambiguous on
