@@ -87,3 +87,6 @@ nnoremap <silent> <S-l> :bnext<CR>
 map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
 " ,cd change to current file's directory
 map ,cd :cd %:p:h <CR>
+
+" insert date stamp with F2
+imap <F2> <C-R>=strftime("%a %b %d %Y")<CR>
