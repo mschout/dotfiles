@@ -44,3 +44,7 @@ nmap <tab>   v>
 nmap <s-tab> v<
 vmap <tab>   >gv
 vmap <s-tab> <gv
+
+" some common abbreviations
+abbr _s $self
+abbr _perlbin #!/usr/bin/env perl
