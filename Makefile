@@ -9,86 +9,75 @@ CONFIGS = \
 	hushlogin \
 	gitk \
 	plan \
-	login \
-	vim \
-	bash_completion.d \
-	bin \
-	subversion
+	login
 
-include Mk/config.mk
+DOTDIRS = \
+	bash_completion.d \
+	subversion \
+	vim
+
+DIRS = \
+	bin
+
+INSTALLOPTS=-m 0644 -p
+
+DIFF=colordiff
 
 default: all
 
-all: $(CONFIGS) $(SUBDIRS)
+all: $(CONFIGS)
+
+install: $(foreach f, $(CONFIGS), install-file-$(f)) \
+	$(foreach f, $(DOTDIRS), install-dotdir-$(f)) \
+	$(foreach f, $(DIRS), install-dir-$(f))
+
+diff: $(foreach f, $(CONFIGS), diff-file-$(f)) \
+	$(foreach f, $(DOTDIRS), diff-dotdir-$(f)) \
+	$(foreach f, $(DIRS), diff-dir-$(f))
+
+pull: $(foreach f, $(CONFIGS), pull-file-$(f)) \
+	$(foreach f, $(DOTDIRS), pull-dotdir-$(f)) \
+	$(foreach f, $(DIRS), pull-dir-$(f))
 
 install-file-%: %
 	@install $(INSTALLOPTS) $* $(HOME)/.$*
 	@echo installed $*
 
-install-file-vim: vim
-	@[ -d $(HOME)/.vim ] || mkdir $(HOME)/.vim
-	@cp -pR vim/ $(HOME)/.vim/
-	@echo installed vim files
+install-dotdir-%: %
+	@[ -d $(HOME)/.$* ] || mkdir $(HOME)/.$*
+	@cp -pR $*/ $(HOME)/.$*
+	@echo installed $*
 
-install-file-bin: bin
-	@[ -d $(HOME)/bin ] || mkdir $(HOME)/bin
-	@cp -pR bin/ $(HOME)/bin/
-
-install-file-subversion: subversion
-	@[ -d $(HOME)/.subversion ] || mkdir $(HOME)/.subversion
-	@cp -pR subversion/ $(HOME)/.subversion/
-	@echo installed subversion files
-
-install-file-bash_completion.d: bash_completion.d
-	@echo installed $<
-	@[ -d $(HOME)/.$< ] || mkdir $(HOME)/.$<
-	@install $(INSTALLOPTS) $</* $(HOME)/.$<
+install-dir-%: %
+	@[ -d $(HOME)/$* ] || mkdir $(HOME)/$*
+	@cp -pR $*/ $(HOME)/$*/
+	@echo installed $*
 
 diff-file-%: %
 	@$(DIFF) -u $(HOME)/.$* $*
 
-diff-file-vim: vim
-	@$(DIFF) -ur $(HOME)/.vim vim
+diff-dotdir-%: %
+	-@$(DIFF) -ur $(HOME)/.$* $*
 
-diff-file-bin: bin
-	-@$(DIFF) -ur $(HOME)/bin bin
-
-diff-file-subversion: subversion
-	-@$(DIFF) -ur $(HOME)/.subversion subversion
-
-diff-file-bash_completion.d: bash_completion.d
-	-@$(DIFF) -ur $(HOME)/.$< $<
+diff-dir-%: %
+	-@$(DIFF) -ur $(HOME)/$* $*
 
 # pull a dotfile from home into the repo
 pull-file-%: %
 	@install $(INSTALLOPTS) $(HOME)/.$* $*
 	@echo pulled $*
 
-pull-file-vim: vim
-	@cp -R $(HOME)/.vim/ vim/
-	@echo pulled vim
-
-# pull bin files. only pull files that are tracked by git.
-pull-file-bin: bin
-	@for file in bin/*; do \
-		[ -f $(HOME)/$$file ] && cp -p $(HOME)/$$file bin ; \
+# pull dotdir.  only pull files that are tracked
+pull-dotdir-%: %
+	@for file in $*/*; do \
+		[ -f $(HOME)/.$$file ] && cp -p $(HOME)/.$$file $* ; \
 	done
-	@echo pulled bin
+	@echo pulled $*
 
-# pull subversion files. only pull files that are tracked by git.
-pull-file-subversion: subversion
-	@for file in subversion/*; do \
-		[ -f $(HOME)/.$$file ] && cp -p $(HOME)/.$$file subversion ; \
+# pull directory.  only pull files that are tracked
+pull-dir-%: %
+	@for file in $*/*; do \
+		[ -f $(HOME)/$$file ] && cp -p $(HOME)/$$file $* ; \
 	done
-	@echo pulled subversion
+	@echo pulled $*
 
-pull-file-bash_completion.d: bash_completion.d
-	@for file in $</*; do \
-		[ -f $(HOME)/.$$file ] && cp -p $(HOME)/.$$file $< ; \
-	done
-	@echo pulled $<
-
-$(SUBDIRS):
-	@$(MAKE) -C $@ $(MAKECMDGOALS)
-
-include Mk/std-rules.mk
