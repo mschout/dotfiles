@@ -1,6 +1,6 @@
 # #!/usr/bin/perl
 snippet #!
-	#!/usr/bin/perl
+	#!/usr/bin/env perl
 	
 # Hash Pointer
 snippet .
@@ -19,16 +19,19 @@ snippet if
 snippet ife
 	if (${1}) {
 		${2:# body...}
-	} else {
+	}
+	else {
 		${3:# else...}
 	}
 # Conditional if..elsif..else
 snippet ifee
 	if (${1}) {
 		${2:# body...}
-	} elsif (${3}) {
+	}
+	elsif (${3}) {
 		${4:# elsif...}
-	} else {
+	}
+	else {
 		${5:# else...}
 	}
 # Conditional One-line
@@ -75,6 +78,7 @@ snippet xfore
 snippet cl
 	package ${1:ClassName};
 	
+	use strict;
 	use base qw(${2:ParentClass});
 	
 	sub new {
