@@ -21,7 +21,7 @@ DIRS = \
 
 INSTALLOPTS=-m 0644 -p
 
-DIFF=colordiff
+DIFF=$(shell which colordiff &>/dev/null && echo colordiff || echo diff)
 
 default: all
 
