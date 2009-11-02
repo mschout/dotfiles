@@ -1,3 +1,4 @@
+# dotfile configs install in $(HOME)/.$file
 CONFIGS = \
 	bashrc \
 	bashrc.darwin \
@@ -12,11 +13,13 @@ CONFIGS = \
 	plan \
 	login
 
+# subdirs installed in $(HOME)/.$dir
 DOTDIRS = \
 	bash_completion.d \
 	subversion \
 	vim
 
+# subdirs installed in $(HOME)/$dir
 DIRS = \
 	bin
 
@@ -31,6 +34,8 @@ all: $(CONFIGS)
 install: $(foreach f, $(CONFIGS), install-file-$(f)) \
 	$(foreach f, $(DOTDIRS), install-dotdir-$(f)) \
 	$(foreach f, $(DIRS), install-dir-$(f))
+	@[ -d $(HOME)/.backup ] || mkdir $(HOME)/.backup
+	@echo installed ~/.backup
 
 diff: $(foreach f, $(CONFIGS), diff-file-$(f)) \
 	$(foreach f, $(DOTDIRS), diff-dotdir-$(f)) \
@@ -45,13 +50,13 @@ install-file-%: %
 	@echo installed $*
 
 install-dotdir-%: %
-	@[ -d $(HOME)/.$* ] || mkdir $(HOME)/.$*
-	@cp -pR $*/ $(HOME)/.$*
+	@find $* -type d | while read dir ; do install -d -p $$dir $(HOME)/.$$dir ; done
+	@find $* -type f | while read file ; do install $(INSTALLOPTS) $$file $(HOME)/.$$file ; done
 	@echo installed $*
 
 install-dir-%: %
-	@[ -d $(HOME)/$* ] || mkdir $(HOME)/$*
-	@cp -pR $*/ $(HOME)/$*/
+	@find $* -type d | while read dir ; do install -d -p $$dir $(HOME)/$$dir ; done
+	@find $* -type f | while read file ; do install $(INSTALLOPTS) $$file $(HOME)/$$file ; done
 	@echo installed $*
 
 diff-file-%: %
@@ -70,15 +75,11 @@ pull-file-%: %
 
 # pull dotdir.  only pull files that are tracked
 pull-dotdir-%: %
-	@for file in $*/*; do \
-		[ -f $(HOME)/.$$file ] && cp -p $(HOME)/.$$file $* ; \
-	done
+	@find $* -type f | while read file ; do install $(INSTALLOPTS) $(HOME)/.$$file $$file ; done
 	@echo pulled $*
 
 # pull directory.  only pull files that are tracked
 pull-dir-%: %
-	@for file in $*/*; do \
-		[ -f $(HOME)/$$file ] && cp -p $(HOME)/$$file $* ; \
-	done
+	@find $* -type f | while read file ; do install $(INSTALLOPTS) $(HOME)/$$file $$file ; done
 	@echo pulled $*
 
