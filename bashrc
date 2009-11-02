@@ -133,7 +133,7 @@ if [ -z "$BASH_COMPLETION" ]; then
         . $HOME/bin/bash_completion
 
         # set prompt to show git branch
-        PS1='\h:\W \u$(__git_ps1 " (%s)")\$'
+        PS1='\u@\h:\W$(__git_ps1 " (%s)")\$ '
       fi
     fi
     unset bash bmajor bminor
