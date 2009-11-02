@@ -2,8 +2,31 @@
 set iskeyword+=:
 set sw=4
 
-inoremap <Leader>dcm ## @cmethod
-inoremap <Leader>dm ## @method
+fu! DoxyMethodHeader()
+    let subname = substitute(getline('.'), 'sub\s\+\(\w\+\)\s\+.*$', '\1', "")
+    let lines = [
+        \ '## @method ' . subname . '()',
+        \ '# '
+        \]
+    for text in lines
+        :call append(line('.') - 1, text)
+    endfor
+    :call cursor(line('.') - len(lines), 12)
+endf
+nmap <Leader>dm :call DoxyMethodHeader()<CR>
+
+fu! DoxyCMethodHeader()
+    let subname = substitute(getline('.'), 'sub\s\+\(\w\+\)\s\+.*$', '\1', "")
+    let lines = [
+        \ '## @cmethod ' . subname . '()',
+        \ '# '
+        \]
+    for text in lines
+        :call append(line('.') - 1, text)
+    endfor
+    :call cursor(line('.') - len(lines), 13)
+endf
+nmap <Leader>dcm :call DoxyCMethodHeader()<CR>
 
 nnoremap ,pt <ESC>:%! perltidy<CR>
 vnoremap ,pt <ESC>:'<,'>! perltidy<CR>
