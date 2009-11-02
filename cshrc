@@ -6,7 +6,7 @@ set noclobber
 set nobeep
 set autocorrect
 set promptchars = ">#"
-set prompt = "%n@%m %#"
+set prompt = "%n@%m:%~ %# "
 set path = ($HOME/bin $path /usr/sbin /sbin /usr/local/bin)
 
 # directories to be searched by the cd command
