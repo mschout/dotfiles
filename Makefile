@@ -11,7 +11,9 @@ CONFIGS = \
 	hushlogin \
 	gitk \
 	plan \
-	login
+	login \
+	vimrc \
+	gvimrc
 
 # subdirs installed in $(HOME)/.$dir
 DOTDIRS = \
