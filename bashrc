@@ -70,13 +70,9 @@ unset LESSOPEN
 # are we an interactive shell?
 if [ "$PS1" ]; then
     if [ -z "$PROMPT_COMMAND" ]; then
-        case $TERM in
-            xterm*)
-                PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}"; echo -ne "\007"'
-                ;;
-            *)
-                ;;
-        esac
+        if [[ $TERM == xterm* ]]; then
+            PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}"; echo -ne "\007"'
+        fi
     fi
 fi
 
