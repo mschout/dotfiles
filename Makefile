@@ -59,7 +59,7 @@ install-dotdir-%: %
 
 install-dir-%: %
 	@find $* -type d | while read dir ; do install -d -p $$dir $(HOME)/$$dir ; done
-	@find $* -type f | while read file ; do install $(INSTALLOPTS) $$file $(HOME)/$$file ; done
+	@find $* -type f | while read file ; do install -m 0755 -p $$file $(HOME)/$$file ; done
 	@echo installed $*
 
 diff-file-%: %
