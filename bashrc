@@ -14,9 +14,13 @@ pathadd() {
     fi
 }
 
-# csh style setenv
+# csh style setenv/unsetenv
 setenv() {
     export ${1}=${2}
+}
+
+unsetenv() {
+    unset ${1}
 }
 
 pathadd $HOME/bin
