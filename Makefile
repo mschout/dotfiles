@@ -53,12 +53,12 @@ install-file-%: %
 	@echo installed $*
 
 install-dotdir-%: %
-	@find $* -type d | while read dir ; do install -d -p $$dir $(HOME)/.$$dir ; done
+	@find $* -type d | while read dir ; do install -d $$dir $(HOME)/.$$dir ; done
 	@find $* -type f | while read file ; do install $(INSTALLOPTS) $$file $(HOME)/.$$file ; done
 	@echo installed $*
 
 install-dir-%: %
-	@find $* -type d | while read dir ; do install -d -p $$dir $(HOME)/$$dir ; done
+	@find $* -type d | while read dir ; do install -d $$dir $(HOME)/$$dir ; done
 	@find $* -type f | while read file ; do install -m 0755 -p $$file $(HOME)/$$file ; done
 	@echo installed $*
 
