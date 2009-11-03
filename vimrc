@@ -65,6 +65,9 @@ let perl_include_pod=1
 let g:explVertical=1    " Split vertically
 let g:explSplitRight=1  " Put new window right of the explorer window
 
+" autocomplpop off by default
+let g:acp_enableAtStartup = 0
+
 set statusline=\ Buffer\ %n:\ %([%R%M%H]%)\ %f\ %y%=%(\[Line:\ %l\ Col:\ %c\ (%v)]%)\ \[%L\ lines]\ %P\ 
 
 autocmd BufEnter svn-commit.* set filetype=svn
