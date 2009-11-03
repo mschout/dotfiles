@@ -11,6 +11,7 @@ if has("gui_macvim")
 elseif has("gui_gtk2")
 
     set guioptions-=T " remove toolbar
+    colorscheme macvim
 
 elseif has("x11")
 elseif has("gui_win32")
