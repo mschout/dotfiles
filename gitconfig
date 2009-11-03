@@ -3,6 +3,7 @@
 	st = status
 	di = diff
 	co = checkout
+	log1 = log --pretty=oneline --abbrev-commit
 
 [color]
 	diff = auto
@@ -12,3 +13,5 @@
 [user]
 	name = Michael Schout
 	email = mschout@gkg.net
+
+# vim: noet
