@@ -34,6 +34,10 @@ default: all
 
 all: $(CONFIGS)
 
+dist:
+	@git archive master --prefix=dotfiles/ | gzip --best > dotfiles.tar.gz
+	@echo created dotfiles.tar.gz 
+
 install: $(foreach f, $(CONFIGS), install-file-$(f)) \
 	$(foreach f, $(DOTDIRS), install-dotdir-$(f)) \
 	$(foreach f, $(DIRS), install-dir-$(f))
