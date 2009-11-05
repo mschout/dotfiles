@@ -4,6 +4,7 @@
 	di = diff
 	co = checkout
 	log1 = log --pretty=oneline --abbrev-commit
+	dsm = diff --stat master
 
 [color]
 	diff = auto
