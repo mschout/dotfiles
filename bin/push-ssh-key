@@ -54,8 +54,11 @@ for remote in $@; do
 		mkdir ~/.ssh &&
 		chmod 0700 ~/.ssh
 	}
-	if test ! -f "\$HOME/.ssh/authorized_keys" ||
-		test -z "\$(grep -F '$public_key' "\$HOME/.ssh/authorized_keys")" ;
+	test -f "\$HOME/.ssh/authorized_keys" || {
+		touch ~/.ssh/authorized_keys
+		chmod 600 ~/.ssh/authorized_keys
+	}
+	if test -z "\$(grep -F '$public_key' "\$HOME/.ssh/authorized_keys")" ;
 	then
 		echo "+++ public key added."
 		echo '$public_key' >> "\$HOME/.ssh/authorized_keys"
