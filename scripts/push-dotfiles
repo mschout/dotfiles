@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# push dotfiles and install on a remote host
+#
+
+if [ $# -eq 0 ]; then
+    echo "usage: $0 host"
+    echo
+    echo "    host can be a hostname, or user@hostname"
+    exit 1
+fi
+
+# figure out which make command is appropriate to run GNU Make
+MAKE=`which gmake >& /dev/null && echo gmake || echo make`
+
+$MAKE dist
+if [ $? -ne 0 ]; then
+    echo "failed to make dist"
+    exit 1
+fi
+
+for remote in $@; do
+    scp dotfiles.tar.gz $remote:~
+    if [ $? -ne 0 ]; then 
+        echo "failed to copy dotfiles to $remote"
+        continue
+    fi
+
+    ssh $remote '/bin/sh -f' << EOF
+    tar xf dotfiles.tar.gz
+    if [ \$? -ne 0 ]; then
+        echo "failed to unpack dotfiles.tar.gz"
+        exit 1
+    fi
+    cd dotfiles
+    case "\$OSTYPE" in
+        FreeBSD)
+            gmake install
+            ;;
+        *)
+            make install
+            ;;
+    esac
+    cd ..
+    rm -rf dotfiles dotfiles.tar.gz
+EOF
+done
+
+rm -f dotfiles.tar.gz
