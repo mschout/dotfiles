@@ -20,6 +20,7 @@ CONFIGS = \
 DOTDIRS = \
 	bash_completion.d \
 	subversion \
+	m2 \
 	vim
 
 # subdirs installed in $(HOME)/$dir

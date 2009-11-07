@@ -1,0 +1,10 @@
+<settings>
+    <mirrors>
+        <mirror>
+            <id>ibiblio.org</id>
+            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+            <mirrorOf>central</mirrorOf>
+            <!-- United States, North Carolina -->
+        </mirror>
+    </mirrors>
+</settings>
