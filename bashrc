@@ -135,6 +135,9 @@ if [ -z "$BASH_COMPLETION" ]; then
         # set prompt to show git branch
         PS1='\u@\h:\W$(__git_ps1 " (%s)")\$ '
       fi
+
+      # remove completions I do not want.
+      complete -r kill
     fi
     unset bash bmajor bminor
 fi
