@@ -80,7 +80,7 @@ fi
 set -o vi
 set -o noclobber
 
-CDPATH=$HOME
+CDPATH=.:$HOME
 HISTSIZE=5000
 
 # aliases
