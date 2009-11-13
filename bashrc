@@ -138,6 +138,9 @@ if [ -z "$BASH_COMPLETION" ]; then
 
       # remove completions I do not want.
       complete -r kill
+
+      # some custom completions
+      complete -f -X '!*.tar.gz' cpan-upload-http
     fi
     unset bash bmajor bminor
 fi
