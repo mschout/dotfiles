@@ -3,17 +3,29 @@
 # push dotfiles and install on a remote host
 #
 
+while getopts "b:" OPT; do
+    case $OPT in
+        b) DIST_ARGS="BRANCH=$OPTARG" ;;
+        *) ;;
+    esac
+done
+shift $(( OPTIND - 1 ))
+
 if [ $# -eq 0 ]; then
-    echo "usage: $0 host"
+    echo "usage: $0 [options] host"
     echo
     echo "    host can be a hostname, or user@hostname"
+    echo
+    echo "    Options:"
+    echo "        -b branch         branch to make dist from"
+    echo
     exit 1
 fi
 
 # figure out which make command is appropriate to run GNU Make
 MAKE=`which gmake >& /dev/null && echo gmake || echo make`
 
-$MAKE dist
+$MAKE dist $DIST_ARGS
 if [ $? -ne 0 ]; then
     echo "failed to make dist"
     exit 1
