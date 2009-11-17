@@ -31,13 +31,19 @@ INSTALLOPTS=-m 0644 -p
 
 DIFF=$(shell which colordiff &>/dev/null && echo colordiff || echo diff)
 
+# which branch should be used for make dist.
+# e.g.: make dist BRANCH=rhel5.  default is master branch
+ifndef BRANCH
+BRANCH = master
+endif
+
 default: all
 
 all: $(CONFIGS)
 
 dist:
-	@git archive master --prefix=dotfiles/ | gzip --best > dotfiles.tar.gz
-	@echo created dotfiles.tar.gz 
+	@git archive $(BRANCH) --prefix=dotfiles/ | gzip --best > dotfiles.tar.gz
+	@echo created dotfiles.tar.gz from branch $(BRANCH)
 
 install: $(foreach f, $(CONFIGS), install-file-$(f)) \
 	$(foreach f, $(DOTDIRS), install-dotdir-$(f)) \
