@@ -3,3 +3,4 @@ imap <Leader>rt RT-Ticket:
 imap <Leader>rr RT-Status: resolved<CR>
 imap <Leader>rs RT-Status: 
 imap <Leader>ra RT-Action: 
+imap <Leader>rc RT-Action: correspond<CR>
