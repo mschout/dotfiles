@@ -33,6 +33,9 @@ for remote in $@; do
         exit 1
     fi
     cd dotfiles
+    if [ -z "\$OSTYPE" ]; then
+        OSTYPE=\`uname -s\`
+    fi
     case "\$OSTYPE" in
         FreeBSD)
             gmake install
