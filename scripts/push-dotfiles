@@ -39,7 +39,7 @@ for remote in $@; do
     fi
 
     ssh $remote '/bin/sh -f' << EOF
-    tar xf dotfiles.tar.gz
+    tar xzf dotfiles.tar.gz
     if [ \$? -ne 0 ]; then
         echo "failed to unpack dotfiles.tar.gz"
         exit 1
