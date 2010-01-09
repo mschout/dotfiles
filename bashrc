@@ -14,6 +14,12 @@ pathadd() {
     fi
 }
 
+path_unshift() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="$1:$PATH"
+    fi
+}
+
 # csh style setenv/unsetenv
 setenv() {
     export ${1}=${2}
@@ -26,8 +32,8 @@ unsetenv() {
 pathadd $HOME/bin
 
 # macports
-pathadd /opt/local/sbin
-pathadd /opt/local/bin
+path_unshift /opt/local/sbin
+path_unshift /opt/local/bin
 
 # add sbin dirs
 pathadd /usr/sbin
