@@ -147,6 +147,8 @@ if [ -z "$BASH_COMPLETION" ]; then
 
       # some custom completions
       complete -f -X '!*.tar.gz' cpan-upload-http
+
+      complete -C perldoc-complete perldoc
     fi
     unset bash bmajor bminor
 fi
