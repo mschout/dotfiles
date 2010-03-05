@@ -74,13 +74,13 @@ install-dir-%: %
 	@echo installed $*
 
 diff-file-%: %
-	@$(DIFF) -u $(HOME)/.$* $*
+	@-$(DIFF) -u $(HOME)/.$* $*
 
 diff-dotdir-%: %
-	-@$(DIFF) -ur $(HOME)/.$* $*
+	-@-$(DIFF) -ur $(HOME)/.$* $*
 
 diff-dir-%: %
-	-@$(DIFF) -ur $(HOME)/$* $*
+	-@-$(DIFF) -ur $(HOME)/$* $*
 
 # pull a dotfile from home into the repo
 pull-file-%: %
