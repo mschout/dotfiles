@@ -94,3 +94,29 @@ map ,cd :cd %:p:h <CR>
 
 " insert date stamp with F2
 imap <F2> <C-R>=strftime("%a %b %d %Y")<CR>
+
+" auto create missing directories when saving
+augroup AutoMkdir
+    autocmd!
+    autocmd  BufNewFile  *  :call EnsureDirExists()
+augroup END
+
+function! EnsureDirExists()
+    let required_dir = expand("%:h")
+    if !isdirectory(required_dir)
+        call AskQuit("Directory '" . required_dir . "' doesn't exist.", "&Create it?")
+
+        try
+            call mkdir(required_dir, 'p')
+        catch
+            call AskQuit("Can't create '" . required_dir . "'", "&Continue anyway?")
+        endtry
+    endif
+endfunction
+
+function! AskQuit(msg, action)
+    if confirm(a:msg, "&Quit?\n" . a:action) == 1
+        exit
+    endif
+endfunction
+
