@@ -1,0 +1,19 @@
+#!/usr/bin/env perl
+
+use strict;
+use Config::Tiny;
+use WWW::PAUSE::CleanUpHomeDir;
+
+my $CfgFile = "$ENV{HOME}/.dzil/config.ini";
+my $cfg = Config::Tiny->read($CfgFile) or die Config::Tiny->errstr;
+
+my $User = $cfg->{'!release'}{user} or die "username not found in $CfgFile";
+my $Pass = $cfg->{'!release'}{password} or die "password not found in $CfgFile";
+
+my $pause = WWW::PAUSE::CleanUpHomeDir->new($User, $Pass);
+
+my $files = $pause->clean_up;
+
+for my $file (@$files) {
+    print "deleted: $file\n";
+}
