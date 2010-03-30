@@ -26,3 +26,9 @@ set lines=45
 
 " Tab headings
 set gtl=%t gtt=%F
+
+" CTRL-S for saving, also in insert mode
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+
