@@ -46,6 +46,9 @@ pathadd /usr/local/sbin
 # ruby gems
 pathadd /var/lib/gems/1.8/bin
 
+# macports pgsql 8.3
+pathadd /opt/local/lib/postgresql83/bin
+
 # CentOS 5 doesn't have a maven2 package, so look for it in /opt/maven.
 if [ -e /etc/redhat-release ]; then
     if [ -d /opt/maven/bin ]; then
