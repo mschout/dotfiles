@@ -31,6 +31,9 @@ unsetenv() {
 
 pathadd $HOME/bin
 
+# add vuze if its there
+pathadd $HOME/bin/vuze
+
 # macports
 path_unshift /opt/local/sbin
 path_unshift /opt/local/bin
