@@ -5,6 +5,7 @@
 	co = checkout
 	log1 = log --pretty=oneline --abbrev-commit
 	dsm = diff --stat master
+	ls-other = ls-files --others --exclude-standard
 
 [color]
 	diff = auto
