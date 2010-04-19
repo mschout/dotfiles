@@ -11,6 +11,7 @@ CONFIGS = \
 	hushlogin \
 	gitk \
 	plan \
+	psqlrc \
 	login \
 	signature \
 	vimrc \

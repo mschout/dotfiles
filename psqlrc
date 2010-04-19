@@ -1,0 +1,11 @@
+-- require commit/rollback to make changes
+\set AUTOCOMMIT off
+
+-- show nulls as NULL
+\pset null 'NULL'
+
+-- history file for each db
+\set HISTFILE ~/.psql_history- :HOST - :DBNAME
+
+\set HISTSIZE 5000
+
