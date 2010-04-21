@@ -108,6 +108,12 @@ top10() {
     history | awk '{print $2}' | sort | uniq -c | sort -k1 -rn | head
 }
 
+tardir() {
+    if [ -d "$1" ]; then
+        tar czf "$1.tar.gz" "$1"
+    fi
+}
+
 # common typo aliases
 alias grpe='grep'
 alias maek='make'
