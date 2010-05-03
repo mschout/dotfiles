@@ -1,5 +1,9 @@
 # .bashrc
 
+# where I have local::lib bootstrapped
+LOCALLIB="$HOME/perl5"
+LOCALENV="$LOCALLIB/bin/localenv"
+
 # User specific aliases and functions
 
 # Source global definitions
@@ -123,6 +127,11 @@ alias source='.'
 
 if [ -x /usr/bin/ack-grep ]; then
     alias ack='/usr/bin/ack-grep'
+fi
+
+# set up gist alias if nopaste is available
+if [ -x $LOCALLIB/bin/nopaste ]; then
+    alias gist="$LOCALENV nopaste --private --service Gist"
 fi
 
 # try to set JAVA_HOME to something sensible
