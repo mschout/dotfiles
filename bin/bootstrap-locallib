@@ -1,0 +1,101 @@
+#!/bin/sh
+#
+# boostrap local::lib with cpanminus, under ~/perl5 and install CPAN modules that I use
+# ~/perl5 will be initialized as a git repository, and commits are made after
+# each module install
+
+# MakeMaker shouldn't ask me anything.
+export PERL_MM_USE_DEFAULT=1
+
+BOOTSTRAP_URL="http://github.com/jjn1056/bootstrap-locallib.pl/raw/master/bootstrap_locallib.pl"
+LOCALENV="$HOME/perl5/bin/localenv"
+CPANM="$LOCALENV cpanm"
+WORKDIR="/tmp/$(basename $0).$$.tmp"
+
+# clean up workdir if cancelled
+trap "rm -rf $WORKDIR; exit 1" 1 2 15
+
+# clean out the working directory
+clean_workdir() {
+    rm -rf $WORKDIR
+    mkdir $WORKDIR
+}
+
+git_commit() {
+    message=$1
+
+    cd $HOME/perl5
+    git add -A .
+    git commit -m "$message"
+}
+
+# install a project from a git repository
+git_install() {
+    repo=$1
+
+    clean_workdir
+    cd $WORKDIR
+
+    git clone $repo work
+    cd work
+
+    if [ -f dist.ini ]; then
+        $LOCALENV dzil install
+    elif [ -f Makefile.PL ]; then
+        $CPANM .
+    fi
+
+    git_commit "install $repo"
+}
+
+# use cpanm to install a module
+cpanm_install() {
+    module=$1
+
+    $CPANM $module
+
+    git_commit "install $module"
+}
+
+# download bootstrap code from github and run it
+if [ -x `which curl` ]; then
+    curl -L $BOOTSTRAP_URL | perl - -a perl5
+elif [ -x `which wget` ]; then
+    wget -O - $BOOTSTRAP_URL | perl - -a perl5
+elif [ -x `which fetch` ]; then
+    # assuming freebsd compatible fetch
+    fetch -o - $BOOTSTRAP_URL | perl - -a perl5
+else
+    echo "you need to install curl or wget"
+    exit 1
+fi
+
+# check if boostrap was successful
+if [ $? -ne 0 ]; then
+    echo "bootstrap failed"
+    exit 1
+fi
+
+# initialize git repo
+cd $HOME/perl5
+git init
+git_commit 'initial install - perl local::lib bootstrap'
+git tag pristine
+
+# install CPAN modules I use
+cpanm_install Dist::Zilla
+cpanm_install Dist::Zilla::PluginBundle::MSCHOUT
+cpanm_install Dist::Zilla::PluginBundle::RJBS
+cpanm_install Dist::Zilla::Plugin::Twitter
+cpanm_install App::Nopaste
+cpanm_install CSS::Minifier
+cpanm_install CSS::Minifier::XS
+cpanm_install JavaScript::Minifier
+cpanm_install JavaScript::Minifier::XS
+cpanm_install DBI
+cpanm_install DBD::SQLite
+cpanm_install SQL::Abstract
+cpanm_install App::Ack
+
+# install projects from git
+git_install git://github.com/mschout/ng-daily-wallpaper
