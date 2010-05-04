@@ -98,6 +98,8 @@ cpanm_install DBD::SQLite
 cpanm_install SQL::Abstract
 cpanm_install App::Ack
 cpanm_install Vimana
+cpanm_install SQL::Beautify
+cpanm_install Perl::Tidy
 
 # install projects from git
 git_install git://github.com/mschout/ng-daily-wallpaper
