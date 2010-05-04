@@ -87,6 +87,7 @@ cpanm_install Dist::Zilla
 cpanm_install Dist::Zilla::PluginBundle::MSCHOUT
 cpanm_install Dist::Zilla::PluginBundle::RJBS
 cpanm_install Dist::Zilla::Plugin::Twitter
+cpanm_install IO::Socket::SSL # for ::Twitter plugin
 cpanm_install App::Nopaste
 cpanm_install CSS::Minifier
 cpanm_install CSS::Minifier::XS
@@ -96,6 +97,7 @@ cpanm_install DBI
 cpanm_install DBD::SQLite
 cpanm_install SQL::Abstract
 cpanm_install App::Ack
+cpanm_install Vimana
 
 # install projects from git
 git_install git://github.com/mschout/ng-daily-wallpaper
