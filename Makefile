@@ -22,6 +22,7 @@ DOTDIRS = \
 	bash_completion.d \
 	subversion \
 	m2 \
+	dzil \
 	vim
 
 # subdirs installed in $(HOME)/$dir
