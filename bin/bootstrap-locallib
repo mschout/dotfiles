@@ -101,3 +101,4 @@ cpanm_install Vimana
 
 # install projects from git
 git_install git://github.com/mschout/ng-daily-wallpaper
+cpanm_install IPC::System::Simple # needed for ng-daily-wallpaper
