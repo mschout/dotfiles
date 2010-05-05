@@ -129,9 +129,14 @@ if [ -x /usr/bin/ack-grep ]; then
     alias ack='/usr/bin/ack-grep'
 fi
 
+# if we have a local::lib install, intialize it.
+if [ -d $LOCALLIB ]; then
+    eval $(perl -I$LOCALLIB/lib/perl5 -Mlocal::lib)
+fi
+
 # set up gist alias if nopaste is available
 if [ -x $LOCALLIB/bin/nopaste ]; then
-    alias gist="$LOCALENV nopaste --private --service Gist"
+    alias gist="nopaste --private --service Gist"
 fi
 
 # try to set JAVA_HOME to something sensible
