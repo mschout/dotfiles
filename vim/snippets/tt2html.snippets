@@ -203,8 +203,10 @@ snippet if
 		${2}
 	[% END %]
 
+snippet switch
+	[% SWITCH ${1} -%]
+		[% CASE ${2} %]
+	[% END %]
+
 snippet case
 	[% CASE ${1} -%]
-		[% WHEN ${2} %]
-		[% DEFAULT %]
-	[% END %]
