@@ -69,6 +69,14 @@ let g:explSplitRight=1  " Put new window right of the explorer window
 " autocomplpop off by default
 let g:acp_enableAtStartup = 0
 
+" zen coding for vim
+let g:user_zen_settings = {
+\  'indentation' : '  ',
+\  'tt2html': {
+\      'extends': 'html'
+\  }
+\}
+
 set statusline=\ Buffer\ %n:\ %([%R%M%H]%)\ %f\ %y%=%(\[Line:\ %l\ Col:\ %c\ (%v)]%)\ \[%L\ lines]\ %P\ 
 
 autocmd BufEnter svn-commit.* set filetype=svn
