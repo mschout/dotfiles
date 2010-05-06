@@ -100,6 +100,11 @@ cpanm_install App::Ack
 cpanm_install Vimana
 cpanm_install SQL::Beautify
 cpanm_install Perl::Tidy
+cpanm_install Template::Test
+cpanm_install String::Truncate
+cpanm_install Test::Pod::Coverage
+cpanm_install Pod::Coverage::TrustPod
+cpanm_install BackPAN::Index
 
 # install projects from git
 git_install git://github.com/mschout/ng-daily-wallpaper
