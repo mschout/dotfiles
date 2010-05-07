@@ -93,3 +93,8 @@ snippet cl
 snippet slurp
 	my $${1:var};
 	{ local $/ = undef; local *FILE; open FILE, "<${2:file}"; $$1 = <FILE>; close FILE }${3}
+snippet method
+	sub ${1} {
+		my $self = shift;
+		${2:...}
+	}
