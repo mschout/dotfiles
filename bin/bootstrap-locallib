@@ -98,6 +98,7 @@ cpanm_install DBD::SQLite
 cpanm_install SQL::Abstract
 cpanm_install App::Ack
 cpanm_install Vimana
+cpanm_install Archive::Zip
 cpanm_install SQL::Beautify
 cpanm_install Perl::Tidy
 cpanm_install Template::Test
