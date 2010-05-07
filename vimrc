@@ -77,6 +77,9 @@ let g:user_zen_settings = {
 \  }
 \}
 
+" localvimrc plugin
+let g:localvimrc_ask = 0
+
 set statusline=\ Buffer\ %n:\ %([%R%M%H]%)\ %f\ %y%=%(\[Line:\ %l\ Col:\ %c\ (%v)]%)\ \[%L\ lines]\ %P\ 
 
 autocmd BufEnter svn-commit.* set filetype=svn
