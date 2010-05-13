@@ -7,6 +7,8 @@ augroup filetypedetect
   au! BufRead,BufNewFile *.tmpl setfiletype html
 augroup END
 
+au BufNewFile,BufRead *.js.tt setf tt2javascript
+
 au BufNewFile,BufRead *.tt2 setf tt2html
 
 au BufNewFile,BufRead *.tt setf tt2html
