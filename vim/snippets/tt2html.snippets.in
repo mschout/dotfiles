@@ -1,0 +1,5 @@
+snippet href
+	<a href="${1}">${2}</a>
+
+snippet debug
+	<b style="color:#fff;background:#f00">=[% ${1} %]=</b>

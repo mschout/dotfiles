@@ -1,5 +1,66 @@
-# BEGIN html.snippets content
+snippet href
+	<a href="${1}">${2}</a>
 
+snippet debug
+	<b style="color:#fff;background:#f00">=[% ${1} %]=</b>
+snippet case
+	[% CASE '${1}' -%]${2}
+
+snippet foreach
+	[% FOREACH ${1} IN ${2} -%]
+		${3}
+	[% END %]
+
+snippet if
+	[% IF ${1} %]
+		${2}
+	[% END %]
+
+snippet else
+	[%- ELSE -%]${2}
+
+snippet end
+	[%- END -%]${2}
+
+snippet include
+	[%- INCLUDE "${1}" -%]${2}
+
+snippet switch
+	[% SWITCH ${1} -%]
+		[% CASE '${2}' %]${3}
+	[% END -%]
+
+snippet unless
+	[%- UNLESS ${1:condition} -%]
+		${2}
+	[%- END -%]
+
+snippet wrapper
+	[%- WRAPPER ${1:template} -%]
+		${2}
+	[%- END -%]
+
+# TT tag snippets
+snippet [
+	[% ${1} %]${2}
+
+snippet [=
+	[% ${1} =%]${2}
+
+snippet [==
+	[%= ${1} =%]${2}
+
+snippet [-
+	[% ${1} -%]${2}
+
+snippet [--
+	[%- ${1} -%]${2}
+
+snippet [~
+	[% ${1} ~%]${2}
+
+snippet [~~
+	[%~ ${1} ~%]${2}
 # Some useful Unicode entities
 # Non-Breaking Space
 snippet nbs
@@ -190,71 +251,3 @@ snippet table
 	</table>${4}
 snippet textarea
 	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
-
-# END html.snippets content
-
-# my extra snippets
-snippet href
-	<a href="${1}">${2}</a>
-
-snippet debug
-	<b style="color:#fff;background:#f00">=[% ${1} %]=</b>
-
-snippet case
-	[% CASE '${1}' -%]${2}
-
-snippet foreach
-	[% FOREACH ${1} IN ${2} -%]
-		${3}
-	[% END %]
-
-snippet if
-	[% IF ${1} %]
-		${2}
-	[% END %]
-
-snippet else
-	[%- ELSE -%]${2}
-
-snippet end
-	[%- END -%]${2}
-
-snippet include
-	[%- INCLUDE "${1}" -%]${2}
-
-snippet switch
-	[% SWITCH ${1} -%]
-		[% CASE '${2}' %]${3}
-	[% END -%]
-
-snippet unless
-	[%- UNLESS ${1:condition} -%]
-		${2}
-	[%- END -%]
-
-snippet wrapper
-	[%- WRAPPER ${1:template} -%]
-		${2}
-	[%- END -%]
-
-# TT tag snippets
-snippet [
-	[% ${1} %]${2}
-
-snippet [=
-	[% ${1} =%]${2}
-
-snippet [==
-	[%= ${1} =%]${2}
-
-snippet [-
-	[% ${1} -%]${2}
-
-snippet [--
-	[%- ${1} -%]${2}
-
-snippet [~
-	[% ${1} ~%]${2}
-
-snippet [~~
-	[%~ ${1} ~%]${2}
