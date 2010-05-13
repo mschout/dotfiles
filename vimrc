@@ -115,6 +115,12 @@ augroup END
 
 function! EnsureDirExists()
     let required_dir = expand("%:h")
+
+    " current directory, older vim returns blank
+    if !required_dir
+        return
+    endif
+
     if !isdirectory(required_dir)
         call AskQuit("Directory '" . required_dir . "' doesn't exist.", "&Create it?")
 
