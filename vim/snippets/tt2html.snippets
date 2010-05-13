@@ -193,6 +193,12 @@ snippet textarea
 snippet href
 	<a href="${1}">${2}</a>
 
+snippet debug
+	<b style="color:#fff;background:#f00">=[% ${1} %]=</b>
+
+snippet case
+	[% CASE '${1}' -%]${2}
+
 snippet foreach
 	[% FOREACH ${1} IN ${2} -%]
 		${3}
@@ -203,10 +209,48 @@ snippet if
 		${2}
 	[% END %]
 
+snippet else
+	[%- ELSE -%]${2}
+
+snippet end
+	[%- END -%]${2}
+
+snippet include
+	[%- INCLUDE "${1}" -%]${2}
+
 snippet switch
 	[% SWITCH ${1} -%]
-		[% CASE ${2} %]
-	[% END %]
+		[% CASE '${2}' %]${3}
+	[% END -%]
 
-snippet case
-	[% CASE ${1} -%]
+snippet unless
+	[%- UNLESS ${1:condition} -%]
+		${2}
+	[%- END -%]
+
+snippet wrapper
+	[%- WRAPPER ${1:template} -%]
+		${2}
+	[%- END -%]
+
+# TT tag snippets
+snippet [
+	[% ${1} %]${2}
+
+snippet [=
+	[% ${1} =%]${2}
+
+snippet [==
+	[%= ${1} =%]${2}
+
+snippet [-
+	[% ${1} -%]${2}
+
+snippet [--
+	[%- ${1} -%]${2}
+
+snippet [~
+	[% ${1} ~%]${2}
+
+snippet [~~
+	[%~ ${1} ~%]${2}
