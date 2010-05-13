@@ -107,6 +107,12 @@ map ,cd :cd %:p:h <CR>
 " insert date stamp with F2
 imap <F2> <C-R>=strftime("%a %b %d %Y")<CR>
 
+" mappings for moving lines/selections up or down
+nnoremap <silent> <C-k> mz:m-2<CR>`z==
+vnoremap <silent> <C-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
+nnoremap <silent> <C-j> mz:m+<CR>`z==
+vnoremap <silent> <C-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
+
 " auto create missing directories when saving
 augroup AutoMkdir
     autocmd!
