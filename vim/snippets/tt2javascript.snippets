@@ -19,7 +19,7 @@ snippet switch
 		[% CASE '${2}' %]${3}
 	[% END -%]
 snippet use
-	[%- USE ${1} -]${2}
+	[%- USE ${1} -%]${2}
 snippet unless
 	[%- UNLESS ${1:condition} -%]
 		${2}
