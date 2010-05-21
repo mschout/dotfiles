@@ -39,6 +39,18 @@ set directory=~/.backup//
 " always jump to the last cursor position
 autocmd BufReadPost * if line("'\"") | exe "normal '\"" | endif
 
+" use 256 color scheme in terminal if TERM supports it
+if $TERM =~ '^xterm-color'
+    " OSX Termnal.app reports as this, and only supports 16 colors
+    set t_Co=16
+elseif $TERM =~ '^xterm'
+    set t_Co=256
+endif
+
+if &t_Co == 256
+    colorscheme mustang
+endif
+
 " searching
 set hlsearch
 set incsearch
@@ -59,8 +71,10 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " closetag plugin
 autocmd FileType html,xml,tt2html,xsl source ~/.vim/plugin/closetag.vim
 
-"let perl_fold=1
 let perl_include_pod=1
+let perl_want_scope_in_variables=1
+let perl_fold=1
+let perl_nofold_packages=1
 
 " set up file explorer to split right.
 let g:explVertical=1    " Split vertically
@@ -81,7 +95,7 @@ let g:user_zen_settings = {
 let g:localvimrc_ask = 0
 let g:localvimrc_sandbox = 0
 
-set statusline=\ Buffer\ %n:\ %([%R%M%H]%)\ %f\ %y%=%(\[Line:\ %l\ Col:\ %c\ (%v)]%)\ \[%L\ lines]\ %P\ 
+set statusline=%n:\ %f\ %(%h%y%r%m%)\ %{fugitive#statusline()}%=%(\[%c,%l/%L]%)\ %P\ 
 
 autocmd BufEnter svn-commit.* set filetype=svn
 
