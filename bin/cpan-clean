@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# clear out builds and downloaded sources from ~/.cpan
+#
+
+rm -rf $HOME/.cpan/sources/authors $HOME/.cpan/build
