@@ -12,6 +12,7 @@ CONFIGS = \
 	gitk \
 	plan \
 	psqlrc \
+	rpmmacros \
 	login \
 	signature \
 	vimrc \

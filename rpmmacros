@@ -1,0 +1,17 @@
+%packager	Michael Schout
+%distribution	GKG Addons
+%vendor		GKG.NET
+%_signature	gpg
+%_gpg_name	Michael Schout
+%dist	.local
+
+%_topdir	/home/mschout/redhat
+
+%_tmppath	/var/tmp/rpm
+# %_builddir		%{_tmppath}/BUILD
+
+%_rpmtopdir		%{_topdir}
+%_rpmdir		%{_rpmtopdir}/RPMS
+%_sourcedir		%{_rpmtopdir}/SOURCES
+%_specdir		%{_rpmtopdir}/SPECS
+%_srcrpmdir		%{_rpmtopdir}/SRPMS
