@@ -96,6 +96,9 @@ fi
 set -o vi
 set -o noclobber
 
+# do not offer completions for empty command
+shopt -s no_empty_cmd_completion
+
 CDPATH=.:$HOME
 HISTSIZE=5000
 
