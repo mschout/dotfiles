@@ -4,3 +4,4 @@
 #
 
 rm -rf $HOME/.cpan/sources/authors $HOME/.cpan/build
+rm -rf $HOME/.cpanplus/authors $HOME/.cpanplus/*/build $HOME/.cpanplus/install-logs
