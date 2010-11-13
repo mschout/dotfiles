@@ -1,4 +1,5 @@
 TARGETS = tt2html.snippets \
+	tt2xml.snippets \
 	tt2javascript.snippets \
 	gitcommit.snippets \
 	svn.snippets
@@ -9,6 +10,10 @@ clean:
 	rm -f $(TARGETS)
 
 tt2html.snippets: tt2html.snippets.in tt2.snippets html.snippets
+	@echo generating $@
+	@cat $^ > $@
+
+tt2xml.snippets: tt2.snippets
 	@echo generating $@
 	@cat $^ > $@
 
