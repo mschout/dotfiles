@@ -115,6 +115,7 @@ nnoremap <silent> <S-l> :bnext<CR>
 
 " ,e opens file in current file's directory
 map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
+map ,te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 " ,cd change to current file's directory
 map ,cd :cd %:p:h <CR>
 
