@@ -21,6 +21,7 @@ CONFIGS = \
 # subdirs installed in $(HOME)/.$dir
 DOTDIRS = \
 	bash_completion.d \
+	bash_profile.d \
 	subversion \
 	m2 \
 	dzil \
