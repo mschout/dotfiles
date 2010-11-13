@@ -190,4 +190,10 @@ if [[ $OSTYPE == darwin* ]]; then
     . $HOME/.bashrc.darwin
 fi
 
+
+# pull in local profile.d scripts
+for prof_script in $HOME/.bash_profile.d/*.sh; do
+    . $prof_script
+done
+
 # vim: ft=sh

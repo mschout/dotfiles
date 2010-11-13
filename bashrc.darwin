@@ -4,9 +4,4 @@ if [ -x `which mvim` ]; then
     EDITOR="mvim -f"
 fi
 
-# pull in local profile.d scripts
-for prof_script in $HOME/.bash_profile.d/*.sh; do
-    . $prof_script
-done
-
 # vim: ft=sh
