@@ -2,6 +2,10 @@ snippet href
 	<a href="${1}">${2}</a>
 snippet debug
 	<b style="color:#fff;background:#f00">=[% ${1} %]=</b>
+snippet block
+	[%- BLOCK ${1} -%]
+		${2}
+	[%- END -%]
 snippet case
 	[% CASE '${1}' -%]${2}
 snippet foreach
