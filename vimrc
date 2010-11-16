@@ -68,6 +68,9 @@ let Tlist_Show_One_File = 1
 let Tlist_Show_Menu = 1
 nnoremap <silent> <F8> :TlistToggle<CR>
 
+" :w!! - write file with sudo
+cmap w!! %!sudo tee >/dev/null %
+
 " closetag plugin
 autocmd FileType html,xml,tt2html,xsl source ~/.vim/plugin/closetag.vim
 
