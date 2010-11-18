@@ -196,4 +196,7 @@ for prof_script in $HOME/.bash_profile.d/*.sh; do
     . $prof_script
 done
 
+# suck in RVM if its installed
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+
 # vim: ft=sh
