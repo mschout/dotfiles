@@ -4,7 +4,7 @@
 	di = diff
 	co = checkout
 	tag-commit = !sh -c 'git rev-list $0 | head -n 1'
-	log1 = log --pretty=oneline --abbrev-commit
+	log1 = log --pretty=oneline --decorate --abbrev-commit
 	dsm = diff --stat master
 	ls-other = ls-files --others --exclude-standard
 
