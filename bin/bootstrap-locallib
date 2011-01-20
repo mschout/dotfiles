@@ -106,6 +106,8 @@ cpanm_install String::Truncate
 cpanm_install Test::Pod::Coverage
 cpanm_install Pod::Coverage::TrustPod
 cpanm_install BackPAN::Index
+cpanm_install Gravatar::URL
+cpanm_install Modern::Perl
 
 # install projects from git
 git_install git://github.com/mschout/ng-daily-wallpaper
