@@ -7,8 +7,8 @@ use WWW::PAUSE::CleanUpHomeDir;
 my $CfgFile = "$ENV{HOME}/.dzil/config.ini";
 my $cfg = Config::Tiny->read($CfgFile) or die Config::Tiny->errstr;
 
-my $User = $cfg->{'!release'}{user} or die "username not found in $CfgFile";
-my $Pass = $cfg->{'!release'}{password} or die "password not found in $CfgFile";
+my $User = $cfg->{'%PAUSE'}{user} or die "username not found in $CfgFile";
+my $Pass = $cfg->{'%PAUSE'}{password} or die "password not found in $CfgFile";
 
 my $pause = WWW::PAUSE::CleanUpHomeDir->new($User, $Pass);
 
