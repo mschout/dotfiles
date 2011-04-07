@@ -3,6 +3,7 @@
 	st = status
 	di = diff
 	co = checkout
+	cached = diff --cached
 	tag-commit = !sh -c 'git rev-list $0 | head -n 1'
 	log1 = log --pretty=oneline --decorate --abbrev-commit
 	dsm = diff --stat master
