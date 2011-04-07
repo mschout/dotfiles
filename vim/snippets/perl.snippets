@@ -114,3 +114,12 @@ snippet @verb
 	@verbatim
 	# ${1}
 	# @endverbatim
+
+snippet immutable
+	__PACKAGE__->meta->make_immutable;
+
+snippet moose
+	use Moose;
+	use namespace::autoclean;
+	
+	__PACKAGE__->meta->make_immutable;
