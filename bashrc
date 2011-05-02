@@ -24,6 +24,12 @@ path_unshift() {
     fi
 }
 
+path_remove() {
+    if [[ ":$PATH:" = *":$1:"* ]]; then
+        PATH=$(IFS=':';t=($PATH);unset IFS;t=(${t[@]%%*$1*});IFS=':';echo "${t[*]}");
+    fi
+}
+
 # csh style setenv/unsetenv
 setenv() {
     export ${1}=${2}
@@ -118,6 +124,16 @@ top10() {
 tardir() {
     if [ -d "$1" ]; then
         tar czf "$1.tar.gz" "$1"
+    fi
+}
+
+no_local_lib() {
+    unset MODULEBUILDRC
+    unset PERL_MM_OPT
+    path_remove $LOCALLIB/bin
+    PERL5LIB=$(IFS=':';t=($PERL5LIB);unset IFS;t=(${t[@]%%$LOCALLIB*});IFS=':';echo "${t[*]}");
+    if [ -z "$PERL5LIB" ]; then
+        unset PERL5LIB
     fi
 }
 
