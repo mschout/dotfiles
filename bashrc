@@ -1,9 +1,5 @@
 # .bashrc
 
-# where I have local::lib bootstrapped
-LOCALLIB="$HOME/perl5"
-LOCALENV="$LOCALLIB/bin/localenv"
-
 # User specific aliases and functions
 
 # Source global definitions
@@ -127,16 +123,6 @@ tardir() {
     fi
 }
 
-no_local_lib() {
-    unset MODULEBUILDRC
-    unset PERL_MM_OPT
-    path_remove $LOCALLIB/bin
-    PERL5LIB=$(IFS=':';t=($PERL5LIB);unset IFS;t=(${t[@]%%$LOCALLIB*});IFS=':';echo "${t[*]}");
-    if [ -z "$PERL5LIB" ]; then
-        unset PERL5LIB
-    fi
-}
-
 # common typo aliases
 alias grpe='grep'
 alias maek='make'
@@ -148,14 +134,15 @@ if [ -x /usr/bin/ack-grep ]; then
     alias ack='/usr/bin/ack-grep'
 fi
 
-# if we have a local::lib install, intialize it.
-if [ -d $LOCALLIB ]; then
-    eval $(perl -I$LOCALLIB/lib/perl5 -Mlocal::lib)
-fi
 
-# set up gist alias if nopaste is available
-if [ -x $LOCALLIB/bin/nopaste ]; then
-    alias gist="nopaste --private --service Gist"
+if [ -e  $HOME/perl5/perlbrew/etc/bashrc ]; then
+    . $HOME/perl5/perlbrew/etc/bashrc
+
+    PERLBREW_BIN=$PERLBREW_ROOT/perls/$PERLBREW_PERL/bin
+
+    if [ -x $PERLBREW_BIN/nopaste ]; then
+        alias gist="nopaste --private --service Gist"
+    fi
 fi
 
 # try to set JAVA_HOME to something sensible
