@@ -28,8 +28,8 @@ fu! DoxyCMethodHeader()
 endf
 nmap <Leader>dcm :call DoxyCMethodHeader()<CR>
 
-nnoremap ,pt <ESC>:%! ~/perl5/bin/localenv perltidy<CR>
-vnoremap ,pt <ESC>:'<,'>! ~/perl5/bin/localenv perltidy<CR>
+nnoremap ,pt <ESC>:%! $PERLBREW_ROOT/perls/$PERLBREW_PERL/bin/perltidy<CR>
+vnoremap ,pt <ESC>:'<,'>! $PERLBREW_ROOT/perls/$PERLBREW_PERL/bin/perltidy<CR>
 
 set cindent
 " default is: 0{,0},0),:,0#,!^F,o,O,e
