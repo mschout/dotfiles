@@ -66,6 +66,8 @@ if [ -e /etc/redhat-release ]; then
     fi
 fi
 
+pathadd $HOME/bin/eclipse
+
 export LANG=en_US.UTF-8
 export CVSROOT=mschout@cvs.gkg.net:/usr/local/cvsroot
 export CVS_RSH=ssh
