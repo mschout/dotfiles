@@ -1,6 +1,6 @@
 [alias]
 	ci = commit
-	st = status
+	st = status -sb
 	di = diff
 	co = checkout
 	cached = diff --cached
