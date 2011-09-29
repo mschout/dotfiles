@@ -6,6 +6,7 @@
 	cached = diff --cached
 	tag-commit = !sh -c 'git rev-list $0 | head -n 1'
 	log1 = log --pretty=oneline --decorate --abbrev-commit
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	dsm = diff --stat master
 	ls-other = ls-files --others --exclude-standard
 
