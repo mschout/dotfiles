@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# restore a file that was deleted in some previous commit
+#
+# This will checkout a file using the version right before it was last deleted.
+
+file=$1
+
+rev=$(git rev-list -n1 HEAD -- "$file")
+
+git checkout $rev^ -- $file
