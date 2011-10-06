@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# git checkout-date YYYY-MM-DD [branch]
+#
+# checks out a branch as it existed on the given date.
+# if branch is omitted, the current checked out branch is used.
+#
+
+date=$1
+branch=$2
+
+if [ -z "$branch" ]; then
+    branch=$(git symbolic-ref HEAD)
+    branch=${branch##refs/heads/}
+    branch=${branch_name:-HEAD}     # to deal with detached head scenario
+fi
+
+rev=$(git rev-list -n 1 --before="$date" $branch)
+
+if [ -z "$rev" ]; then
+    echo "No revision found before $date"
+    exit 1
+fi
+
+git checkout $rev
