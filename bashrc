@@ -142,7 +142,6 @@ if [ -e $HOME/perl5/perlbrew/etc/bashrc ]; then
     no_perlbrew(){
         path_remove $HOME/perl5/perlbrew/perls/$PERLBREW_PERL/bin
     }
-fi
 
     PERLBREW_BIN=$PERLBREW_ROOT/perls/$PERLBREW_PERL/bin
 
