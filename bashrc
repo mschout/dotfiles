@@ -137,8 +137,12 @@ if [ -x /usr/bin/ack-grep ]; then
 fi
 
 
-if [ -e  $HOME/perl5/perlbrew/etc/bashrc ]; then
+if [ -e $HOME/perl5/perlbrew/etc/bashrc ]; then
     . $HOME/perl5/perlbrew/etc/bashrc
+    no_perlbrew(){
+        path_remove $HOME/perl5/perlbrew/perls/$PERLBREW_PERL/bin
+    }
+fi
 
     PERLBREW_BIN=$PERLBREW_ROOT/perls/$PERLBREW_PERL/bin
 
