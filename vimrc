@@ -103,6 +103,9 @@ set statusline=%n:\ %f\ %(%h%y%r%m%)\ %{fugitive#statusline()}%=%(\[%c,%l/%L]%)\
 
 autocmd BufEnter svn-commit.* set filetype=svn
 
+" Resize splits when the window is resized
+autocmd VimResized * exe "normal! \<c-w>="
+
 " window movement
 nnoremap <silent> <C-h> <C-w>h
 nnoremap <silent> <C-j> <C-w>j
