@@ -106,6 +106,8 @@ shopt -s no_empty_cmd_completion
 
 CDPATH=.:$HOME
 HISTSIZE=5000
+# add date/time stamp to history output
+HISTTIMEFORMAT="%h/%d - %H:%M:%S "
 
 # aliases
 alias ls='ls -F'
