@@ -22,9 +22,10 @@ $if Bash
     "\e[A": history-search-backward
     "\e[B": history-search-forward
 
+    # ctrl-a and ctrl-e muscle memory
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
+
     # edit options of previous command ls a b c -> ls -al a b c
     "\C-o": "\e-0ea "
-
-    # glob patterns without executing, eg: 'rm *x'
-    "\C-e": glob-expand-word
 $endif
