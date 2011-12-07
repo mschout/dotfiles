@@ -27,6 +27,7 @@ set backspace=start,indent,eol
 autocmd FileType make   set noexpandtab
 autocmd FileType python set noexpandtab
 autocmd FileType gitconfig set noexpandtab
+autocmd Filetype mvn_pm set ts=2 sw=2
 
 set viminfo=%,'50,\"100,:100,n~/.viminfo
 
