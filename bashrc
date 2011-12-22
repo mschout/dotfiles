@@ -55,8 +55,9 @@ pathadd /usr/local/sbin
 # ruby gems
 pathadd /var/lib/gems/1.8/bin
 
-# macports pgsql 8.3
-pathadd /opt/local/lib/postgresql83/bin
+# macports pgsql.  must come before other paths because Lion ships with psql 8.3
+path_unshift /opt/local/lib/postgresql84/bin
+path_unshift /opt/local/lib/postgresql83/bin
 
 # CentOS 5 doesn't have a maven2 package, so look for it in /opt/maven.
 if [ -e /etc/redhat-release ]; then
