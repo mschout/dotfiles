@@ -40,6 +40,11 @@ set directory=~/.backup//
 " always jump to the last cursor position
 autocmd BufReadPost * if line("'\"") | exe "normal '\"" | endif
 
+" auto +x these on write
+autocmd BufWritePost    *.pl !chmod +x %
+autocmd BufWritePost    *.py !chmod +x %
+autocmd BufWritePost    *.t  !chmod +x %
+
 " use 256 color scheme in terminal if TERM supports it
 if $TERM =~ '^xterm-color'
     " OSX Termnal.app reports as this, and only supports 16 colors
@@ -68,6 +73,14 @@ let SVNCommandSplit = "horizontal"
 let Tlist_Show_One_File = 1
 let Tlist_Show_Menu = 1
 nnoremap <silent> <F8> :TlistToggle<CR>
+
+" ctrlp plugin
+" set working path to nearest .git/.svn etc.
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\.git$\|\.hg$\|\.svn$',
+    \ 'file': '\.so$'
+    \ }
 
 " :w!! - write file with sudo
 cmap w!! %!sudo tee >/dev/null %
@@ -102,6 +115,7 @@ let g:localvimrc_sandbox = 0
 set statusline=%n:\ %f\ %(%h%y%r%m%)\ %{fugitive#statusline()}%=%(\[%c,%l/%L]%)\ %P\ 
 
 autocmd BufEnter svn-commit.* set filetype=svn
+autocmd BufEnter *.less set filetype=less
 
 " Resize splits when the window is resized
 autocmd VimResized * exe "normal! \<c-w>="
