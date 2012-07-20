@@ -2,6 +2,8 @@
 
 if [ -x `which mvim` ]; then
     EDITOR="mvim -f"
+    # alias gvim to mvim
+    alias gvim="mvim"
 fi
 
 # vim: ft=sh
