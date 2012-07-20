@@ -35,6 +35,12 @@ unsetenv() {
     unset ${1}
 }
 
+source_if_present() {
+    if [ -f "$1" ]; then
+        . "$1"
+    fi
+}
+
 pathadd $HOME/bin
 
 # add vuze if its there
@@ -185,6 +191,8 @@ if [ -z "$BASH_COMPLETION" ]; then
         # set prompt to show git branch
         PS1='\u@\h:\W$(__git_ps1 " (%s)")\$ '
       fi
+
+      source_if_present $HOME/perl5/perlbrew/etc/perlbrew-completion.bash
 
       # remove completions I do not want.
       complete -r kill
