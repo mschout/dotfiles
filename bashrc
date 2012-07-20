@@ -123,6 +123,7 @@ alias ..='cd ..'
 alias 2..='cd ../..'
 alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
+alias handbrake="HandBrakeCLI --preset Universal"
 
 top10() {
     history | awk '{print $2}' | sort | uniq -c | sort -k1 -rn | head
