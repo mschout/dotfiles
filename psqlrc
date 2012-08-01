@@ -5,7 +5,7 @@
 \pset null 'NULL'
 
 -- history file for each db
-\set HISTFILE ~/.psql_history- :HOST - :DBNAME
+\set HISTFILE ~/.psql_history- :DBNAME
 
 \set HISTSIZE 5000
 
