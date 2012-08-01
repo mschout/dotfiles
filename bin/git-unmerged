@@ -1,0 +1,3 @@
+#!/bin/sh
+
+git ls-files -u $* | sed -e 's/^[0-9]* [0-9a-f]* [0-9]*\s*//' | uniq
