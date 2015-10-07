@@ -28,4 +28,7 @@ $if Bash
 
     # edit options of previous command ls a b c -> ls -al a b c
     "\C-o": "\e-0ea "
+
+    # glob patterns without executing, eg: 'rm *x'
+    "\C-e": glob-expand-word
 $endif

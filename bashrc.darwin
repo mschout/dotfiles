@@ -6,4 +6,15 @@ if [ -x `which mvim` ]; then
     alias gvim="mvim"
 fi
 
+# enable colorized ls
+export CLICOLOR=1
+
+# make grep highlight matches
+export GREP_OPTIONS='--color=auto'
+
+# do not run the bootstrap java app with tomcat
+export CATALINA_OPTS="-Djava.awt.headless=true"
+
+pathadd /opt/local/libexec/gnubin
+
 # vim: ft=sh

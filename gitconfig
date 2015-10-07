@@ -6,9 +6,12 @@
 	cached = diff --cached
 	tag-commit = !sh -c 'git rev-list $0 | head -n 1'
 	log1 = log --pretty=oneline --decorate --abbrev-commit
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	dsm = diff --stat master
 	ls-other = ls-files --others --exclude-standard
+	cached = diff --cached
+	repo-name = "!git config remote.origin.url | sed -e 's|^.*/||' -e 's/.git$//'"
+	tar = "!git archive HEAD --prefix=`git repo-name`/ --format tar | gzip > `git repo-name`.tar.gz"
+	unmerged = "!git ls-files -u | awk '{print $4}' | sort | uniq"
 
 [color]
 	diff = auto
@@ -21,5 +24,17 @@
 
 [rerere]
 	enabled = 1
+
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+
+[mergetool "diffconflicts"]
+	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+	keepBackup = false
+
+[mergetool]
+	prompt = false
 
 # vim: noet

@@ -42,6 +42,7 @@ source_if_present() {
 }
 
 pathadd $HOME/bin
+pathadd $HOME/Dropbox/bin
 
 # add vuze if its there
 pathadd $HOME/bin/vuze
@@ -94,6 +95,9 @@ fi
 # on CentOS LESSOPEN causes sorrow
 unset LESSOPEN
 
+# expermiental
+export LESS='-iMFXSx4R'
+
 # are we an interactive shell?
 if [ "$PS1" ]; then
     if [ -z "$PROMPT_COMMAND" ]; then
@@ -124,6 +128,10 @@ alias 2..='cd ../..'
 alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
 alias handbrake="HandBrakeCLI --preset Universal"
+
+# alias g to git (with completions)
+alias g='git'
+complete -o default -o nospace -F _git g
 
 top10() {
     history | awk '{print $2}' | sort | uniq -c | sort -k1 -rn | head
@@ -168,9 +176,9 @@ if [ -z "$JAVA_HOME" ]; then
     elif [ -e /etc/alternatives/java_sdk ]; then
         # RHEL/CentOS
         export JAVA_HOME=`readlink /etc/alternatives/java_sdk`
-    elif [ -e /System/Library/Frameworks/JavaVM.framework/Home ]; then
+    elif [ -x  /usr/libexec/java_home ]; then
         # MacOS X
-        export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+        export JAVA_HOME=$(/usr/libexec/java_home)
     fi
 fi
 
@@ -218,5 +226,5 @@ done
 
 # suck in RVM if its installed
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-
+pathadd $HOME/.rvm/bin
 # vim: ft=sh
