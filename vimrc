@@ -37,6 +37,9 @@ set backup
 set backupdir=~/.backup//
 set directory=~/.backup//
 
+" add ctrlp plugin bundle
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 " always jump to the last cursor position
 autocmd BufReadPost * if line("'\"") | exe "normal '\"" | endif
 
@@ -115,6 +118,7 @@ let g:localvimrc_sandbox = 0
 set statusline=%n:\ %f\ %(%h%y%r%m%)\ %{fugitive#statusline()}%=%(\[%c,%l/%L]%)\ %P\ 
 
 autocmd BufEnter svn-commit.* set filetype=svn
+autocmd BufEnter psql.edit.* set filetype=sql
 autocmd BufEnter *.less set filetype=less
 
 " Resize splits when the window is resized
@@ -175,4 +179,3 @@ function! AskQuit(msg, action)
         exit
     endif
 endfunction
-
