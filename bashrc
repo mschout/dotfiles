@@ -214,10 +214,15 @@ if [ -z "$BASH_COMPLETION" ]; then
     unset bash bmajor bminor
 fi
 
-if [[ $OSTYPE == darwin* ]]; then
-    . $HOME/.bashrc.darwin
-fi
-
+case "$OSTYPE" in
+    darwin*)
+        . $HOME/.bashrc.darwin
+        ;;
+    freebsd*)
+        . $HOME/.bashrc.freebsd
+        ;;
+    *)
+esac
 
 # pull in local profile.d scripts
 for prof_script in $HOME/.bash_profile.d/*.sh; do
