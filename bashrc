@@ -159,6 +159,10 @@ if [ -e $HOME/perl5/perlbrew/etc/bashrc ]; then
     . $HOME/perl5/perlbrew/etc/bashrc
     no_perlbrew(){
         path_remove $HOME/perl5/perlbrew/perls/$PERLBREW_PERL/bin
+        for var in $(env | grep ^PERL | awk -F'=' '{print $1}')
+        do
+            unset $var
+        done
     }
 
     PERLBREW_BIN=$PERLBREW_ROOT/perls/$PERLBREW_PERL/bin
@@ -166,6 +170,20 @@ if [ -e $HOME/perl5/perlbrew/etc/bashrc ]; then
     if [ -x $PERLBREW_BIN/nopaste ]; then
         alias gist="nopaste --private --service Gist"
     fi
+
+    if [ -f $HOME/.config/shcompgen.bashrc ]; then
+        . $HOME/.config/shcompgen.bashrc
+    fi
+fi
+
+if [ -e $HOME/.plenv/bin/plenv ]; then
+    use_plenv() {
+        # plenv conflicts with perlbrew, so clear out any perlbrew env vars
+        no_perlbrew
+
+        path_unshift $HOME/.plenv/bin
+        eval "$(plenv init -)"
+    }
 fi
 
 # try to set JAVA_HOME to something sensible
