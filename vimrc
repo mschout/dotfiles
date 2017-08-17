@@ -37,8 +37,8 @@ set backup
 set backupdir=~/.backup//
 set directory=~/.backup//
 
-" add ctrlp plugin bundle
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" init pathogen
+execute pathogen#infect()
 
 " always jump to the last cursor position
 autocmd BufReadPost * if line("'\"") | exe "normal '\"" | endif
@@ -179,3 +179,10 @@ function! AskQuit(msg, action)
         exit
     endif
 endfunction
+
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif

@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/mschout/dev/freebsd-ports/mail/libsrs2xx'
+let g:netrw_dirhist_2='/Users/mschout/Sync/git/freebsd-meta-ports/local/gkg-parking-meta'
+let g:netrw_dirhist_3='/Users/mschout/Sync/git/freebsd-ports/www/p5-RT-Extension-CommandByMail'
