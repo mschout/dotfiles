@@ -66,14 +66,6 @@ pathadd /var/lib/gems/1.8/bin
 path_unshift /opt/local/lib/postgresql84/bin
 path_unshift /opt/local/lib/postgresql83/bin
 
-# CentOS 5 doesn't have a maven2 package, so look for it in /opt/maven.
-if [ -e /etc/redhat-release ]; then
-    if [ -d /opt/maven/bin ]; then
-        export M2_HOME=/opt/maven
-        pathadd $M2_HOME/bin
-    fi
-fi
-
 pathadd $HOME/bin/eclipse
 
 export LANG=en_US.UTF-8
@@ -97,6 +89,12 @@ unset LESSOPEN
 
 # expermiental
 export LESS='-iMFXSx4R'
+
+# set cpansign default key
+export MODULE_SIGNATURE_AUTHOR=mschout@cpan.org
+
+# java options for maven, Java 8 style
+export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=1024M -XX:+CMSClassUnloadingEnabled"
 
 # are we an interactive shell?
 if [ "$PS1" ]; then
@@ -200,15 +198,21 @@ if [ -z "$JAVA_HOME" ]; then
     fi
 fi
 
+if [ -d /opt/local/share/java/gradle ]; then
+    export GRADLE_HOME=/opt/local/share/java/gradle
+fi
+
 # set CATALINA_HOME if appropriate
 if [ -z "$CATALINA_HOME" ] && [ -d $HOME/tomcat5 ]; then
     export CATALINA_HOME=$HOME/tomcat5
 fi
 
 # set up completion
-if [ -z "$BASH_COMPLETION" ]; then
+# -n $TMUX means re-do this if we are within tmux
+if [ -z "$BASH_COMPLETION" ] || [ -n "$TMUX" ]; then
     bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
     if [ "$PS1" ] && [ \( $bmajor -eq 2 -a $bminor '>' 04 \) -o $bmajor -ge 3 ] ; then
+
       if [ -f $HOME/bin/bash_completion   ] ; then
         BASH_COMPLETION=$HOME/bin/bash_completion
         BASH_COMPLETION_DIR=$HOME/.bash_completion.d
