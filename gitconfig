@@ -1,22 +1,28 @@
 [alias]
+	cached = diff --cached
 	ci = commit
-	st = status -sb
-	di = diff
 	co = checkout
-	cached = diff --cached
-	tag-commit = !sh -c 'git rev-list $0 | head -n 1'
-	log1 = log --pretty=oneline --decorate --abbrev-commit
+	di = diff
+	st = status -sb
 	dsm = diff --stat master
+	lg = log --graph --decorate --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %Cblue%d%Creset'
+	log1 = log --pretty=oneline --decorate --abbrev-commit
 	ls-other = ls-files --others --exclude-standard
-	cached = diff --cached
+	nuke = git push origin --delete
 	repo-name = "!git config remote.origin.url | sed -e 's|^.*/||' -e 's/.git$//'"
+	tag-commit = !sh -c 'git rev-list $0 | head -n 1'
 	tar = "!git archive HEAD --prefix=`git repo-name`/ --format tar | gzip > `git repo-name`.tar.gz"
-	unmerged = "!git ls-files -u | awk '{print $4}' | sort | uniq"
+	unmerged = branch --no-merged
+	unmerged-remote = branch --remote --no-merged
 
 [color]
-	diff = auto
-	status = auto
 	branch = auto
+	diff = auto
+	grep = auto
+	interactive = auto
+	showbranch = auto
+	status = auto
+	ui = auto
 
 [user]
 	name = Michael Schout
