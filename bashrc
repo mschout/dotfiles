@@ -245,6 +245,10 @@ if [ -z "$BASH_COMPLETION" ] || [ -n "$TMUX" ]; then
     unset bash bmajor bminor
 fi
 
+if [ -f ~/.dir_colors/dircolors ]
+    then eval `dircolors ~/.dir_colors/dircolors`
+fi
+
 case "$OSTYPE" in
     darwin*)
         . $HOME/.bashrc.darwin

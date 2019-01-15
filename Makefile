@@ -23,6 +23,7 @@ CONFIGS = \
 DOTDIRS = \
 	bash_completion.d \
 	bash_profile.d \
+	dir_colors \
 	subversion \
 	m2 \
 	dzil \
