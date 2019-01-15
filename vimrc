@@ -150,7 +150,7 @@ map ,te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map ,cd :cd %:p:h <CR>
 
 " insert date stamp with F2
-imap <F2> <C-R>=strftime("%a %b %d %Y")<CR>
+imap <F2> <C-R>=strftime("%Y-%m-%d")<CR>
 
 " mappings for moving lines/selections up or down
 nnoremap <silent> <C-k> mz:m-2<CR>`z==
