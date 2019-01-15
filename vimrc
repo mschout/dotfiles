@@ -96,6 +96,18 @@ cmap w!! %!sudo tee >/dev/null %
 " closetag plugin
 autocmd FileType html,xml,tt2html,xsl source ~/.vim/plugin/closetag.vim
 
+" lightline
+let g:lightline = {
+    \ 'colorscheme': 'solarized',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ },
+    \ }
+
 let perl_include_pod=1
 let perl_want_scope_in_variables=1
 let perl_fold=1
