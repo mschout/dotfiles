@@ -41,6 +41,10 @@ source_if_present() {
     fi
 }
 
+gi() {
+    curl -L -s https://www.gitignore.io/api/$@
+}
+
 pathadd $HOME/bin
 pathadd $HOME/Dropbox/bin
 
