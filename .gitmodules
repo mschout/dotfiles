@@ -10,3 +10,6 @@
 [submodule "vim/bundle/diffconflicts"]
 	path = vim/bundle/diffconflicts
 	url = https://github.com/whiteinge/diffconflicts
+[submodule "vim/bundle/lightline"]
+	path = vim/bundle/lightline
+	url = https://github.com/itchyny/lightline.vim
