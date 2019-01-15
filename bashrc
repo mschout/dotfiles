@@ -48,8 +48,8 @@ gi() {
 pathadd $HOME/bin
 pathadd $HOME/Dropbox/bin
 
-# add vuze if its there
-pathadd $HOME/bin/vuze
+# add azk
+path_unshift $HOME/bin/azk/bin
 
 # macports
 path_unshift /opt/local/sbin
