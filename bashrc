@@ -256,6 +256,9 @@ case "$OSTYPE" in
     freebsd*)
         . $HOME/.bashrc.freebsd
         ;;
+    linux*)
+        . $HOME/.bashrc.linux
+        ;;
     *)
 esac
 
