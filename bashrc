@@ -272,5 +272,25 @@ done
 pathadd $HOME/.rvm/bin
 # vim: ft=sh
 
+# Initialize fzf
+if [ -e "$HOME/.fzf" ]; then
+    pathadd "$HOME/.fzf/bin"
+
+    # Auto Completion
+    if [[ $- == *i* ]]; then
+        source "$HOME/.fzf/shell/completion.bash" 2>/dev/null
+    fi
+
+    # Key bindings
+    if [ -f "$HOME/.fzf/shell/key-bindings.bash" ]; then
+        source "$HOME/.fzf/shell/key-bindings.bash"
+    fi
+
+    alias preview="fzf --preview 'bat --color \"always\" {}'"
+
+    # add support for ctrl+o to open selected file in gvim
+    export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(gvim {})+abort'"
+fi
+
 export AZK_KILL_ON_STOP=1
 

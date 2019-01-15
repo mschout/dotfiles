@@ -25,6 +25,7 @@ DOTDIRS = \
 	bash_completion.d \
 	bash_profile.d \
 	dir_colors \
+	fzf \
 	subversion \
 	m2 \
 	dzil \
