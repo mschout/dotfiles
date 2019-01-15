@@ -272,3 +272,5 @@ done
 pathadd $HOME/.rvm/bin
 # vim: ft=sh
 
+export AZK_KILL_ON_STOP=1
+
