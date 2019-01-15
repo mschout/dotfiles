@@ -108,6 +108,9 @@ let g:lightline = {
     \ },
     \ }
 
+" vimwiki
+let g:vimwiki_list = [{'path': '~/Sync/vimwiki'}]
+
 let perl_include_pod=1
 let perl_want_scope_in_variables=1
 let perl_fold=1
