@@ -36,7 +36,7 @@ DIRS = \
 
 INSTALLOPTS=-m 0644 -p
 
-DIFF=$(shell which colordiff &>/dev/null && echo colordiff || echo diff)
+DIFF=$(shell which colordiff 2>/dev/null || echo diff)
 
 # which branch should be used for make dist.
 # e.g.: make dist BRANCH=rhel5.  default is master branch
