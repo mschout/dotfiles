@@ -37,6 +37,11 @@ set backup
 set backupdir=~/.backup//
 set directory=~/.backup//
 
+" spelling check settings
+set spelllang=en
+set spellfile=$HOME/Dropbox/vim/spell/en.utf-8.add
+set spell
+
 " init pathogen
 execute pathogen#infect()
 
