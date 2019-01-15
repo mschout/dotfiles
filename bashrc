@@ -188,6 +188,11 @@ if [ -e $HOME/.plenv/bin/plenv ]; then
     }
 fi
 
+# Initialize NVM if it is installed
+export NVM_DIR="$HOME/.nvm"
+[ -s" $NVM_DIR/nvm.sh" ] && source "$NVM_DIR/bash_completion"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+
 # try to set JAVA_HOME to something sensible
 if [ -z "$JAVA_HOME" ]; then
     if [ -x /usr/sbin/update-java-alternatives ]; then
@@ -259,3 +264,4 @@ done
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 pathadd $HOME/.rvm/bin
 # vim: ft=sh
+
