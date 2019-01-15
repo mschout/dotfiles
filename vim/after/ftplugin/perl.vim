@@ -31,6 +31,10 @@ nmap <Leader>dcm :call DoxyCMethodHeader()<CR>
 nnoremap ,pt <ESC>:%! perlbrew-env perltidy<CR>
 vnoremap ,pt <ESC>:'<,'>! perlbrew-env perltidy<CR>
 
+" sql formatter
+nnoremap ,st <ESC>:%! pg_format -s 2<CR>
+vnoremap ,st <ESC>:'<,'>! pg_format -s 2<CR>
+
 set cindent
 " default is: 0{,0},0),:,0#,!^F,o,O,e
 set cinkeys=0{,0},!^F,o,O,e
