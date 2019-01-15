@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# alias mvim to gvim while I re-learn this muscle memory
+alias mvim='gvim'
+alias open='gio open'
+alias ls='ls --color=auto'
