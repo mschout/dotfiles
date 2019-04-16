@@ -41,6 +41,8 @@ set directory=~/.backup//
 set spelllang=en
 set spellfile=$HOME/Dropbox/vim/spell/en.utf-8.add
 set spell
+" insert mode, jump back to prev spelling mistake, fix it, return to position
+inoremap <C-l> <Esc>[s1z=<C-o>a
 
 " init pathogen
 execute pathogen#infect()
