@@ -23,9 +23,8 @@ nmap <s-tab> v<
 vmap <tab>   >gv
 vmap <s-tab> <gv
 
-" some common abbreviations
-abbr _s $self
-abbr _perlbin #!/usr/bin/env perl
+" align fat arrows in visual mode with t=
+vmap t= :Tabularize/=><CR>
 
 " perl: add 'use' statement
 "
