@@ -8,6 +8,8 @@ snippet .
 # hash Pointer
 snippet ,
 	=> 
+snippet def
+	defined ${1}
 # Function
 snippet sub
 	sub ${1:function_name} {
@@ -123,3 +125,24 @@ snippet moose
 	use namespace::autoclean;
 	
 	__PACKAGE__->meta->make_immutable;
+snippet =name
+	=head1 NAME
+	
+	${1}
+	
+snippet =syn
+	=head1 SYNOPSIS
+	
+	 ${1}
+snippet =h1
+	=head1
+	
+	${1}
+	
+snippet =h2
+	=head2
+	
+	${1}
+	
+snippet =c
+	=cut
