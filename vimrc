@@ -72,6 +72,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
 " press space to turn off highlighting and clear any messages displayed
 noremap <silent> <Space> :silent noh<Bar>echo<CR>
 
@@ -106,7 +107,10 @@ let g:lightline = {
     \ }
 
 " vimwiki
-let g:vimwiki_list = [{'path': '~/Sync/vimwiki'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/Vimwiki',
+    \ 'syntax': 'markdown',
+    \ 'ext': '.md'
+    \ }]
 
 let perl_include_pod=1
 let perl_want_scope_in_variables=1
