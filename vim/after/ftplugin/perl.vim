@@ -2,32 +2,6 @@
 set iskeyword+=:
 set sw=4
 
-fu! DoxyMethodHeader()
-    let subname = substitute(getline('.'), 'sub\s\+\(\w\+\)\s\+.*$', '\1', "")
-    let lines = [
-        \ '## @method ' . subname . '()',
-        \ '# '
-        \]
-    for text in lines
-        :call append(line('.') - 1, text)
-    endfor
-    :call cursor(line('.') - len(lines), 12)
-endf
-nmap <Leader>dm :call DoxyMethodHeader()<CR>
-
-fu! DoxyCMethodHeader()
-    let subname = substitute(getline('.'), 'sub\s\+\(\w\+\)\s\+.*$', '\1', "")
-    let lines = [
-        \ '## @cmethod ' . subname . '()',
-        \ '# '
-        \]
-    for text in lines
-        :call append(line('.') - 1, text)
-    endfor
-    :call cursor(line('.') - len(lines), 13)
-endf
-nmap <Leader>dcm :call DoxyCMethodHeader()<CR>
-
 nnoremap ,pt <ESC>:%! perlbrew-env perltidy<CR>
 vnoremap ,pt <ESC>:'<,'>! perlbrew-env perltidy<CR>
 
