@@ -8,7 +8,7 @@ set matchpairs+=<:>
 set autowrite " automatically write contents on :make, :rewind :last, ...
 set laststatus=2
 set list
-set listchars=tab:»·,trail:·
+set listchars=tab:Â»Â·,trail:Â·
 set wildmenu
 set background=light
 syntax on
