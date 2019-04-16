@@ -40,3 +40,9 @@
 [submodule "vim/bundle/copy-cut-paste"]
 	path = vim/bundle/copy-cut-paste
 	url = https://github.com/NLKNguyen/copy-cut-paste.vim
+[submodule "vim/bundle/fzf"]
+	path = vim/bundle/fzf
+	url = https://github.com/junegunn/fzf
+[submodule "vim/bundle/fzf.vim"]
+	path = vim/bundle/fzf.vim
+	url = https://github.com/junegunn/fzf.vim

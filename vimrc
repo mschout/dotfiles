@@ -84,13 +84,8 @@ let Tlist_Show_One_File = 1
 let Tlist_Show_Menu = 1
 nnoremap <silent> <F8> :TlistToggle<CR>
 
-" ctrlp plugin
-" set working path to nearest .git/.svn etc.
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|\.hg$\|\.svn$',
-    \ 'file': '\.so$'
-    \ }
+" Ctrl-P -> Fuzzy File Finder with Git Files
+nnoremap <C-P> :GFiles<CR>
 
 " :w!! - write file with sudo
 cmap w!! %!sudo tee >/dev/null %
