@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-perl6"]
 	path = vim/bundle/vim-perl6
 	url = https://github.com/vim-perl/vim-perl6
+[submodule "vim/bundle/copy-cut-paste"]
+	path = vim/bundle/copy-cut-paste
+	url = https://github.com/NLKNguyen/copy-cut-paste.vim
