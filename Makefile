@@ -3,7 +3,6 @@ CONFIGS = \
 	bashrc \
 	bashrc.darwin \
 	bashrc.freebsd \
-	bashrc.linux \
 	bash_profile \
 	cshrc \
 	gitconfig \
