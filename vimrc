@@ -174,9 +174,6 @@ vnoremap <silent> <C-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 nnoremap <silent> <C-j> mz:m+<CR>`z==
 vnoremap <silent> <C-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
-" execute selected text as a command, inserting the result
-vnoremap <C-x> y:r ! <C-r>0
-
 " auto create missing directories when saving
 augroup AutoMkdir
     autocmd!
