@@ -75,6 +75,9 @@ install-dotdir-%: %
 	@find $* -type f | while read file ; do install $(INSTALLOPTS) $$file $(HOME)/.$$file ; done
 	@echo installed $*
 
+link-dotdir-%: %
+	@[ -d $(HOME)/.$* ] || echo ln -s $(HOME)/.$* $*
+
 install-dir-%: %
 	@find $* -type d | while read dir ; do install -d $$dir $(HOME)/$$dir ; done
 	@find $* -type f | while read file ; do install -m 0755 -p $$file $(HOME)/$$file ; done
