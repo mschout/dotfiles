@@ -64,3 +64,9 @@
 [submodule "vim/bundle/vim-snipmate"]
 	path = vim/bundle/vim-snipmate
 	url = https://github.com/garbas/vim-snipmate.git
+[submodule "vim/bundle/vim-snippets"]
+	path = vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets
+[submodule "vim/bundle/vim-ansiesc"]
+	path = vim/bundle/vim-ansiesc
+	url = https://github.com/powerman/vim-plugin-AnsiEsc
