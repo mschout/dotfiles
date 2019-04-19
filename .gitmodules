@@ -94,3 +94,6 @@
 [submodule "vim/bundle/vim-endwise"]
 	path = vim/bundle/vim-endwise
 	url = https://github.com/tpope/vim-endwise
+[submodule "vim/bundle/vim-gnupg"]
+	path = vim/bundle/vim-gnupg
+	url = https://github.com/jamessan/vim-gnupg
