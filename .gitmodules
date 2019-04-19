@@ -97,3 +97,6 @@
 [submodule "vim/bundle/vim-gnupg"]
 	path = vim/bundle/vim-gnupg
 	url = https://github.com/jamessan/vim-gnupg
+[submodule "vim/bundle/vim-l9"]
+	path = vim/bundle/vim-l9
+	url = https://github.com/vim-scripts/L9
