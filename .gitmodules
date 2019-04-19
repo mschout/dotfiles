@@ -118,3 +118,6 @@
 [submodule "vim/bundle/tmux-navigator"]
 	path = vim/bundle/tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "vim/bundle/less"]
+	path = vim/bundle/less
+	url = https://github.com/groenewege/vim-less
