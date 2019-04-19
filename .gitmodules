@@ -103,3 +103,6 @@
 [submodule "vim/bundle/vim-matchit"]
 	path = vim/bundle/vim-matchit
 	url = https://github.com/adelarsq/vim-matchit
+[submodule "vim/bundle/mru"]
+	path = vim/bundle/mru
+	url = https://github.com/vim-scripts/mru.vim
