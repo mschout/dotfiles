@@ -88,3 +88,6 @@
 [submodule "vim/bundle/vim-bufonly"]
 	path = vim/bundle/vim-bufonly
 	url = https://github.com/schickling/vim-bufonly
+[submodule "vim/bundle/vim-closetag"]
+	path = vim/bundle/vim-closetag
+	url = https://github.com/alvan/vim-closetag
