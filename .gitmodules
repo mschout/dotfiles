@@ -130,3 +130,6 @@
 [submodule "vim/bundle/taskwiki"]
 	path = vim/bundle/taskwiki
 	url = https://github.com/tbabej/taskwiki
+[submodule "vim/bundle/vim-yaml-folds"]
+	path = vim/bundle/vim-yaml-folds
+	url = https://github.com/pedrohdz/vim-yaml-folds
