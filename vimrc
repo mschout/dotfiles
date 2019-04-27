@@ -86,7 +86,9 @@ let Tlist_Show_Menu = 1
 nnoremap <silent> <F8> :TlistToggle<CR>
 
 " Ctrl-P -> Fuzzy File Finder with Git Files
-nnoremap <C-P> :GFiles<CR>
+nnoremap <C-P>     :GFiles<CR>
+" Other fzf mappings
+nnoremap <Leader>b :Buffers<CR>
 
 " vim completes me
 let g:vcm_default_maps = 0
