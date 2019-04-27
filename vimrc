@@ -76,9 +76,8 @@ set smartcase
 " press space to turn off highlighting and clear any messages displayed
 noremap <silent> <Space> :silent noh<Bar>echo<CR>
 
-" svn plugin
-let SVNCommandEdit = "split"
-let SVNCommandSplit = "horizontal"
+" <Leader>t opens a terminal
+noremap <Leader>t :terminal ++close<CR>
 
 " Taglist plugin
 let Tlist_Show_One_File = 1
