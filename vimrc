@@ -159,9 +159,6 @@ let perl_nofold_packages=1
 let g:explVertical=1    " Split vertically
 let g:explSplitRight=1  " Put new window right of the explorer window
 
-" autocomplpop off by default
-let g:acp_enableAtStartup = 0
-
 " zen coding for vim
 let g:user_zen_settings = {
 \  'indentation' : '  ',
