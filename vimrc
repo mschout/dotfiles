@@ -93,6 +93,9 @@ let g:vcm_default_maps = 0
 imap <C-CR> <Plug>vim_completes_me_forward
 imap <CR> <Plug>vim_completes_me_backward
 
+" <Space> in normal mode toggles current fold open/closed
+nnoremap <S-Space> za
+
 " :w!! - write file with sudo
 cmap w!! %!sudo tee >/dev/null %
 
