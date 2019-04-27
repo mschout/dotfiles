@@ -88,6 +88,11 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " Ctrl-P -> Fuzzy File Finder with Git Files
 nnoremap <C-P> :GFiles<CR>
 
+" vim completes me
+let g:vcm_default_maps = 0
+imap <C-CR> <Plug>vim_completes_me_forward
+imap <CR> <Plug>vim_completes_me_backward
+
 " :w!! - write file with sudo
 cmap w!! %!sudo tee >/dev/null %
 
