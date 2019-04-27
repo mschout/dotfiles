@@ -116,6 +116,21 @@ let g:vimwiki_list = [{'path': '~/Dropbox/Vimwiki',
     \ 'syntax': 'markdown',
     \ 'ext': '.md'
     \ }]
+let g:vimwiki_ext2syntax = {}
+
+" configure vimwiki to work with pandoc+markdown
+let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#pandoc_markdown = 0
+let g:pandoc#folding#mode = ["syntax"]
+"let g:pandoc#modules#enabled = ["formatting", "folding"]
+let g:pandoc#formatting#mode = "h"
+let g:vimwiki_folding='expr'
+let g:vimwiki_url_maxsave=0
+" table mappings map <Tab> which conflicts with snipMate.
+let g:vimwiki_table_mappings = 0
+au FileType vimwiki set filetype=vimwiki.markdown
+" end vimwiki+pandoc
+
 
 let perl_include_pod=1
 let perl_want_scope_in_variables=1
