@@ -16,6 +16,7 @@ CONFIGS = \
 	rpmmacros \
 	login \
 	signature \
+	taskrc \
 	vimrc \
 	gvimrc
 
