@@ -10,7 +10,7 @@ set laststatus=2
 set list
 set listchars=tab:»·,trail:·
 set wildmenu
-set background=light
+set background=dark
 syntax on
 
 filetype plugin indent on
@@ -64,7 +64,7 @@ elseif $TERM =~ '^xterm'
 endif
 
 if &t_Co == 256
-    colorscheme mustang
+    colorscheme solarized
 endif
 
 " searching
