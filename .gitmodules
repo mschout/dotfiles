@@ -133,3 +133,6 @@
 [submodule "vim/bundle/vim-yaml-folds"]
 	path = vim/bundle/vim-yaml-folds
 	url = https://github.com/pedrohdz/vim-yaml-folds
+[submodule "vim/bundle/vim-jekyll"]
+	path = vim/bundle/vim-jekyll
+	url = https://github.com/parkr/vim-jekyll
