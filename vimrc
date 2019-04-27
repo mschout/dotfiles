@@ -97,7 +97,17 @@ imap <CR> <Plug>vim_completes_me_backward
 cmap w!! %!sudo tee >/dev/null %
 
 " closetag plugin
-autocmd FileType html,xml,tt2html,xsl source ~/.vim/plugin/closetag.vim
+let g:closetag_filetypes = 'html,xml,tt2html,xsl'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
 
 " lightline
 let g:lightline = {
