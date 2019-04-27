@@ -145,7 +145,11 @@ let g:vimwiki_table_mappings = 0
 au FileType vimwiki set filetype=vimwiki.markdown
 " end vimwiki+pandoc
 
+" Jekyll
+let g:jekyll_post_extension = '.md'
+let g:jekyll_post_filetype = 'markdown'
 
+" perl settings
 let perl_include_pod=1
 let perl_want_scope_in_variables=1
 let perl_fold=1
