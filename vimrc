@@ -115,6 +115,9 @@ let g:closetag_regions = {
     \ 'javascript.jsx': 'jsxRegion',
     \ }
 
+let g:table_mode_corner_corner='+'
+let g:table_mode_header_fillchar='='
+
 " lightline
 let g:lightline = {
     \ 'colorscheme': 'solarized',

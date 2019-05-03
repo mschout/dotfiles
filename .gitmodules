@@ -130,3 +130,6 @@
 [submodule "vim/bundle/vim-jekyll"]
 	path = vim/bundle/vim-jekyll
 	url = https://github.com/parkr/vim-jekyll
+[submodule "vim/bundle/table-mode"]
+	path = vim/bundle/table-mode
+	url = https://github.com/dhruvasagar/vim-table-mode
