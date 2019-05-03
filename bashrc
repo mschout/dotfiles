@@ -270,6 +270,9 @@ for prof_script in $HOME/.bash_profile.d/*.sh; do
     . $prof_script
 done
 
+# Default fd options
+FD_OPTIONS="--follow --exclude .git --exclude node_modules"
+
 # Initialize fzf
 if [ -e "$HOME/.fzf" ]; then
     pathadd "$HOME/.fzf/bin"
@@ -287,11 +290,21 @@ if [ -e "$HOME/.fzf" ]; then
     alias preview="fzf --preview 'bat --color \"always\" {}'"
 
     # add support for ctrl+o to open selected file in gvim
-    export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(gvim {})+abort'"
+    export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --inline-info \
+        --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) 2>/dev/null | head -300' \
+        --preview-window='right:hidden:wrap' \
+        --bind='f2:toggle-preview,f3:execute(bat --style=numbers {}),ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | xclip),ctrl-o:execute(gvim {})+abort'"
+
+    # use git ls-files inside a git repo, otherwise fd
+    export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --type f --type l $FD_OPTIONS"
+    export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
+    export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
 
     # enable FZF extras, if available
     source_if_present "$HOME/.fzf-extras/fzf-extras.sh"
 fi
+
+export BAT_PAGER="less -R"
 
 export AZK_KILL_ON_STOP=1
 
