@@ -133,3 +133,6 @@
 [submodule "vim/bundle/table-mode"]
 	path = vim/bundle/table-mode
 	url = https://github.com/dhruvasagar/vim-table-mode
+[submodule "fzf-extras"]
+	path = fzf-extras
+	url = https://github.com/atweiden/fzf-extras

@@ -288,6 +288,9 @@ if [ -e "$HOME/.fzf" ]; then
 
     # add support for ctrl+o to open selected file in gvim
     export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(gvim {})+abort'"
+
+    # enable FZF extras, if available
+    source_if_present "$HOME/.fzf-extras/fzf-extras.sh"
 fi
 
 export AZK_KILL_ON_STOP=1

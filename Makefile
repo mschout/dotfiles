@@ -26,6 +26,7 @@ DOTDIRS = \
 	bash_profile.d \
 	dir_colors \
 	fzf \
+	fzf-extras \
 	git_template \
 	subversion \
 	m2 \
