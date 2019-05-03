@@ -79,7 +79,7 @@ install-dotdir-%: %
 	@echo installed $*
 
 link-dotdir-%: %
-	@[ -d $(HOME)/.$* ] || echo ln -s $(HOME)/.$* $*
+	@[ -e $(HOME)/.$* ] || ln -s $(patsubst $(HOME)/%,%,$(CURDIR)/$*) $(HOME)/.$*
 
 install-dir-%: %
 	@find $* -type d | while read dir ; do install -d $$dir $(HOME)/$$dir ; done
