@@ -121,6 +121,10 @@ HISTSIZE=5000
 # add date/time stamp to history output
 HISTTIMEFORMAT="%h/%d - %H:%M:%S "
 
+if [ -f ~/.dir_colors/dircolors ]
+    then eval `dircolors ~/.dir_colors/dircolors`
+fi
+
 # aliases
 alias ls='ls -F'
 alias rm='rm -i'
@@ -243,10 +247,6 @@ if [ -z "$BASH_COMPLETION" ] || [ -n "$TMUX" ]; then
       complete -C perldoc-complete perldoc
     fi
     unset bash bmajor bminor
-fi
-
-if [ -f ~/.dir_colors/dircolors ]
-    then eval `dircolors ~/.dir_colors/dircolors`
 fi
 
 case "$OSTYPE" in
