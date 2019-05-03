@@ -7,6 +7,8 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
+umask 027
+
 # append an entry to PATH if it is a dir, and not already in path.
 pathadd() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
