@@ -11,9 +11,9 @@ set list
 set listchars=tab:»·,trail:·
 set wildmenu
 set background=dark
-syntax on
 
 filetype plugin indent on
+syntax on
 
 set visualbell t_vb= " turn off the bell
 set scrolloff=8 " keep lines below the cursor 
@@ -89,16 +89,17 @@ nnoremap <C-P>     :GFiles<CR>
 " Other fzf mappings
 nnoremap <Leader>b :Buffers<CR>
 
-" vim completes me
-let g:vcm_default_maps = 0
-imap <C-CR> <Plug>vim_completes_me_forward
-imap <CR> <Plug>vim_completes_me_backward
-
 " <Space> in normal mode toggles current fold open/closed
 nnoremap <S-Space> za
 
 " :w!! - write file with sudo
 cmap w!! %!sudo tee >/dev/null %
+
+" Configure TeX Plugin
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+let g:tex_conceal='abdmg'
 
 " closetag plugin
 let g:closetag_filetypes = 'html,xml,tt2html,xsl'
