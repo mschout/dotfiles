@@ -11,6 +11,7 @@ set list
 set listchars=tab:»·,trail:·
 set wildmenu
 set background=dark
+set runtimepath+=~/.fzf
 
 filetype plugin indent on
 syntax on
