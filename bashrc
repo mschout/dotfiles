@@ -135,7 +135,6 @@ alias ..='cd ..'
 alias 2..='cd ../..'
 alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
-alias handbrake="HandBrakeCLI --preset Universal"
 
 # alias g to git (with completions)
 alias g='git'
@@ -158,11 +157,7 @@ alias maek='make'
 # csh style source
 alias source='.'
 
-if [ -x /usr/bin/ack-grep ]; then
-    alias ack='/usr/bin/ack-grep'
-fi
-
-
+# perlbrew
 if [ -e $HOME/perl5/perlbrew/etc/bashrc ]; then
     . $HOME/perl5/perlbrew/etc/bashrc
     no_perlbrew(){
@@ -184,6 +179,7 @@ if [ -e $HOME/perl5/perlbrew/etc/bashrc ]; then
     fi
 fi
 
+# plenv
 if [ -e $HOME/.plenv/bin/plenv ]; then
     use_plenv() {
         # plenv conflicts with perlbrew, so clear out any perlbrew env vars
@@ -194,10 +190,14 @@ if [ -e $HOME/.plenv/bin/plenv ]; then
     }
 fi
 
-# Initialize NVM if it is installed
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+
+# Ruby/RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+pathadd $HOME/.rvm/bin
 
 # try to set JAVA_HOME to something sensible
 if [ -z "$JAVA_HOME" ]; then
@@ -251,6 +251,7 @@ if [ -z "$BASH_COMPLETION" ] || [ -n "$TMUX" ]; then
     unset bash bmajor bminor
 fi
 
+# OS Specific bashrc's
 case "$OSTYPE" in
     darwin*)
         . $HOME/.bashrc.darwin
@@ -268,11 +269,6 @@ esac
 for prof_script in $HOME/.bash_profile.d/*.sh; do
     . $prof_script
 done
-
-# suck in RVM if its installed
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-pathadd $HOME/.rvm/bin
-# vim: ft=sh
 
 # Initialize fzf
 if [ -e "$HOME/.fzf" ]; then
@@ -296,3 +292,4 @@ fi
 
 export AZK_KILL_ON_STOP=1
 
+# vim: ft=sh
