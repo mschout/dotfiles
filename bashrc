@@ -196,7 +196,7 @@ fi
 
 # Initialize NVM if it is installed
 export NVM_DIR="$HOME/.nvm"
-[ -s" $NVM_DIR/nvm.sh" ] && source "$NVM_DIR/bash_completion"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
 # try to set JAVA_HOME to something sensible
