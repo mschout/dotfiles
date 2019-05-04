@@ -81,6 +81,9 @@ install-dotdir-%: %
 link-dotdir-%: %
 	@[ -e $(HOME)/.$* ] || ln -s $(patsubst $(HOME)/%,%,$(CURDIR)/$*) $(HOME)/.$*
 
+link-dotfile-%: %
+	@[ -e $(HOME)/.$* ] || ln -s $(patsubst $(HOME)/%,%,$(CURDIR)/$*) $(HOME)/.$*
+
 install-dir-%: %
 	@find $* -type d | while read dir ; do install -d $$dir $(HOME)/$$dir ; done
 	@find $* -type f | while read file ; do install -m 0755 -p $$file $(HOME)/$$file ; done
