@@ -6,6 +6,7 @@ CONFIGS = \
 	bash_profile \
 	cshrc \
 	gitconfig \
+	gitignore \
 	cvsrc \
 	perltidyrc \
 	inputrc \

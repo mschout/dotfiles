@@ -1,0 +1,9 @@
+.lvimrc
+*.bak
+*.orig
+.ctags
+.syncthing.*.tmp
+.vstags
+tags
+tags-*
+taglist
