@@ -136,3 +136,6 @@
 [submodule "fzf-extras"]
 	path = fzf-extras
 	url = https://github.com/atweiden/fzf-extras
+[submodule "vim/bundle/neo-solarized"]
+	path = vim/bundle/neo-solarized
+	url = https://github.com/iCyMind/NeoSolarized
