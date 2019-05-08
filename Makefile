@@ -29,6 +29,7 @@ DOTDIRS = \
 	fzf \
 	fzf-extras \
 	git_template \
+	pandoc \
 	subversion \
 	m2 \
 	dzil \
