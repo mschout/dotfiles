@@ -50,6 +50,9 @@ gi() {
 pathadd $HOME/bin
 pathadd $HOME/Dropbox/bin
 
+# Haskell stack tool
+path_unshift $HOME/.local/bin
+
 # add azk
 path_unshift $HOME/bin/azk/bin
 
