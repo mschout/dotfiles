@@ -58,9 +58,6 @@
 [submodule "vim/bundle/vim-addon-mw-utils"]
 	path = vim/bundle/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "vim/bundle/vim-snipmate"]
-	path = vim/bundle/vim-snipmate
-	url = https://github.com/garbas/vim-snipmate.git
 [submodule "vim/bundle/vim-ansiesc"]
 	path = vim/bundle/vim-ansiesc
 	url = https://github.com/powerman/vim-plugin-AnsiEsc
@@ -142,3 +139,6 @@
 [submodule "vim/bundle/vim-snippets"]
 	path = vim/bundle/vim-snippets
 	url = https://github.com/mschout/vim-snippets
+[submodule "vim/bundle/ultisnips"]
+	path = vim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips
