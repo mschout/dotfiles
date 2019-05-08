@@ -296,3 +296,8 @@ if exists(":Tabularize")
     nmap <Leader>a: :Tabularize /:\zs<CR>
     vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
+
+" nvim uses a different format for viminfo files
+if has('nvim')
+    let &viminfo .= '~/.config/nvim/viminfo'
+endif
