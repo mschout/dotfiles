@@ -85,10 +85,59 @@ let Tlist_Show_One_File = 1
 let Tlist_Show_Menu = 1
 nnoremap <silent> <F8> :TlistToggle<CR>
 
+" use preview when FzfFiles runs in fullscreen
+command! -nargs=? -bang -complete=dir FzfFiles
+    \ call fzf#vim#files(<q-args>, <bang>0 ? fzf#vim#with_preview('up:60%') : {}, <bang>0)
+command FzfChanges call s:fzf_changes()
+
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_layout = { 'down': '~60%' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" File path completion in insert mode using fzf
+imap <C-X><C-K> <Plug>(fzf-complete-word)
+imap <C-X><C-F> <Plug>(fzf-complete-path)
+imap <C-X><C-L> <Plug>(fzf-complete-buffer-line)
+
 " Ctrl-P -> Fuzzy File Finder with Git Files
-nnoremap <C-P>     :GFiles<CR>
-" Other fzf mappings
-nnoremap <Leader>b :Buffers<CR>
+nnoremap <C-P>              :FzfFiles<CR>
+nnoremap <silent> <Leader>o :FzfFiles<CR>
+nnoremap <silent> <Leader>O :FzfFiles!<CR>
+nnoremap <silent> <Leader>b :FzfBuffers<CR>
+nnoremap <silent> <Leader>' :FzfMarks<CR>
+nnoremap <silent> <F1>      :FzfHelptags<CR>
+inoremap <silent> <F1>      <Esc>:FzfHelptags<CR>
+noremap  <silent> <Leader>; :FzfCommands<CR>
+nnoremap <silent> <Leader>l :FzfBLines<CR>
+inoremap <silent> <F3>      <Esc>:FzfSnippets<CR>
+
+command! -bang -nargs=* FzfGGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
 " <Space> in normal mode toggles current fold open/closed
 nnoremap <S-Space> za
