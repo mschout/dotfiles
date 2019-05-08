@@ -1,0 +1,91 @@
+priority -50
+
+# my TeX snippets
+snippet letter
+\\documentclass[letterpaper, 12pt]{letter}
+\\name{${1:Michael Schout}}
+\\signature{${2:Michael Schout}}
+\\address
+{
+	10826 Cox Ln\\\\
+	Dallas, TX 75229
+}
+
+\\begin{document}
+\\begin{letter}
+{%
+    ${3:Addressee}\\\\
+    ${2:street}\\\\
+    ${3:city}, ${4:state} ${5:zip}%
+}
+\\opening{${4:Dear Someone,}}
+${5:Lorem Ipsum}
+\\closing{${6:Sincerely,}}
+\\end{letter}
+\\end{document}
+
+endsnippet
+
+snippet envlab
+\\usepackage[businessenvelope]{envlab}
+\\setlength{\\ToAddressLeftMargin}{1.5in}
+\\makelabels
+
+endsnippet
+
+snippet envelope
+\\documentclass[12pt]{letter}
+\\usepackage[businessenvelope]{envlab}
+\\usepackage{libertine}
+\\setlength{\\ToAddressLeftMargin}{1.5in}
+
+\\begin{document}
+\\startlabels
+\\mlabel
+{
+    Michael Schout\\\\
+    10826 Cox Ln\\\\
+    Dallas, TX 75229%
+}
+{%
+    ${1:addressee}\\\\
+    ${2:street}\\\\
+    ${3:city}, ${4:state} ${5:zip}%
+}
+\\end{document}
+
+endsnippet
+
+snippet closesig
+% needs graphicx package, you should remove \name and \signature
+\\closing{${1:Sincerely},\\\\
+\\fromsig{\\includegraphics[height=.7in]{${2:signature.pdf}}\\\\
+\\fromname{Michael Schout}
+}
+
+endsnippet
+
+snippet mlabel
+\\mlabel
+{
+    Michael Schout\\
+    10826 Cox Ln\\
+    Dallas, TX 75229%
+}
+{%
+    ${1:Addressee}\\\\
+    ${2:123 Some Street}\\\\
+    ${3:City}, ${4:State} ${5:12345}\\\\
+}
+$0
+
+endsnippet
+
+snippet mk "Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet

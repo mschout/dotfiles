@@ -1,0 +1,55 @@
+priority -50
+
+snippet #!
+#!/usr/bin/env perl
+
+endsnippet
+
+# method Pointer
+snippet . "Method pointer" !i
+->
+endsnippet
+
+snippet immutable
+__PACKAGE__->meta->make_immutable;
+endsnippet
+
+snippet moose
+use Moose;
+use namespace::autoclean;
+
+$0
+
+__PACKAGE__->meta->make_immutable;
+endsnippet
+
+snippet =name
+=head1 NAME
+
+${1:Package} - ${2:Description}
+
+endsnippet
+
+snippet =syn
+=head1 SYNOPSIS
+
+ $0
+
+endsnippet
+
+snippet =h1
+=head1 ${1:Heading}
+
+$0
+endsnippet
+
+snippet =h2
+=head2 ${1:Heading}
+
+$0
+
+endsnippet
+
+snippet =c
+=cut
+endsnippet

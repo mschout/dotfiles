@@ -1,0 +1,36 @@
+priority -50
+
+snippet header
+---
+title: ${1:Title}
+subtitle: ${2:`date %Y-%m-%d`}
+tags: $3
+---
+
+# $1
+$0
+
+endsnippet
+
+snippet puml
+\`\`\`plantuml
+@startuml
+${0}
+@enduml
+\`\`\`
+
+endsnippet
+
+snippet standup
+## ${1:`date +%Y-%m-%d`} Stand up
+
+### What did I do yesterday?
+${2}
+
+### What have been my roadblocks?
+${3}
+
+### What am I doing today?
+${4}
+
+endsnippet
