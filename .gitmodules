@@ -145,3 +145,6 @@
 [submodule "vim/bundle/vim-mergetool"]
 	path = vim/bundle/vim-mergetool
 	url = https://github.com/samoshkin/vim-mergetool
+[submodule "vim/bundle/eunuch"]
+	path = vim/bundle/eunuch
+	url = https://github.com/tpope/vim-eunuch
