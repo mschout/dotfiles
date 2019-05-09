@@ -1,0 +1,28 @@
+#!/usr/bin/env perl
+#
+# Simple pandoc pre-processor for converting from markdown to "redmine flavored textile".
+# Redmine textile doesn't understand `.bc(lang)` code blocks at all, so we work
+# around that by converting markdown code blocks to <pre><code class="lang">...</code></pre>
+# The output of this can be fed into:
+#
+# pandoc -f gfm -t textile -
+#
+# and the result is suitable for redmine
+
+use 5.010;
+my $in_code_block = 0;
+
+while (<>) {
+  if (!$in_code_block and /^```(?<lang>\w*)\/) {
+    # no newline here.  Code should start right after the '>'
+    print "<pre><code class='$+{lang}'>";
+    $in_code_block = 1;
+  }
+  elsif ($in_code_block and /^```\s*$/) {
+    say "</code></pre>";
+    $in_code_block = 0;
+  }
+  else {
+    print $_;
+  }
+}
