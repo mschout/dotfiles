@@ -13,7 +13,7 @@ use 5.010;
 my $in_code_block = 0;
 
 while (<>) {
-  if (!$in_code_block and /^```(?<lang>\w*)\/) {
+  if (!$in_code_block and /^```(?<lang>\w*)/) {
     # no newline here.  Code should start right after the '>'
     print "<pre><code class='$+{lang}'>";
     $in_code_block = 1;
