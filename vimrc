@@ -201,9 +201,14 @@ au FileType vimwiki set filetype=vimwiki.markdown
 " taskwiki
 let g:taskwiki_markup_syntax = 'markdown'
 
+" vim-mergetool plugin
+let g:mergetool_layout = 'mr'
+let g:mergetool_prefer_revision = 'local'
+
 " Jekyll
 let g:jekyll_post_extension = '.md'
 let g:jekyll_post_filetype = 'markdown'
+nmap <Leader>mt <Plug>(MergetoolToggle)
 
 " perl settings
 let perl_include_pod=1
