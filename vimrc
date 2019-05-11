@@ -192,9 +192,8 @@ let g:pandoc#filetypes#pandoc_markdown = 0
 let g:pandoc#folding#mode = ["syntax"]
 "let g:pandoc#modules#enabled = ["formatting", "folding"]
 let g:pandoc#formatting#mode = "h"
-let g:vimwiki_folding='expr'
 let g:vimwiki_url_maxsave=0
-" table mappings map <Tab> which conflicts with snipMate.
+" table mappings map <Tab> which conflicts with snippets.
 let g:vimwiki_table_mappings = 0
 au FileType vimwiki set filetype=vimwiki.markdown
 " end vimwiki+pandoc
