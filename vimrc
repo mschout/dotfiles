@@ -198,6 +198,9 @@ let g:vimwiki_table_mappings = 0
 au FileType vimwiki set filetype=vimwiki.markdown
 " end vimwiki+pandoc
 
+" taskwiki
+let g:taskwiki_markup_syntax = 'markdown'
+
 " Jekyll
 let g:jekyll_post_extension = '.md'
 let g:jekyll_post_filetype = 'markdown'
