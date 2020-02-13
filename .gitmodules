@@ -148,3 +148,6 @@
 [submodule "vim/bundle/eunuch"]
 	path = vim/bundle/eunuch
 	url = https://github.com/tpope/vim-eunuch
+[submodule "vim/bundle/vim-rooter"]
+	path = vim/bundle/vim-rooter
+	url = https://github.com/airblade/vim-rooter
