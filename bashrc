@@ -75,6 +75,8 @@ pathadd /var/lib/gems/1.8/bin
 path_unshift /opt/local/lib/postgresql84/bin
 path_unshift /opt/local/lib/postgresql83/bin
 
+pathadd /snap/om26er-gradle/current/opt/gradle/bin
+
 pathadd $HOME/bin/eclipse
 
 export LANG=en_US.UTF-8
