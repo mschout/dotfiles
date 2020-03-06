@@ -124,7 +124,7 @@ imap <C-X><C-F> <Plug>(fzf-complete-path)
 imap <C-X><C-L> <Plug>(fzf-complete-buffer-line)
 
 " Ctrl-P -> Fuzzy File Finder with Git Files
-nnoremap <C-P>              :FzfFiles<CR>
+nnoremap <C-P>              :FzfFiles!<CR>
 nnoremap <silent> <Leader>o :FzfFiles<CR>
 nnoremap <silent> <Leader>O :FzfFiles!<CR>
 nnoremap <silent> <Leader>b :FzfBuffers<CR>
