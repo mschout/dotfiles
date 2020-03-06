@@ -124,7 +124,7 @@ set -o noclobber
 shopt -s no_empty_cmd_completion
 
 CDPATH=.:$HOME
-HISTSIZE=10000
+HISTSIZE=40000
 # add date/time stamp to history output
 HISTTIMEFORMAT="%h/%d - %H:%M:%S "
 
