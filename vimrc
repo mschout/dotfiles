@@ -140,6 +140,14 @@ command! -bang -nargs=* FzfGGrep
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
+" Some Fugitive shortcuts
+command Greview :Git! diff --staged
+nnoremap <Leader>gr :Greview<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+
 " <Space> in normal mode toggles current fold open/closed
 nnoremap <S-Space> za
 
