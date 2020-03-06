@@ -1,0 +1,3 @@
+--regex-Perl=/^[ \t]*method\s+([a-zA-Z0-9_]+)/\1/s/
+--regex-Perl=/^[ \t]*func\s+([a-zA-Z0-9_]+)/\1/s/
+--regex-Perl=/with\s+([^;]+)\s*?;/\1/w,role,roles/

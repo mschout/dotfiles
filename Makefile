@@ -5,6 +5,7 @@ CONFIGS = \
 	bashrc.freebsd \
 	bash_profile \
 	cshrc \
+	ctags \
 	gitconfig \
 	gitignore \
 	cvsrc \
