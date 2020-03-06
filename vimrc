@@ -188,6 +188,12 @@ let g:lightline = {
     \ },
     \ }
 
+" gitgutter
+
+" \gn and \gp to jump between git change hunks
+"nmap <Leader>gn <Plug>GitGutterNextHunk
+"nmap <Leader>gp <Plug>GitGutterPrevHunk
+
 " vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/Vimwiki',
     \ 'syntax': 'markdown',
@@ -210,6 +216,11 @@ au FileType vimwiki set filetype=vimwiki.markdown
 " taskwiki
 let g:taskwiki_markup_syntax = 'markdown'
 let g:taskwiki_disable_concealcursor = 'yes'
+
+" UltiSnips
+"let g:UltiSnipsExpandTrigger = '<Tab>'
+"let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+"let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 
 " vim-mergetool plugin
 let g:mergetool_layout = 'mr'
