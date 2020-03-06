@@ -11,6 +11,7 @@ set list
 set listchars=tab:»·,trail:·
 set wildmenu
 set background=dark
+set concealcursor=nc
 set runtimepath+=~/.fzf
 
 filetype plugin indent on
@@ -200,6 +201,7 @@ au FileType vimwiki set filetype=vimwiki.markdown
 
 " taskwiki
 let g:taskwiki_markup_syntax = 'markdown'
+let g:taskwiki_disable_concealcursor = 'yes'
 
 " vim-mergetool plugin
 let g:mergetool_layout = 'mr'
