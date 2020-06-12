@@ -280,6 +280,4 @@ fi
 
 export BAT_PAGER="less -R"
 
-export AZK_KILL_ON_STOP=1
-
 # vim: ft=sh
