@@ -34,6 +34,7 @@
 [submodule "vim/bundle/vim-perl"]
 	path = vim/bundle/vim-perl
 	url = https://github.com/vim-perl/vim-perl
+	ignore = dirty
 [submodule "vim/bundle/vim-perl6"]
 	path = vim/bundle/vim-perl6
 	url = https://github.com/vim-perl/vim-perl6
@@ -79,6 +80,7 @@
 [submodule "vim/bundle/vim-bufonly"]
 	path = vim/bundle/vim-bufonly
 	url = https://github.com/schickling/vim-bufonly
+	ignore = dirty
 [submodule "vim/bundle/vim-closetag"]
 	path = vim/bundle/vim-closetag
 	url = https://github.com/alvan/vim-closetag
@@ -88,9 +90,11 @@
 [submodule "vim/bundle/vim-gnupg"]
 	path = vim/bundle/vim-gnupg
 	url = https://github.com/jamessan/vim-gnupg
+	ignore = dirty
 [submodule "vim/bundle/vim-l9"]
 	path = vim/bundle/vim-l9
 	url = https://github.com/vim-scripts/L9
+	ignore = dirty
 [submodule "vim/bundle/vim-matchit"]
 	path = vim/bundle/vim-matchit
 	url = https://github.com/adelarsq/vim-matchit
@@ -103,6 +107,7 @@
 [submodule "vim/bundle/taglist"]
 	path = vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim
+	ignore = dirty
 [submodule "vim/bundle/vim-unimpaired"]
 	path = vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
@@ -115,6 +120,7 @@
 [submodule "vim/bundle/taskwarrior"]
 	path = vim/bundle/taskwarrior
 	url = https://github.com/farseer90718/vim-taskwarrior
+	ignore = dirty
 [submodule "vim/bundle/taskwiki"]
 	path = vim/bundle/taskwiki
 	url = https://github.com/tbabej/taskwiki
@@ -124,6 +130,7 @@
 [submodule "vim/bundle/vim-jekyll"]
 	path = vim/bundle/vim-jekyll
 	url = https://github.com/parkr/vim-jekyll
+	ignore = dirty
 [submodule "vim/bundle/table-mode"]
 	path = vim/bundle/table-mode
 	url = https://github.com/dhruvasagar/vim-table-mode
