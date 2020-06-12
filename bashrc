@@ -160,37 +160,10 @@ alias maek='make'
 # csh style source
 alias source='.'
 
-# perlbrew
-if [ -e $HOME/perl5/perlbrew/etc/bashrc ]; then
-    . $HOME/perl5/perlbrew/etc/bashrc
-    no_perlbrew(){
-        path_remove $HOME/perl5/perlbrew/perls/$PERLBREW_PERL/bin
-        for var in $(env | grep ^PERL | awk -F'=' '{print $1}')
-        do
-            unset $var
-        done
-    }
-
-    PERLBREW_BIN=$PERLBREW_ROOT/perls/$PERLBREW_PERL/bin
-
-    if [ -x $PERLBREW_BIN/nopaste ]; then
-        alias gist="nopaste --private --service Gist"
-    fi
-
-    if [ -f $HOME/.config/shcompgen.bashrc ]; then
-        . $HOME/.config/shcompgen.bashrc
-    fi
-fi
-
 # plenv
 if [ -e $HOME/.plenv/bin/plenv ]; then
-    use_plenv() {
-        # plenv conflicts with perlbrew, so clear out any perlbrew env vars
-        no_perlbrew
-
-        path_unshift $HOME/.plenv/bin
-        eval "$(plenv init -)"
-    }
+    path_unshift $HOME/.plenv/bin
+    eval "$(plenv init -)"
 fi
 
 # NVM
@@ -240,8 +213,6 @@ if [ -z "$BASH_COMPLETION" ] || [ -n "$TMUX" ]; then
         # set prompt to show git branch
         PS1='\u@\h:\W$(__git_ps1 " (%s)")\$ '
       fi
-
-      source_if_present $HOME/perl5/perlbrew/etc/perlbrew-completion.bash
 
       # remove completions I do not want.
       complete -r kill
