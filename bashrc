@@ -108,11 +108,9 @@ export MODULE_SIGNATURE_AUTHOR=mschout@cpan.org
 export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=1024M -XX:+CMSClassUnloadingEnabled"
 
 # are we an interactive shell?
-if [ "$PS1" ]; then
-    if [ -z "$PROMPT_COMMAND" ]; then
-        if [[ $TERM == xterm* ]]; then
-            PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}"; echo -ne "\007"'
-        fi
+if [ "$PS1" ] && [ -z "$PROMPT_COMMAND" ]; then
+    if [[ $TERM == xterm* ]]; then
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}"; echo -ne "\007"'
     fi
 fi
 
