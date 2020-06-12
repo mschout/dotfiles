@@ -39,3 +39,28 @@ snippet =h2
 	
 snippet =c
 	=cut
+snippet lazy
+	has ${1:attr} => (
+	  is      => 'ro',
+	  isa     => ${2:type},
+	  lazy    => 1,
+	  default => ${3},
+	);
+snippet todo
+	# TODO
+	...
+snippet oapi
+	=begin :openapi
+	
+	=path ${1:/path}
+	
+	=for :${2:get}
+	operationId: ${3}
+	x-mojo-to: "@${4:method}"
+	summary: >
+	  ${5}
+	responses:
+	  ${6:200}:
+	    description: ${7}
+	
+	=end :openapi
