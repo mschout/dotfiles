@@ -19,7 +19,8 @@ if has("gui_macvim")
   set stal=2 " tabs on by default
   set guifont=Droid\ Sans\ Mono\ Dotted\ 13
   colorscheme mustang
-elseif has("gui_gtk2")
+elseif has("gui_gtk") || has("gui_gtk2")
+  set guioptions-=m " remove menubar
   set guioptions-=T " remove toolbar
   set guifont=Droid\ Sans\ Mono\ Dotted\ 10
   colorscheme solarized
