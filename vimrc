@@ -291,27 +291,6 @@ vnoremap <silent> <C-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 nnoremap <silent> <C-j> mz:m+<CR>`z==
 vnoremap <silent> <C-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
-" auto create missing directories when saving
-augroup AutoMkdir
-    autocmd!
-    autocmd  BufNewFile  *  :call EnsureDirExists()
-augroup END
-
-function! EnsureDirExists()
-    let required_dir = expand("%:h")
-
-    " current directory, older vim returns blank
-    if !isdirectory(required_dir)
-        call AskQuit("Directory '" . required_dir . "' doesn't exist.", "&Create it?")
-
-        try
-            call mkdir(required_dir, 'p')
-        catch
-            call AskQuit("Can't create '" . required_dir . "'", "&Continue anyway?")
-        endtry
-    endif
-endfunction
-
 function! AskQuit(msg, action)
     if confirm(a:msg, "&Quit?\n" . a:action) == 1
         exit

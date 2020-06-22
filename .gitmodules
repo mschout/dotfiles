@@ -161,3 +161,6 @@
 [submodule "vim/bundle/vim-jsx-pretty"]
 	path = vim/bundle/vim-jsx-pretty
 	url = https://github.com/MaxMEllon/vim-jsx-pretty
+[submodule "vim/bundle/vim-mkdir"]
+	path = vim/bundle/vim-mkdir
+	url = https://github.com/pbrisbin/vim-mkdir
