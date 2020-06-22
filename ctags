@@ -1,3 +1,10 @@
 --regex-Perl=/^[ \t]*method\s+([a-zA-Z0-9_]+)/\1/s/
 --regex-Perl=/^[ \t]*func\s+([a-zA-Z0-9_]+)/\1/s/
 --regex-Perl=/with\s+([^;]+)\s*?;/\1/w,role,roles/
+--regex-PHP=/abstract class ([^ ]*)/\1/c/
+--regex-PHP=/interface ([^ ]*)/\1/c/
+--regex-PHP=/trait ([^ ]*)/\1/c/
+--regex-PHP=/(public |static |abstract |protected |private )+ function +([^ \(]*)/\2/f/
+--regex-php=/^[ \t]*trait[ \t]+([a-z0_9_]+)/\1/t,traits/i
+--languages=php,perl
+--langmap=php:.engine.inc.module.theme.install.php
