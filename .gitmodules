@@ -64,7 +64,7 @@
 	url = https://github.com/majutsushi/tagbar
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+	url = https://github.com/preservim/nerdtree.git
 [submodule "vim/bundle/emmit-vim"]
 	path = vim/bundle/emmit-vim
 	url = https://github.com/mattn/emmet-vim.git
