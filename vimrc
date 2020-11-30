@@ -130,6 +130,7 @@ nnoremap <silent> <Leader>o :FzfFiles<CR>
 nnoremap <silent> <Leader>O :FzfFiles!<CR>
 nnoremap <silent> <Leader>b :FzfBuffers<CR>
 nnoremap <silent> <Leader>' :FzfMarks<CR>
+nnoremap <silent> <Leader>T :FzfTags!<CR>
 nnoremap <silent> <F1>      :FzfHelptags<CR>
 inoremap <silent> <F1>      <Esc>:FzfHelptags<CR>
 noremap  <silent> <Leader>; :FzfCommands<CR>
