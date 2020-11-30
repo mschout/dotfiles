@@ -64,3 +64,12 @@ snippet oapi
 	    description: ${7}
 	
 	=end :openapi
+snippet requestBody
+	requestBody:
+	  description: ${1}
+	  content:
+	    application/json:
+	      schema:
+	        ${2}
+	      examples:
+	        ${3}
