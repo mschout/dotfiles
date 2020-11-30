@@ -164,3 +164,6 @@
 [submodule "vim/bundle/vim-mkdir"]
 	path = vim/bundle/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir
+[submodule "vim/bundle/vim-theme-gruvbox"]
+	path = vim/bundle/vim-theme-gruvbox
+	url = https://github.com/morhetz/gruvbox
