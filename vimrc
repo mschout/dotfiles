@@ -291,12 +291,6 @@ vnoremap <silent> <C-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 nnoremap <silent> <C-j> mz:m+<CR>`z==
 vnoremap <silent> <C-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
-function! AskQuit(msg, action)
-    if confirm(a:msg, "&Quit?\n" . a:action) == 1
-        exit
-    endif
-endfunction
-
 if exists(":Tabularize")
     nmap <Leader>a= :Tabularize /=<CR>
     vmap <Leader>a= :Tabularize /=<CR>
