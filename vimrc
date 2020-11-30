@@ -6,6 +6,7 @@ set smarttab
 set showmatch " flashes matching brackets and paren's
 set matchpairs+=<:>
 set autowrite " automatically write contents on :make, :rewind :last, ...
+set hidden
 set laststatus=2
 set list
 set listchars=tab:»·,trail:·
