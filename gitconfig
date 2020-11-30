@@ -44,3 +44,5 @@
 	prompt = false
 
 # vim: noet
+[pull]
+	ff = only
