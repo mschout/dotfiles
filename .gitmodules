@@ -167,3 +167,6 @@
 [submodule "vim/bundle/vim-theme-gruvbox"]
 	path = vim/bundle/vim-theme-gruvbox
 	url = https://github.com/morhetz/gruvbox
+[submodule "vim/bundle/nerdtree-git-plugin"]
+	path = vim/bundle/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin
