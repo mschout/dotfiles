@@ -126,8 +126,10 @@ HISTSIZE=40000
 # add date/time stamp to history output
 HISTTIMEFORMAT="%h/%d - %H:%M:%S "
 
-if [ -f ~/.dir_colors/dircolors ]
-    then eval `dircolors ~/.dir_colors/dircolors`
+if [ -n "$(command -v dircolors)" ]; then
+    if [ -f ~/.dir_colors/dircolors ]; then
+        eval `dircolors ~/.dir_colors/dircolors`
+    fi
 fi
 
 # aliases
