@@ -104,9 +104,6 @@ export LESS='-iMFXSx4R'
 # set cpansign default key
 export MODULE_SIGNATURE_AUTHOR=mschout@cpan.org
 
-# java options for maven, Java 8 style
-export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=1024M -XX:+CMSClassUnloadingEnabled"
-
 # are we an interactive shell?
 if [ "$PS1" ] && [ -z "$PROMPT_COMMAND" ]; then
     if [[ $TERM == xterm* ]]; then
@@ -176,29 +173,6 @@ export NVM_DIR="$HOME/.nvm"
 # Ruby/RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 pathadd $HOME/.rvm/bin
-
-# try to set JAVA_HOME to something sensible
-if [ -z "$JAVA_HOME" ]; then
-    if [ -x /usr/sbin/update-java-alternatives ]; then
-        # Ubuntu
-        export JAVA_HOME=`/usr/sbin/update-java-alternatives -l | head -1 | awk '{print $3}'`
-    elif [ -e /etc/alternatives/java_sdk ]; then
-        # RHEL/CentOS
-        export JAVA_HOME=`readlink /etc/alternatives/java_sdk`
-    elif [ -x  /usr/libexec/java_home ]; then
-        # MacOS X
-        export JAVA_HOME=$(/usr/libexec/java_home)
-    fi
-fi
-
-if [ -d /opt/local/share/java/gradle ]; then
-    export GRADLE_HOME=/opt/local/share/java/gradle
-fi
-
-# set CATALINA_HOME if appropriate
-if [ -z "$CATALINA_HOME" ] && [ -d $HOME/tomcat5 ]; then
-    export CATALINA_HOME=$HOME/tomcat5
-fi
 
 # set up completion
 # -n $TMUX means re-do this if we are within tmux
