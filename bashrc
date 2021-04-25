@@ -259,4 +259,9 @@ fi
 
 export BAT_PAGER="less -R"
 
+# direnv
+if [ -n "$(command -v direnv)" ]; then
+  eval "$(direnv hook bash)"
+fi
+
 # vim: ft=sh
