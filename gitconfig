@@ -61,5 +61,14 @@
 	gpgSign = true
 [tag]
 	gpgSign = true
+[core]
+	excludesfile = ~/.gitignore
+[init]
+	templatedir = ~/.git_template
+	defaultBranch = master
+[push]
+	default = simple
 [pull]
-	ff = only
+	rebase = true
+[fetch]
+	prune = true
