@@ -159,6 +159,9 @@ alias maek='make'
 # csh style source
 alias source='.'
 
+# xp pastes whatever is on the clipboard
+alias xp='xclip -selection clipboard -o'
+
 # plenv
 if [ -e $HOME/.plenv/bin/plenv ]; then
     path_unshift $HOME/.plenv/bin
