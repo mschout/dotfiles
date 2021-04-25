@@ -34,7 +34,8 @@
 
 [user]
 	name = Michael Schout
-	email = mschout@gkg.net
+	email = schoutm@gmail.com
+	signingkey = E5A242DB0A8C80093D33C742A425DBB5A4335D1A
 
 [rerere]
 	enabled = 1
@@ -52,5 +53,11 @@
 	prompt = false
 
 # vim: noet
+[gpg]
+	program = /usr/bin/gpg
+[commit]
+	gpgSign = true
+[tag]
+	gpgSign = true
 [pull]
 	ff = only
