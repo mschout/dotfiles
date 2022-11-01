@@ -1,11 +1,41 @@
 priority -50
 
+snippet lazy "lazy attr"
+has ${1:attr} => (
+  is      => 'ro',
+  isa     => ${2:type},
+  lazy    => 1,
+  default => method() {
+    ${3}
+  }
+);
+endsnippet
+
+snippet collab "has collaborator"
+#@returns ${1:package}
+has ${0:attr} => collaborator('$1');
+endsnippet
+
+snippet repo "has repository"
+#@returns ${1:package}
+has ${0:attr} => repository('$1');
+endsnippet
+
+snippet drurepo "has drupal_repository"
+#@returns ${1:package}
+has ${0:attr} => drupal_repository('$1');
+endsnippet
+
+
+snippet ddu "Dump with Data::Dumper"
+Data::Dumper::Dumper(${0:var});
+endsnippet
+
 snippet #!
 #!/usr/bin/env perl
 
 endsnippet
 
-# method Pointer
 snippet . "Method pointer" !i
 ->
 endsnippet
@@ -56,4 +86,41 @@ endsnippet
 
 snippet =c
 =cut
+endsnippet
+
+snippet todo "Unimplemented TODO"
+# TODO
+...
+endsnippet
+
+snippet oapi
+snippet oapi
+=begin :openapi
+
+=path ${1:/path}
+
+=for :${2:get}
+operationId: ${3}
+x-mojo-to: "@${4:method}"
+summary: >
+  ${5}
+responses:
+  ${6:200}:
+    description: ${7}
+
+=end :openapi
+
+=cut
+
+endsnippet
+
+snippet requestBody "OpenAPI Request Body"
+requestBody:
+  description: ${1}
+  content:
+    application/json:
+      schema:
+        ${2}
+      examples:
+        ${3}
 endsnippet
