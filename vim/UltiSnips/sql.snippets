@@ -1,0 +1,8 @@
+snippet fk
+FOREIGN KEY (${1}) REFERENCES ${2} (${3})
+  ON UPDATE CASCADE ON DELETE CASCADE$0
+endsnippet
+
+snippet ci
+CREATE INDEX ON ${2} (${3});
+endsnippet
