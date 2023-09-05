@@ -9,6 +9,7 @@
 if [ ! -z "$(command -v git)" ]; then
   # look in exec path first, then other known locations
   git_prompt_sh_files="$(git --exec-path)/git-sh-prompt \
+      /usr/share/git/git-prompt.sh \
       /usr/local/share/git-core/contrib/completion/git-prompt.sh"
 
   for file in $git_prompt_sh_files; do
