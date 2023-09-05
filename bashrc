@@ -137,10 +137,16 @@ alias ..='cd ..'
 alias 2..='cd ../..'
 alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
+alias idea='intellij-idea-ultimate-edition'
 
 # alias g to git (with completions)
 alias g='git'
 complete -o default -o nospace -F _git g
+
+alias gih='cd $(git home)'
+
+[ -n "$(command -v intellij-idea-ultimate)" ] && \
+    alias idea='intellij-idea-ultimate'
 
 top10() {
     history | awk '{print $2}' | sort | uniq -c | sort -k1 -rn | head
