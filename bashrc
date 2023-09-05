@@ -234,33 +234,33 @@ FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 
 # Initialize fzf
 if [ -e "$HOME/.fzf" ]; then
-    pathadd "$HOME/.fzf/bin"
+  pathadd "$HOME/.fzf/bin"
 
-    # Auto Completion
-    if [[ $- == *i* ]]; then
-        source "$HOME/.fzf/shell/completion.bash" 2>/dev/null
-    fi
+  # Auto-completion
+  # ---------------
+  [[ $- == *i* ]] && source "/home/mschout/.fzf/shell/completion.bash" 2> /dev/null
 
-    # Key bindings
-    if [ -f "$HOME/.fzf/shell/key-bindings.bash" ]; then
-        source "$HOME/.fzf/shell/key-bindings.bash"
-    fi
+  # Key bindings
+  # ------------
+  source "/home/mschout/.fzf/shell/key-bindings.bash"
 
-    alias preview="fzf --preview 'bat --color \"always\" {}'"
+  alias preview="fzf --preview 'bat --color \"always\" {}'"
 
-    # add support for ctrl+o to open selected file in gvim
-    export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --inline-info \
-        --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) 2>/dev/null | head -300' \
-        --preview-window='right:hidden:wrap' \
-        --bind='f2:toggle-preview,f3:execute(bat --style=numbers {}),ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | xclip),ctrl-o:execute(gvim {})+abort'"
+#    # add support for ctrl+o to open selected file in gvim
+#    export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --inline-info \
+#        --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) 2>/dev/null | head -300' \
+#        --preview-window='right:hidden:wrap' \
+#        --bind='f2:toggle-preview,f3:execute(bat --style=numbers {}),ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | xclip),ctrl-o:execute(gvim {})+abort'"
+#
+  # use git ls-files inside a git repo, otherwise fd
+  export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --type f --type l $FD_OPTIONS"
+  export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
+  export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
 
-    # use git ls-files inside a git repo, otherwise fd
-    export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --type f --type l $FD_OPTIONS"
-    export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
-    export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
-
-    # enable FZF extras, if available
+  # enable FZF extras, if available. If bash in in POSIX mode this wont work, so protected against that
+  if [ -z "$POSIXLY_CORRECT" ]; then
     source_if_present "$HOME/.fzf-extras/fzf-extras.sh"
+  fi
 fi
 
 export BAT_PAGER="less -R"
