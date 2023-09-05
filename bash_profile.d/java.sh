@@ -2,7 +2,11 @@
 
 # try to set JAVA_HOME to something sensible
 if [ -z "$JAVA_HOME" ]; then
-    if [ -e /etc/alternatives/java ]; then
+    if [ -e /usr/lib/jvm/default ]; then
+        # Arch
+        java=`readlink /usr/lib/jvm/default`
+        export JAVA_HOME="/usr/lib/jvm/$java"
+    elif [ -e /etc/alternatives/java ]; then
         # Ubuntu
         java=`readlink /etc/alternatives/java`
         export JAVA_HOME=${java%%/bin/java}
