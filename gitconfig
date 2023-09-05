@@ -9,7 +9,7 @@
 	lgfp = lg --first-parent
 	log1 = log --pretty=oneline --decorate --abbrev-commit
 	ls-other = ls-files --others --exclude-standard
-	nuke = git push origin --delete
+	nuke = push origin --delete
 	repo-name = "!git config remote.origin.url | sed -e 's|^.*/||' -e 's/.git$//'"
 	tag-commit = !sh -c 'git rev-list $0 | head -n 1'
 	tar = "!git archive HEAD --prefix=`git repo-name`/ --format tar | gzip > `git repo-name`.tar.gz"
