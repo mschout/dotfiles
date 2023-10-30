@@ -1,27 +1,28 @@
 # dotfile configs install in $(HOME)/.$file
 CONFIGS = \
+	bash_profile \
 	bashrc \
 	bashrc.darwin \
 	bashrc.freebsd \
 	bashrc.linux \
-	bash_profile \
 	cshrc \
 	ctags \
+	cvsrc \
 	gitconfig \
 	gitignore \
-	cvsrc \
-	perltidyrc \
-	inputrc \
-	hushlogin \
 	gitk \
+	gvimrc \
+	hushlogin \
+	ideavimrc
+	inputrc \
+	login \
+	perltidyrc \
 	plan \
 	psqlrc \
 	rpmmacros \
-	login \
 	signature \
 	taskrc \
-	vimrc \
-	gvimrc
+	vimrc
 
 # subdirs installed in $(HOME)/.$dir
 DOTDIRS = \

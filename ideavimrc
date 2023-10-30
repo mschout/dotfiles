@@ -1,0 +1,7 @@
+source ~/.vimrc
+
+vmap <Leader>pf :!pg_format -s 2<CR>
+
+:vmap \r
+vnoremap <Leader>pt :!perltidy-sweet --profile=.../.perltidyrc<CR>
+nmap <Space> :noh<CR>
