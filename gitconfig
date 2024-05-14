@@ -2,6 +2,7 @@
 	cached = diff --cached
 	ci = commit
 	co = checkout
+	comr = checkout-mr
 	di = diff
 	st = status -sb
 	dsm = diff --stat master
@@ -44,6 +45,7 @@
 	tool = vimdiff
 	conflictstyle = diff3
 	renamelimit = 50000
+	ff = no
 
 [mergetool "diffconflicts"]
 	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
