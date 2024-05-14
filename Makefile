@@ -13,7 +13,7 @@ CONFIGS = \
 	gitk \
 	gvimrc \
 	hushlogin \
-	ideavimrc
+	ideavimrc \
 	inputrc \
 	login \
 	perltidyrc \
