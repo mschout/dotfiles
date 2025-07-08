@@ -1,21 +1,24 @@
-if status is-interactive
-    abbr --add gpo git push origin
-    abbr --add g git
-    abbr --add xp xclip -selection clipboard -o
-    abbr --add gih cd '$(git home)'
-    abbr --add dco docker compose
-    abbr --add dcol docker compose logs -f
+status is-interactive || return
 
-    # common speling(sic) fixes
-    abbr --add grpe grep
-    abbr --add maek make
+# ae edits the abbrs
+abbr --add ae vim ~/.config/fish/conf.d/abbrs.fish
 
-    # Way too much typing
-    if type -q intellij-idea-ultimate-edition then
-      abbr --add idea intellij-idea-ultimate-edition
-    end
+abbr --add gpo git push origin
+abbr --add g git
+abbr --add xp xclip -selection clipboard -o
+abbr --add gih cd '$(git home)'
+abbr --add dco docker compose
+abbr --add dcol docker compose logs -f
 
-    if type -q yadm then
-        abbr --add ypo yadm push origin
-    end
+# common speling(sic) fixes
+abbr --add grpe grep
+abbr --add maek make
+
+# Way too much typing
+if type -q intellij-idea-ultimate-edition then
+  abbr --add idea intellij-idea-ultimate-edition
+end
+
+if type -q yadm then
+    abbr --add ypo yadm push origin
 end
