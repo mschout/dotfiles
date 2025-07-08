@@ -1,7 +1,7 @@
-.ssh/id_ed25519
-.ssh/id_rsa
+.m2/settings.xml
+.sqitch/sqitch.conf
 .ssh/**/*.pem
 .ssh/*.pem
 .ssh/config
-.m2/settings.xml
-.sqitch/sqitch.conf
+.ssh/id_ed25519
+.ssh/id_rsa
