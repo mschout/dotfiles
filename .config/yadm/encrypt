@@ -1,5 +1,6 @@
 .dzil/config.ini
 .m2/settings.xml
+.pgpass
 .sqitch/sqitch.conf
 .ssh/**/*.pem
 .ssh/*.pem
