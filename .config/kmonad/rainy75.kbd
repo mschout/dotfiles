@@ -1,0 +1,82 @@
+;; KMonad configuration for Rainy 75 keyboard
+;; This is a 75% keyboard layout with function row, arrow keys, and a column of navigation keys
+
+(defcfg
+  ;; Linux configuration with uinput
+  ;; Uncomment and modify these as needed
+  input  (device-file "/dev/input/by-id/usb-RDR_Rainy_75-event-kbd")
+  output (uinput-sink "KMonad Rainy75")
+  cmp-seq ralt  ;; Set Compose key to Right Alt
+  cmp-seq-delay 5 ;; 5ms delay between compose sequences
+
+  fallthrough true  ;; Pass through keys that aren't mapped
+  allow-cmd false   ;; Don't allow running external commands for safety
+)
+
+;; Source layer - represents the physical layout of the Rainy 75 keyboard
+;; This layout is a standard 75% with additional navigation keys on the right
+;; NOTE: ralt here is the fn key, which is not even passed to the OS.  It
+;; cannot be remapped, and Wobkey recommends against remapping it.  If you ever
+;; need to factory reset the board, long press fn + esc is the way.  If fn is
+;; remapped however, this will not work.
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  del  home
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  end
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     pgup
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret   pgdn
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up
+  lctl lmet lalt           spc            fn rctl     left down rght
+)
+
+;; Base layer - standard QWERTY layout with some enhancements
+(deflayer qwerty
+  caps  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  del  home
+  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc  end
+  @l1t  q    w    e    r    t    y    u    i    o    p    [    ]    \     pgup
+  esc   a    s    d    f    g    h    j    k    l    ;    '    ret        pgdn
+  lsft  z    x    c    v    b    n    m    ,    .    /    rsft up
+  lctl lmet lalt           spc            fn      @rctl left down rght
+)
+
+(deflayer L1
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _
+  _    _    _    _    _    _    left down up   right _   _    _          _
+  _    _    _    _    _    _    _    _    _    _    _    _    _ 
+  _    _    _              _              _         _    _    _     _
+)
+
+;; Function layer - activated when holding the Fn key (right alt in this config)
+(deflayer fn
+  _    brdown brup prev pp   next mute vold volu _    _    _    _    _     _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _
+  _    _    _    _    _    _    _    _    _    _    _    _    _     _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _         _    _    _     _
+)
+
+;; Media layer - activated with Caps+F keys
+;; (deflayer media
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _     _
+;; )
+
+;; Special buttons
+(defalias
+  ;; Turn Caps Lock into a dual-purpose key
+  ;; Tap for Escape, hold for Function layer
+  ;; cap_fn (tap-hold-next-release 200 esc (layer-toggle fn))
+
+  ;; Right Alt becomes an Fn key when held
+  rctl (layer-toggle fn)
+
+  l1t (tap-hold 200 tab (layer-toggle L1))
+
+  lsft (tap-hold 100 \( lsft)
+  rsft (tap-hold 100 \) rsft)
+)
