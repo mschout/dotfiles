@@ -1,3 +1,4 @@
+.dzil/config.ini
 .m2/settings.xml
 .sqitch/sqitch.conf
 .ssh/**/*.pem
