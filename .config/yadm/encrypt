@@ -3,3 +3,5 @@
 .ssh/**/*.pem
 .ssh/*.pem
 .ssh/config
+.m2/settings.xml
+.sqitch/sqitch.conf
