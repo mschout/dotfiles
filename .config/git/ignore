@@ -1,0 +1,12 @@
+vim/view
+vim/doc
+.lvimrc
+*.bak
+*.orig
+.ctags
+.syncthing.*.tmp
+.vstags
+tags
+tags-*
+taglist
+**/.claude/settings.local.json

@@ -64,7 +64,7 @@
 [tag]
 	gpgSign = true
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/ignore
 [init]
 	defaultBranch = master
 [push]
