@@ -19,12 +19,17 @@ yadm pull
 ```
 
 ## Errors
+
 ### When cloning
+
 If you encounter any error when cloning, run 
+
 ```bash
 yadm stash
 ```
+
 Then reclone with 
+
 ```
-yadm clone -f https://github.com/overclockedllama/dotfiles.git
+yadm clone -f https://github.com/mschout/dotfiles.git
 ```
