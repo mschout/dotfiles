@@ -14,4 +14,8 @@ if status is-interactive
     if type -q intellij-idea-ultimate-edition then
       abbr --add idea intellij-idea-ultimate-edition
     end
+
+    if type -q yadm then
+        abbr --add ypo yadm push origin
+    end
 end
