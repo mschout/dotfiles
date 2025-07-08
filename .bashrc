@@ -138,6 +138,7 @@ alias 2..='cd ../..'
 alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
 alias idea='intellij-idea-ultimate-edition'
+alias gpo='git push origin'
 
 # alias g to git (with completions)
 alias g='git'

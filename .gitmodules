@@ -1,169 +1,169 @@
 [submodule "vim/bundle/vim-es6"]
-	path = vim/bundle/vim-es6
+	path = .vim/bundle/vim-es6
 	url = https://github.com/isRuslan/vim-es6.git
 [submodule "vim/bundle/tabular"]
-	path = vim/bundle/tabular
+	path = .vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular
 [submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
+	path = .vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized
 [submodule "vim/bundle/diffconflicts"]
-	path = vim/bundle/diffconflicts
+	path = .vim/bundle/diffconflicts
 	url = https://github.com/whiteinge/diffconflicts
 [submodule "vim/bundle/lightline"]
-	path = vim/bundle/lightline
+	path = .vim/bundle/lightline
 	url = https://github.com/itchyny/lightline.vim
 [submodule "vim/bundle/vim-javascript"]
-	path = vim/bundle/vim-javascript
+	path = .vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundle/vim-json"]
-	path = vim/bundle/vim-json
+	path = .vim/bundle/vim-json
 	url = https://github.com/elzr/vim-json
 [submodule "vim/bundle/vimwiki"]
-	path = vim/bundle/vimwiki
+	path = .vim/bundle/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
 [submodule "fzf"]
-	path = fzf
+	path = .fzf
 	url = https://github.com/junegunn/fzf.git
 [submodule "vim/bundle/fugitive"]
-	path = vim/bundle/fugitive
+	path = .vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "vim/bundle/vim-perl"]
-	path = vim/bundle/vim-perl
+	path = .vim/bundle/vim-perl
 	url = https://github.com/vim-perl/vim-perl
 	ignore = dirty
 [submodule "vim/bundle/vim-perl6"]
-	path = vim/bundle/vim-perl6
+	path = .vim/bundle/vim-perl6
 	url = https://github.com/vim-perl/vim-perl6
 [submodule "vim/bundle/copy-cut-paste"]
-	path = vim/bundle/copy-cut-paste
+	path = .vim/bundle/copy-cut-paste
 	url = https://github.com/NLKNguyen/copy-cut-paste.vim
 [submodule "vim/bundle/fzf.vim"]
-	path = vim/bundle/fzf.vim
+	path = .vim/bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
 [submodule "vim/bundle/vimtex"]
-	path = vim/bundle/vimtex
+	path = .vim/bundle/vimtex
 	url = https://github.com/lervag/vimtex
 [submodule "vim/bundle/vim-pandoc"]
-	path = vim/bundle/vim-pandoc
+	path = .vim/bundle/vim-pandoc
 	url = https://github.com/vim-pandoc/vim-pandoc
 [submodule "vim/bundle/vim-pandoc-syntax"]
-	path = vim/bundle/vim-pandoc-syntax
+	path = .vim/bundle/vim-pandoc-syntax
 	url = https://github.com/vim-pandoc/vim-pandoc-syntax
 [submodule "vim/bundle/tlib_vim"]
-	path = vim/bundle/tlib_vim
+	path = .vim/bundle/tlib_vim
 	url = https://github.com/tomtom/tlib_vim.git
 [submodule "vim/bundle/vim-addon-mw-utils"]
-	path = vim/bundle/vim-addon-mw-utils
+	path = .vim/bundle/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule "vim/bundle/vim-ansiesc"]
-	path = vim/bundle/vim-ansiesc
+	path = .vim/bundle/vim-ansiesc
 	url = https://github.com/powerman/vim-plugin-AnsiEsc
 [submodule "vim/bundle/tagbar"]
-	path = vim/bundle/tagbar
+	path = .vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
 [submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
+	path = .vim/bundle/nerdtree
 	url = https://github.com/preservim/nerdtree.git
 [submodule "vim/bundle/emmit-vim"]
-	path = vim/bundle/emmit-vim
+	path = .vim/bundle/emmit-vim
 	url = https://github.com/mattn/emmet-vim.git
 [submodule "vim/bundle/vim-gitgutter"]
-	path = vim/bundle/vim-gitgutter
+	path = .vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
 [submodule "vim/bundle/vim-localvimrc"]
-	path = vim/bundle/vim-localvimrc
+	path = .vim/bundle/vim-localvimrc
 	url = https://github.com/embear/vim-localvimrc
 [submodule "vim/bundle/vim-bufonly"]
-	path = vim/bundle/vim-bufonly
+	path = .vim/bundle/vim-bufonly
 	url = https://github.com/schickling/vim-bufonly
 	ignore = dirty
 [submodule "vim/bundle/vim-closetag"]
-	path = vim/bundle/vim-closetag
+	path = .vim/bundle/vim-closetag
 	url = https://github.com/alvan/vim-closetag
 [submodule "vim/bundle/vim-endwise"]
-	path = vim/bundle/vim-endwise
+	path = .vim/bundle/vim-endwise
 	url = https://github.com/tpope/vim-endwise
 [submodule "vim/bundle/vim-gnupg"]
-	path = vim/bundle/vim-gnupg
+	path = .vim/bundle/vim-gnupg
 	url = https://github.com/jamessan/vim-gnupg
 	ignore = dirty
 [submodule "vim/bundle/vim-l9"]
-	path = vim/bundle/vim-l9
+	path = .vim/bundle/vim-l9
 	url = https://github.com/vim-scripts/L9
 	ignore = dirty
 [submodule "vim/bundle/vim-matchit"]
-	path = vim/bundle/vim-matchit
+	path = .vim/bundle/vim-matchit
 	url = https://github.com/adelarsq/vim-matchit
 [submodule "vim/bundle/mru"]
-	path = vim/bundle/mru
+	path = .vim/bundle/mru
 	url = https://github.com/vim-scripts/mru.vim
 [submodule "vim/bundle/rename"]
-	path = vim/bundle/rename
+	path = .vim/bundle/rename
 	url = https://github.com/danro/rename.vim
 [submodule "vim/bundle/taglist"]
-	path = vim/bundle/taglist
+	path = .vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim
 	ignore = dirty
 [submodule "vim/bundle/vim-unimpaired"]
-	path = vim/bundle/vim-unimpaired
+	path = .vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
 [submodule "vim/bundle/tmux-navigator"]
-	path = vim/bundle/tmux-navigator
+	path = .vim/bundle/tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
 [submodule "vim/bundle/less"]
-	path = vim/bundle/less
+	path = .vim/bundle/less
 	url = https://github.com/groenewege/vim-less
 [submodule "vim/bundle/taskwarrior"]
 	path = vim/bundle/taskwarrior
 	url = https://github.com/farseer90718/vim-taskwarrior
 	ignore = dirty
 [submodule "vim/bundle/vim-yaml-folds"]
-	path = vim/bundle/vim-yaml-folds
+	path = .vim/bundle/vim-yaml-folds
 	url = https://github.com/pedrohdz/vim-yaml-folds
 [submodule "vim/bundle/vim-jekyll"]
-	path = vim/bundle/vim-jekyll
+	path = .vim/bundle/vim-jekyll
 	url = https://github.com/parkr/vim-jekyll
 	ignore = dirty
 [submodule "vim/bundle/table-mode"]
-	path = vim/bundle/table-mode
+	path = .vim/bundle/table-mode
 	url = https://github.com/dhruvasagar/vim-table-mode
 [submodule "fzf-extras"]
-	path = fzf-extras
+	path = .fzf-extras
 	url = https://github.com/atweiden/fzf-extras
 [submodule "vim/bundle/neo-solarized"]
-	path = vim/bundle/neo-solarized
+	path = .vim/bundle/neo-solarized
 	url = https://github.com/iCyMind/NeoSolarized
 [submodule "vim/bundle/ale"]
-	path = vim/bundle/ale
+	path = .vim/bundle/ale
 	url = https://github.com/w0rp/ale.git
 [submodule "vim/bundle/vim-snippets"]
-	path = vim/bundle/vim-snippets
+	path = .vim/bundle/vim-snippets
 	url = https://github.com/mschout/vim-snippets
 [submodule "vim/bundle/ultisnips"]
-	path = vim/bundle/ultisnips
+	path = .vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips
 [submodule "vim/bundle/vim-mergetool"]
-	path = vim/bundle/vim-mergetool
+	path = .vim/bundle/vim-mergetool
 	url = https://github.com/samoshkin/vim-mergetool
 [submodule "vim/bundle/eunuch"]
-	path = vim/bundle/eunuch
+	path = .vim/bundle/eunuch
 	url = https://github.com/tpope/vim-eunuch
 [submodule "vim/bundle/vim-rooter"]
-	path = vim/bundle/vim-rooter
+	path = .vim/bundle/vim-rooter
 	url = https://github.com/airblade/vim-rooter
 [submodule "vim/bundle/vim-commentary"]
-	path = vim/bundle/vim-commentary
+	path = .vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary
 [submodule "vim/bundle/vim-jsx-pretty"]
-	path = vim/bundle/vim-jsx-pretty
+	path = .vim/bundle/vim-jsx-pretty
 	url = https://github.com/MaxMEllon/vim-jsx-pretty
 [submodule "vim/bundle/vim-mkdir"]
-	path = vim/bundle/vim-mkdir
+	path = .vim/bundle/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir
 [submodule "vim/bundle/vim-theme-gruvbox"]
-	path = vim/bundle/vim-theme-gruvbox
+	path = .vim/bundle/vim-theme-gruvbox
 	url = https://github.com/morhetz/gruvbox
 [submodule "vim/bundle/nerdtree-git-plugin"]
-	path = vim/bundle/nerdtree-git-plugin
+	path = .vim/bundle/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin
