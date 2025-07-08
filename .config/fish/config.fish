@@ -1,3 +1,11 @@
+fish_add_path --append "$HOME/bin"
+
+fish_add_path --append "$HOME/Dropbox/bin"
+
+fish_add_path /usr/sbin /sbin /usr/local/bin /usr/local/sbin
+
+set -gx LANG en_US.UTF-8
+
 if status is-interactive
     if type -q less then
         set -gx PAGER less
