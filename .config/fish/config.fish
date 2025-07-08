@@ -22,14 +22,12 @@ if status is-interactive
     alias ls='ls -F'
 
     # move upwards n directories
-    alias ..='cd ..'
     alias .1='cd ..'
     alias .2='cd ../..'
     alias .3='cd ../../..'
     alias .4='cd ../../../..'
     alias .5='cd ../../../../..'
 
-    # common typo aliases
     if type -q fzf && type -q bat
         alias preview="fzf --preview 'bat --color \"always\" {}'"
     end
