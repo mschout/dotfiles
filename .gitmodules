@@ -167,3 +167,6 @@
 [submodule "vim/bundle/nerdtree-git-plugin"]
 	path = .vim/bundle/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+[submodule ".plenv"]
+	path = .plenv
+	url = https://github.com/tokuhirom/plenv
