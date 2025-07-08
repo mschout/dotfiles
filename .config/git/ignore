@@ -3,6 +3,7 @@ vim/doc
 .lvimrc
 *.bak
 *.orig
+jnk*
 .ctags
 .syncthing.*.tmp
 .vstags
