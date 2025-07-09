@@ -1,0 +1,1 @@
+../../../Sync/git/courtio/courtio/build/etc/fish/go-completions.fish
