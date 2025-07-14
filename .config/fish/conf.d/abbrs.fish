@@ -3,14 +3,18 @@ status is-interactive || return
 # ae edits the abbrs
 abbr --add ae vim ~/.config/fish/conf.d/abbrs.fish
 
-abbr --add gpo git push origin
-abbr --add gp git pull
+# Git related abbreviations
 abbr --add g git
 abbr --add gg git grep
-abbr --add xp xclip -selection clipboard -o
 abbr --add gih cd '$(git home)'
+abbr --add gp git pull
+abbr --add gpo git push origin
+
+abbr --add xp xclip -selection clipboard -o
+
+# Docker compose
 abbr --add dco docker compose
-abbr --add dcol docker compose logs -f
+abbr --add dcl docker compose logs -f
 
 # common speling(sic) fixes
 abbr --add grpe grep
