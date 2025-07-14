@@ -40,6 +40,11 @@ if status is-interactive
         alias preview="fzf --preview 'bat --color \"always\" {}'"
     end
 
+    # if we are on a graphical display, use gvim instead of vim
+    if type -q gvim && test -n "$DISPLAY"
+        alias vim='gvim'
+    end
+
     # use vi key bindings
     fish_vi_key_bindings --no-erase insert
 end

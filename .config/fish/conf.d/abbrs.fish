@@ -20,6 +20,10 @@ abbr --add dcl docker compose logs -f
 abbr --add grpe grep
 abbr --add maek make
 
+if type -q gvim && test -n "$DISPLAY"
+    abbr --add gv gvim
+end
+
 # Way too much typing
 if type -q intellij-idea-ultimate-edition then
   abbr --add idea intellij-idea-ultimate-edition
