@@ -4,7 +4,9 @@ status is-interactive || return
 abbr --add ae vim ~/.config/fish/conf.d/abbrs.fish
 
 abbr --add gpo git push origin
+abbr --add gp git pull
 abbr --add g git
+abbr --add gg git grep
 abbr --add xp xclip -selection clipboard -o
 abbr --add gih cd '$(git home)'
 abbr --add dco docker compose
