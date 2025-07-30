@@ -73,3 +73,5 @@
 	rebase = true
 [fetch]
 	prune = true
+[safe]
+	directory = /net/freenas/pool/freenas-util/terraform
