@@ -5,10 +5,12 @@ abbr --add ae vim ~/.config/fish/conf.d/abbrs.fish
 
 # Git related abbreviations
 abbr --add g git
+abbr --add gca git commit --amend --no-edit
 abbr --add gg git grep
 abbr --add gih cd '$(git home)'
 abbr --add gp git pull
 abbr --add gpo git push origin
+abbr --add grh git reset HEAD
 
 abbr --add xp xclip -selection clipboard -o
 
