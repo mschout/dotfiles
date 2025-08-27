@@ -4,3 +4,4 @@ reitzig/sdkman-for-fish@v2.1.0
 jorgebucaran/autopair.fish
 acomagu/fish-async-prompt
 tsub/fish-fzf-git-recent-branch
+jorgebucaran/nvm.fish
