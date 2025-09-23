@@ -11,3 +11,4 @@ tags
 tags-*
 taglist
 **/.claude/settings.local.json
+.sdkmanrc
