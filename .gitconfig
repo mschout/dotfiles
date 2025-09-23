@@ -23,6 +23,7 @@
 	show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 	home = rev-parse --show-toplevel
 	trigger-pipeline = commit --allow-empty -m 'Trigger CI Pipeline'
+	wip = "!sh -c 'git add -A . && git commit -m WIP'"
 
 [color]
 	branch = auto
