@@ -21,3 +21,5 @@ function install_plenv_plugin() {
 install_plenv_plugin perl-build https://github.com/tokuhirom/Perl-Build.git
 
 install_plenv_plugin plenv-freeze https://github.com/skaji/plenv-freeze
+
+install_plenv_plugin plenv-contrib https://github.com/miyagawa/plenv-contrib
