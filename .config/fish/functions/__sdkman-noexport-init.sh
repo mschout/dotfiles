@@ -21,6 +21,10 @@ if [ -z "$SDKMAN_CANDIDATES_API" ]; then
 	:
 fi
 
+if [ -z "$SDKMAN_BROKER_API" ]; then
+	:
+fi
+
 if [ -z "$SDKMAN_DIR" ]; then
 	:
 fi
