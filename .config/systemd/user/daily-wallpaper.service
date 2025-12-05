@@ -1,0 +1,6 @@
+[Unit]
+Description=Update Daily Wallpaper
+
+[Service]
+Type=oneshot
+ExecStart=%h/Dropbox/bin/update-wallpaper.sh 'https://bing-wallpaper.snowcrash.me?resolution=UHD&format=image&mkt=en-US&index=0'
