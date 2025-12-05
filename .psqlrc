@@ -9,3 +9,5 @@
 
 \set HISTSIZE 5000
 
+\echo 🧐 🐘 postgres_dba 6.0 installed. Use ":dba" to see menu
+\set dba '\\i /home/mschout/Sync/git/postgres_dba/start.psql'
