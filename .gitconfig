@@ -66,6 +66,9 @@
 	gpgSign = true
 [core]
 	excludesfile = ~/.config/git/ignore
+	fsmonitor = true
+	untrackedCache = true
+	preloadIndex = true
 [init]
 	defaultBranch = master
 [push]
