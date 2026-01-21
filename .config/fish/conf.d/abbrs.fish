@@ -22,6 +22,10 @@ abbr --add dcl docker compose logs -f
 abbr --add grpe grep
 abbr --add maek make
 
+if functions -q fzf_git_recent_branch
+  abbr --add grb fzf_git_recent_branch
+end
+
 if type -q gvim && test -n "$DISPLAY"
     abbr --add gv gvim
 end
