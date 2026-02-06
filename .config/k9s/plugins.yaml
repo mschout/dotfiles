@@ -1,0 +1,12 @@
+plugins:
+  jlogs:
+    shortCut: Ctrl-J
+    description: "Json Pod logs"
+    scopes:
+    - po
+    command: kubectl-jq
+    background: false
+    args:
+    - $NAME
+    - $NAMESPACE
+    - $CONTEXT

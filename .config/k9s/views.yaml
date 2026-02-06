@@ -1,0 +1,11 @@
+views:
+  v1/nodes:
+    sortColumn: AGE:asc
+    columns:
+      - ROLE|H # Hide useless column
+      - NAME
+      - STATUS
+      - AGE
+      - NODEPOOL:.metadata.labels.karpenter\.sh/nodepool
+      - TYPE:.metadata.labels.node\.kubernetes\.io/instance-type
+      - CAPACITY:.metadata.labels.karpenter\.sh/capacity-type
