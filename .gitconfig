@@ -2,27 +2,29 @@
 	cached = diff --cached
 	ci = commit
 	co = checkout
-	comr = checkout-mr
 	di = diff
 	st = status -sb
+	comr = checkout-mr
 	dsm = diff --stat master
+	; Log related aliases
 	lg = log --graph --decorate --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %Cblue%d%Creset'
 	lgfp = lg --first-parent
 	log1 = log --pretty=oneline --decorate --abbrev-commit
 	ls-other = ls-files --others --exclude-standard
+	; Misc
+	bincached = cached --no-textconv --binary
+	conflicts = diff --name-only --diff-filter=U
+	ctags = !.git/hooks/ctags
+	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+	gone = ! "git fetch --quiet --prune && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}'"
+	home = rev-parse --show-toplevel
 	nuke = push origin --delete
 	repo-name = "!git config remote.origin.url | sed -e 's|^.*/||' -e 's/.git$//'"
+	show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 	tag-commit = !sh -c 'git rev-list $0 | head -n 1'
 	tar = "!git archive HEAD --prefix=`git repo-name`/ --format tar | gzip > `git repo-name`.tar.gz"
 	unmerged = branch --no-merged
 	unmerged-remote = branch --remote --no-merged
-	ctags = !.git/hooks/ctags
-	bincached = cached --no-textconv --binary
-	conflicts = diff --name-only --diff-filter=U
-	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
-	show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
-	home = rev-parse --show-toplevel
-	trigger-pipeline = commit --allow-empty -m 'Trigger CI Pipeline'
 	wip = "!sh -c 'git add -A . && git commit -m WIP'"
 
 [color]
