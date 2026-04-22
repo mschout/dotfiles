@@ -48,7 +48,7 @@
 	tool = vimdiff
 	conflictstyle = diff3
 	renamelimit = 50000
-	ff = no
+	ff = false
 
 [mergetool "diffconflicts"]
 	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
@@ -77,6 +77,7 @@
 	default = simple
 [pull]
 	rebase = true
+	ff = only
 [fetch]
 	prune = true
 [safe]
