@@ -9,12 +9,12 @@ set -gx LANG en_US.UTF-8
 # the rest should only be done in interactive mode
 status is-interactive || return
 
-if type -q less then
+if type -q less
     set -gx PAGER less
     set -gx LESS '-iMFXSx4R'
 end
 
-if type -q vim then
+if type -q vim
     set -gx EDITOR vim
 else
     set -gx EDITOR vi
