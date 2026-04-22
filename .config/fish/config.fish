@@ -49,6 +49,7 @@ end
 
 # use vi key bindings
 fish_vi_key_bindings --no-erase insert
+set -g fish_key_bindings fish_vi_key_bindings
 
 # "jq" colors
 # Solarized Dark:
