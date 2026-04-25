@@ -1,0 +1,4 @@
+default-host: https://ntfy.snowcrash.me
+subscribe:
+  - topic: ops
+    command: 'notify-send "$m"'
