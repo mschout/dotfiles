@@ -4,6 +4,7 @@
 	co = checkout
 	di = diff
 	st = status -sb
+	po = push origin
 	comr = checkout-mr
 	dsm = diff --stat master
 	; Log related aliases
