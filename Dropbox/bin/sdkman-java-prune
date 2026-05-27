@@ -1,0 +1,167 @@
+#!/usr/bin/env bash
+#
+# sdkman-java-prune
+#
+# For each (major version, vendor) pair under ~/.sdkman/candidates/java,
+# keep the highest X.Y.Z and remove the rest. Also create/update a
+# 'MAJOR-VENDOR' symlink pointing at that latest install.
+#
+# Usage:
+#   sdkman-java-prune          # dry run
+#   sdkman-java-prune -f       # actually delete
+
+set -euo pipefail
+
+JAVA_DIR="${SDKMAN_DIR:-$HOME/.sdkman}/candidates/java"
+DRY_RUN=1
+
+usage() {
+    cat <<EOF
+Usage: $(basename "$0") [-f|--force] [-h|--help]
+
+Lists Java versions in $JAVA_DIR and, for each (major version, vendor) pair,
+keeps the highest X.Y.Z and removes the rest. Also creates or updates a
+'MAJOR-VENDOR' symlink (e.g. '25-tem -> 25.0.3-tem') pointing at the
+latest install for that pair. Whatever 'current' symlinks to is always kept.
+
+Without -f the script only reports what it would do.
+EOF
+}
+
+for arg in "$@"; do
+    case "$arg" in
+        -f|--force) DRY_RUN=0 ;;
+        -h|--help)  usage; exit 0 ;;
+        *) echo "Unknown option: $arg" >&2; usage >&2; exit 2 ;;
+    esac
+done
+
+[[ -d "$JAVA_DIR" ]] || { echo "Not a directory: $JAVA_DIR" >&2; exit 1; }
+
+current_target=""
+if [[ -L "$JAVA_DIR/current" ]]; then
+    current_target="$(basename "$(readlink "$JAVA_DIR/current")")"
+fi
+
+# Build a sortable padded version "X.Y.Z" from "X" / "X.Y" / "X.Y.Z..."
+pad_version() {
+    local IFS=. x y z _
+    read -r x y z _ <<<"$1"
+    printf '%d.%d.%d' "${x:-0}" "${y:-0}" "${z:-0}"
+}
+
+# Return 0 if v1 > v2, both in padded "a.b.c" form.
+version_gt() {
+    local IFS=. a1 b1 c1 a2 b2 c2
+    read -r a1 b1 c1 <<<"$1"
+    read -r a2 b2 c2 <<<"$2"
+    (( a1 != a2 )) && { (( a1 > a2 )); return; }
+    (( b1 != b2 )) && { (( b1 > b2 )); return; }
+    (( c1 >  c2 ))
+}
+
+declare -A latest_name=()  # key "major|vendor" -> dir name
+declare -A latest_sort=()  # key "major|vendor" -> padded version
+
+for entry in "$JAVA_DIR"/*; do
+    name="$(basename "$entry")"
+    [[ "$name" == "current" ]] && continue
+    [[ -L "$entry" ]] && continue
+    [[ -d "$entry" ]] || continue
+
+    if [[ "$name" =~ ^([0-9]+(\.[0-9]+)*)-([A-Za-z0-9._]+)$ ]]; then
+        ver="${BASH_REMATCH[1]}"
+        vendor="${BASH_REMATCH[3]}"
+        major="${ver%%.*}"
+        padded="$(pad_version "$ver")"
+        key="${major}|${vendor}"
+
+        if [[ -z "${latest_name[$key]:-}" ]] || version_gt "$padded" "${latest_sort[$key]}"; then
+            latest_name[$key]="$name"
+            latest_sort[$key]="$padded"
+        fi
+    else
+        echo "skip (unparsed name): $name" >&2
+    fi
+done
+
+declare -A keep=()
+for k in "${!latest_name[@]}"; do
+    keep[${latest_name[$k]}]=1
+done
+# Always protect whatever 'current' points to.
+[[ -n "$current_target" ]] && keep[$current_target]=1
+
+kept=0 to_delete=()
+for entry in "$JAVA_DIR"/*; do
+    name="$(basename "$entry")"
+    [[ "$name" == "current" ]] && continue
+    [[ -L "$entry" ]] && continue
+    [[ -d "$entry" ]] || continue
+    [[ "$name" =~ ^([0-9]+(\.[0-9]+)*)-([A-Za-z0-9._]+)$ ]] || continue
+
+    if [[ -n "${keep[$name]:-}" ]]; then
+        marker="keep"
+        [[ "$name" == "$current_target" ]] && marker="keep (current)"
+        printf '  %-16s %s\n' "$marker" "$name"
+        kept=$((kept + 1))
+    else
+        to_delete+=("$entry")
+        action="would delete"
+        (( DRY_RUN == 0 )) && action="delete"
+        printf '  %-16s %s\n' "$action" "$name"
+    fi
+done
+
+echo
+symlink_actions=0
+for k in "${!latest_name[@]}"; do
+    target="${latest_name[$k]}"
+    link_name="${k/|/-}"        # "major|vendor" -> "major-vendor"
+    link_path="$JAVA_DIR/$link_name"
+
+    # The latest install is itself already named 'MAJOR-VENDOR' (e.g. '25-oracle').
+    [[ "$link_name" == "$target" ]] && continue
+
+    if [[ -L "$link_path" ]]; then
+        existing="$(readlink "$link_path")"
+        [[ "$existing" == "$target" ]] && continue
+        action="would update symlink"
+        if (( DRY_RUN == 0 )); then
+            ln -sfn "$target" "$link_path"
+            action="updated symlink    "
+        fi
+        printf '  %-20s %s -> %s (was %s)\n' "$action" "$link_name" "$target" "$existing"
+        symlink_actions=$((symlink_actions + 1))
+    elif [[ -e "$link_path" ]]; then
+        printf '  %-20s %s (exists as non-symlink, leaving alone)\n' "skip symlink" "$link_name" >&2
+    else
+        action="would create symlink"
+        if (( DRY_RUN == 0 )); then
+            ln -s "$target" "$link_path"
+            action="created symlink    "
+        fi
+        printf '  %-20s %s -> %s\n' "$action" "$link_name" "$target"
+        symlink_actions=$((symlink_actions + 1))
+    fi
+done
+(( symlink_actions > 0 )) && echo
+
+if (( ${#to_delete[@]} == 0 )); then
+    if (( DRY_RUN && symlink_actions > 0 )); then
+        echo "Dry run: $symlink_actions symlink change(s). Kept $kept. Re-run with -f to apply."
+    else
+        echo "Nothing to prune. Kept $kept."
+    fi
+    exit 0
+fi
+
+if (( DRY_RUN )); then
+    echo "Dry run: would delete ${#to_delete[@]}, keep $kept, ${symlink_actions} symlink change(s). Re-run with -f to apply."
+    exit 0
+fi
+
+for entry in "${to_delete[@]}"; do
+    rm -rf -- "$entry"
+done
+echo "Deleted ${#to_delete[@]}, kept $kept, ${symlink_actions} symlink change(s)."
