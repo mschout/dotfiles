@@ -4,7 +4,8 @@
 #
 # For each (major version, vendor) pair under ~/.sdkman/candidates/java,
 # keep the highest X.Y.Z and remove the rest. Also create/update a
-# 'MAJOR-VENDOR' symlink pointing at that latest install.
+# 'MAJOR-VENDOR' symlink pointing at that latest install. Finally,
+# remove any dangling symlinks (symlinks whose target no longer exists).
 #
 # Usage:
 #   sdkman-java-prune          # dry run
@@ -23,6 +24,7 @@ Lists Java versions in $JAVA_DIR and, for each (major version, vendor) pair,
 keeps the highest X.Y.Z and removes the rest. Also creates or updates a
 'MAJOR-VENDOR' symlink (e.g. '25-tem -> 25.0.3-tem') pointing at the
 latest install for that pair. Whatever 'current' symlinks to is always kept.
+Any dangling symlinks remaining at the end (other than 'current') are removed.
 
 Without -f the script only reports what it would do.
 EOF
@@ -147,21 +149,38 @@ for k in "${!latest_name[@]}"; do
 done
 (( symlink_actions > 0 )) && echo
 
-if (( ${#to_delete[@]} == 0 )); then
-    if (( DRY_RUN && symlink_actions > 0 )); then
-        echo "Dry run: $symlink_actions symlink change(s). Kept $kept. Re-run with -f to apply."
-    else
-        echo "Nothing to prune. Kept $kept."
+# Perform directory deletions first so the dangling-symlink scan below
+# catches any symlinks that now point into a just-removed directory.
+if (( DRY_RUN == 0 )); then
+    for entry in "${to_delete[@]}"; do
+        rm -rf -- "$entry"
+    done
+fi
+
+dangling=()
+for entry in "$JAVA_DIR"/*; do
+    name="$(basename "$entry")"
+    [[ "$name" == "current" ]] && continue
+    [[ -L "$entry" ]] || continue
+    [[ -e "$entry" ]] && continue
+    dangling+=("$entry")
+
+    target="$(readlink "$entry")"
+    action="would delete symlink"
+    if (( DRY_RUN == 0 )); then
+        rm -- "$entry"
+        action="deleted symlink"
     fi
-    exit 0
-fi
-
-if (( DRY_RUN )); then
-    echo "Dry run: would delete ${#to_delete[@]}, keep $kept, ${symlink_actions} symlink change(s). Re-run with -f to apply."
-    exit 0
-fi
-
-for entry in "${to_delete[@]}"; do
-    rm -rf -- "$entry"
+    printf '  %-20s %s -> %s\n' "$action" "$name" "$target"
 done
-echo "Deleted ${#to_delete[@]}, kept $kept, ${symlink_actions} symlink change(s)."
+(( ${#dangling[@]} > 0 )) && echo
+
+total_actions=$(( ${#to_delete[@]} + symlink_actions + ${#dangling[@]} ))
+
+if (( total_actions == 0 )); then
+    echo "Nothing to prune. Kept $kept."
+elif (( DRY_RUN )); then
+    echo "Dry run: would delete ${#to_delete[@]}, ${symlink_actions} symlink change(s), ${#dangling[@]} dangling symlink(s). Kept $kept. Re-run with -f to apply."
+else
+    echo "Deleted ${#to_delete[@]}, ${symlink_actions} symlink change(s), ${#dangling[@]} dangling symlink(s) removed. Kept $kept."
+fi
