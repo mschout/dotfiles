@@ -62,3 +62,6 @@ set -gx JQ_COLORS "0;37:0;31:0;32:0;33:0;36:0;34:1;36:0;35"
 #set -gz JQ_COLORS "1;30:0;31:0;32:0;33:0;36:0;34:1;36:0;35"
 # 256 color variant:
 #set -gx JQ_COLORS "38;5;240:38;5;160:38;5;64:38;5;136:38;5;37:38;5;33:38;5;81:38;5;125"
+
+# uv
+fish_add_path "/home/mschout/.local/bin"
