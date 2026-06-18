@@ -22,3 +22,5 @@ Group uncommitted changes into logical feature commits.
 ## What to avoid
 
 - **never** add a Co-Authored-By, Assisted-By etc entry in the commit message
+- **never** add a `refs #12345` entry in the commit message, a git pre-commit
+  will automatically populate that if necessary
