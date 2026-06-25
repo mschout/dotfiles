@@ -5,7 +5,7 @@
 
 set -e
 
-function install_plenv_plugin() {
+install_plenv_plugin() {
   local plugin_name=$1
   local plugin_repo=$2
 
