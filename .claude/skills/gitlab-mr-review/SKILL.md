@@ -79,22 +79,23 @@ For each finding, include:
 
 ### Step 5: Post Inline Comments
 
-Use `mcp__gitlab__create_merge_request_thread` to post each finding as an
-inline diff comment.  If `mcp__gitlab__create_merge_request_thread` is not
-available, use `glab mr note create --file $file --line $line` instead.
+Use `glab mr note create` to post the finding as inline merge request comments.
+Use `--file $file` for the file and `--line $line` for the positioning.
 
-Required `position` object fields from Step 2:
-```json
-{
-  "base_sha": "<diff_refs.base_sha>",
-  "head_sha": "<diff_refs.head_sha>",
-  "start_sha": "<diff_refs.start_sha>",
-  "position_type": "text",
-  "old_path": "<file_path>",
-  "new_path": "<file_path>",
-  "new_line": <line_number_in_new_file>,
-  "old_line": null
-}
+Examples of how to use it:
+
+```
+# Add a diff comment on line 42 of main.go
+glab mr note create 123 --file main.go --line 42 -m "Needs refactoring"
+
+# Add a diff comment on lines 10-15 (multiline range)
+glab mr note create 123 --file main.go --line 10:15 -m "Extract this block"
+
+# Add a diff comment on a removed line (old side)
+glab mr note create 123 --file main.go --old-line 7 -m "Why was this removed?"
+
+# Add a file-level diff comment (no line specified)
+glab mr note create 123 --file main.go -m "General comment on this file"
 ```
 
 Key rules:
