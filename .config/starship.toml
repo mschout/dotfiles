@@ -1,1 +1,10 @@
+#add_newline = false
+# minimal left prompt
+#format = """$directory$character"""
+# move the rest of the prompt to the right
+#right_format = """$all"""
+
 command_timeout = 2000  # ms
+
+[git_branch]
+ignore_branches = ["master", "main"]
