@@ -1,0 +1,131 @@
+# ~/.codex/rules/default.rules
+
+
+# ─────────────────────────────────────────────────────────────
+# Basic/read-only utilities
+# ─────────────────────────────────────────────────────────────
+
+prefix_rule(
+    pattern = ["jq"],
+    decision = "allow",
+)
+
+prefix_rule(
+    pattern = ["cat"],
+    decision = "allow",
+)
+
+prefix_rule(
+    pattern = ["grep"],
+    decision = "allow",
+)
+
+prefix_rule(
+    pattern = ["find"],
+    decision = "allow",
+)
+
+prefix_rule(
+    pattern = ["head"],
+    decision = "allow",
+)
+
+
+# ─────────────────────────────────────────────────────────────
+# File manipulation
+# ─────────────────────────────────────────────────────────────
+
+prefix_rule(
+    pattern = ["mkdir"],
+    decision = "allow",
+)
+
+prefix_rule(
+    pattern = ["chmod"],
+    decision = "allow",
+)
+
+prefix_rule(
+    pattern = ["sed"],
+    decision = "allow",
+)
+
+prefix_rule(
+    pattern = ["perl"],
+    decision = "allow",
+)
+
+
+# ─────────────────────────────────────────────────────────────
+# Python
+# ─────────────────────────────────────────────────────────────
+
+prefix_rule(
+    pattern = ["python3"],
+    decision = "allow",
+)
+
+
+# ─────────────────────────────────────────────────────────────
+# Git
+# ─────────────────────────────────────────────────────────────
+
+prefix_rule(
+    pattern = ["git", "diff"],
+    decision = "allow",
+)
+
+
+# ─────────────────────────────────────────────────────────────
+# Gradle
+# ─────────────────────────────────────────────────────────────
+
+prefix_rule(
+    pattern = ["./gradlew", "test"],
+    decision = "allow",
+)
+
+
+# ─────────────────────────────────────────────────────────────
+# Docker Compose
+# ─────────────────────────────────────────────────────────────
+
+prefix_rule(
+    pattern = ["docker", "compose", "exec"],
+    decision = "allow",
+)
+
+
+# ─────────────────────────────────────────────────────────────
+# GitLab wrapper
+# ─────────────────────────────────────────────────────────────
+
+prefix_rule(
+    pattern = ["build/tools/glab", "mr"],
+    decision = "allow",
+)
+
+prefix_rule(
+    pattern = ["build/tools/glab", "auth"],
+    decision = "allow",
+)
+
+
+# ─────────────────────────────────────────────────────────────
+# Direct glab
+# ─────────────────────────────────────────────────────────────
+
+prefix_rule(
+    pattern = ["glab", "mr", "note", "create"],
+    decision = "allow",
+)
+
+
+# ─────────────────────────────────────────────────────────────
+# Project shell helper
+# ─────────────────────────────────────────────────────────────
+
+prefix_rule(
+    pattern = ["../go.sh", "shell"],
+    decision = "allow",
+)

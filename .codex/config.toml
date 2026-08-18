@@ -1,0 +1,37 @@
+# ~/.codex/config.toml
+
+# Ask for approval when a command isn't covered by an allow rule.
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+default_permissions = ":workspace"
+
+# Allow Codex to modify files in the workspace.
+sandbox_mode = "workspace-write"
+
+# Use your existing Claude instructions as shared project instructions.
+project_doc_fallback_filenames = ["CLAUDE.md"]
+
+
+# ─────────────────────────────────────────────────────────────
+# PostgreSQL MCP
+# ─────────────────────────────────────────────────────────────
+
+[mcp_servers.postgres]
+command = "docker"
+args = [
+    "run",
+    "-i",
+    "--rm",
+    "-e",
+    "DATABASE_URI",
+    "crystaldba/postgres-mcp",
+    "--access-mode=unrestricted",
+]
+
+env = { DATABASE_URI = "postgresql://azk:azk@dev.courtio.com:54321/ir_proxy" }
+
+[projects."/home/mschout/Sync/git/courtio/courtio"]
+trust_level = "trusted"
+
+[projects."/home/mschout"]
+trust_level = "trusted"
