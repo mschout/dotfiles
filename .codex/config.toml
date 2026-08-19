@@ -11,11 +11,12 @@ sandbox_mode = "workspace-write"
 # Use your existing Claude instructions as shared project instructions.
 project_doc_fallback_filenames = ["CLAUDE.md"]
 
+[features]
+memories = true
 
 # ─────────────────────────────────────────────────────────────
 # PostgreSQL MCP
 # ─────────────────────────────────────────────────────────────
-
 [mcp_servers.postgres]
 command = "docker"
 args = [
@@ -28,10 +29,49 @@ args = [
     "--access-mode=unrestricted",
 ]
 
-env = { DATABASE_URI = "postgresql://azk:azk@dev.courtio.com:54321/ir_proxy" }
+[mcp_servers.postgres.env]
+DATABASE_URI = "postgresql://azk:azk@dev.courtio.com:54321/ir_proxy"
+
+# ─────────────────────────────────────────────────────────────
+# JetBrains PSI MCP Server
+# ─────────────────────────────────────────────────────────────
+[mcp_servers.jetbrain-psi-mcp-server]
+command = "npx"
+args = [
+    "-y",
+    "jetbrains-psi-mcp-server@latest",
+    "8081",
+]
+
+# ─────────────────────────────────────────────────────────────
+# Maven Tools MCP Server
+# ─────────────────────────────────────────────────────────────
+[mcp_servers.maven-tools]
+command = "docker"
+args = [
+    "run",
+    "-i",
+    "--rm",
+    "arvindand/maven-tools-mcp:latest",
+]
 
 [projects."/home/mschout/Sync/git/courtio/courtio"]
 trust_level = "trusted"
 
 [projects."/home/mschout"]
 trust_level = "trusted"
+
+[projects."/home/mschout/.claude"]
+trust_level = "trusted"
+
+[marketplaces.claude-plugins-official]
+last_updated = "2026-08-19T13:37:25Z"
+last_revision = "ed279d8005254045c2e9806ba5c1d7c5b9e2f8c6"
+source_type = "git"
+source = "https://github.com/anthropics/claude-plugins-official.git"
+
+[plugins."frontend-design@claude-plugins-official"]
+enabled = true
+
+[plugins."slack@claude-plugins-official"]
+enabled = true
