@@ -14,46 +14,20 @@ project_doc_fallback_filenames = ["CLAUDE.md"]
 [features]
 memories = true
 
-# ─────────────────────────────────────────────────────────────
-# PostgreSQL MCP
-# ─────────────────────────────────────────────────────────────
 [mcp_servers.postgres]
 command = "docker"
-args = [
-    "run",
-    "-i",
-    "--rm",
-    "-e",
-    "DATABASE_URI",
-    "crystaldba/postgres-mcp",
-    "--access-mode=unrestricted",
-]
+args = ["run", "-i", "--rm", "-e", "DATABASE_URI", "crystaldba/postgres-mcp", "--access-mode=unrestricted"]
 
 [mcp_servers.postgres.env]
 DATABASE_URI = "postgresql://azk:azk@dev.courtio.com:54321/ir_proxy"
 
-# ─────────────────────────────────────────────────────────────
-# JetBrains PSI MCP Server
-# ─────────────────────────────────────────────────────────────
 [mcp_servers.jetbrain-psi-mcp-server]
 command = "npx"
-args = [
-    "-y",
-    "jetbrains-psi-mcp-server@latest",
-    "8081",
-]
+args = ["-y", "jetbrains-psi-mcp-server@latest", "8081"]
 
-# ─────────────────────────────────────────────────────────────
-# Maven Tools MCP Server
-# ─────────────────────────────────────────────────────────────
 [mcp_servers.maven-tools]
 command = "docker"
-args = [
-    "run",
-    "-i",
-    "--rm",
-    "arvindand/maven-tools-mcp:latest",
-]
+args = ["run", "-i", "--rm", "arvindand/maven-tools-mcp:latest"]
 
 [projects."/home/mschout/Sync/git/courtio/courtio"]
 trust_level = "trusted"
@@ -64,9 +38,12 @@ trust_level = "trusted"
 [projects."/home/mschout/.claude"]
 trust_level = "trusted"
 
+[projects."/home/mschout/Sync/git/spring-sliced-resources"]
+trust_level = "trusted"
+
 [marketplaces.claude-plugins-official]
-last_updated = "2026-08-19T13:37:25Z"
-last_revision = "ed279d8005254045c2e9806ba5c1d7c5b9e2f8c6"
+last_updated = "2026-08-20T19:26:28Z"
+last_revision = "a83171b5cfdf9a922d0c82fe5b513deb6559fc7b"
 source_type = "git"
 source = "https://github.com/anthropics/claude-plugins-official.git"
 
