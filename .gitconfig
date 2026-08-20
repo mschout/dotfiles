@@ -70,7 +70,7 @@
 	gpgSign = true
 [core]
 	excludesfile = ~/.config/git/ignore
-	fsmonitor = true
+	fsmonitor = false
 	untrackedCache = true
 	preloadIndex = true
 [init]
