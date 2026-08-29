@@ -1,5 +1,7 @@
 #!/usr/bin/fish
 
+status --is-interactive || return
+
 # Makes command and binaries from SDKMAN! available in fish.
 # Delegates to bash for the `sdk` command.
 
