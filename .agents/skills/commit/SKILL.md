@@ -1,0 +1,44 @@
+---
+name: commit
+description: Group uncommitted changes into logical feature commits with action-oriented messages.
+---
+
+# Commit Skill
+
+Group uncommitted changes into logical feature commits.
+
+## Steps
+
+1. Run `git status` and `git diff` (staged + unstaged) to understand all changes
+2. Analyze all changed files and group them by logical feature/intent (e.g. "DB migration", "auth refactor", "UI fixes")
+3. For each logical group, stage only the files belonging to that group and commit using ANSI-C quoting (`$'...\n...'`) with a concise, action-oriented message (e.g. "Add X", "Fix Y", "Refactor Z"). No conventional commit prefixes. Example:
+   ```bash
+   git commit -m $'Add ranking game web layer\n\nControllers, ViewComponents, SSE, CSS animations'
+   ```
+4. Repeat step 3 until all changes are committed
+5. Run `git log --oneline -n <number-of-new-commits>` to show the resulting commits
+6. Report the resulting commits
+
+## Commit Message
+
+Follow git best practice for the commit message.
+
+- Try to keep the subject line under 50 characters, but its okay to break this
+  rule
+- Capitalize the subject/description line
+- Do not end the subject line with a period
+- Separate the subject from the body with a blank line
+- Wrap the body at 72 characters
+- Use the body to explain what and why.  More detail in the body is better than
+  less.  Future developers will read the commit messages to determine why the
+  code does what it does.
+- Use the imperative mood in the subject line let it seem like you’re giving a
+  command e.g. “feat: Add unit tests for user authentication”. Using the
+  imperative mood in commit messages makes them more consistent and
+  commands-like, which is helpful in understanding the actions taken.
+
+## What to avoid
+
+- **never** add a Co-Authored-By, Assisted-By etc entry in the commit message
+- **never** add a `refs #12345` entry in the commit message, a git pre-commit
+  will automatically populate that if necessary

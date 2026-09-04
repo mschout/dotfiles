@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "review-mr",
+  "owner": "thebushidocollective",
+  "repo": "han",
+  "path": "plugins/services/gitlab/skills/review-mr",
+  "branch": "main",
+  "sha": "76d1500787e1791aa4b0a71f30d38e8f39d45254",
+  "source": "manual"
+}
