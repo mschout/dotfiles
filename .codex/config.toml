@@ -17,6 +17,24 @@ service_tier = "default"
 
 [features]
 memories = true
+js_repl = false
+
+[tui]
+terminal_title = ["spinner", "thread-title"]
+screen_reader_detection_done = true
+
+[tui.model_availability_nux]
+gpt-6-astra = 4
+"gpt-6.1-sol" = 4
+
+# Do not use /tmp, which is probably on tmpfs and eats RAM
+[shell_environment_policy.set]
+TMPDIR = "/home/mschout/.cache/codex/tmp"
+
+[sandbox_workspace_write]
+exclude_slash_tmp = true
+exclude_tmpdir_env_var = true
+writable_roots = ["/home/mschout/.cache/codex/tmp"]
 
 [mcp_servers.postgres]
 command = "docker"
