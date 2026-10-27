@@ -243,7 +243,9 @@ if [ -e "$HOME/.fzf" ]; then
 
   # Key bindings
   # ------------
-  source "/home/mschout/.fzf/shell/key-bindings.bash"
+  if [ -e "/home/mschout/.fzf/shell/key-bindings.bash" ]; then
+    source "/home/mschout/.fzf/shell/key-bindings.bash"
+  fi
 
   alias preview="fzf --preview 'bat --color \"always\" {}'"
 
