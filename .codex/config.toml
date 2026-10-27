@@ -10,6 +10,10 @@ sandbox_mode = "workspace-write"
 
 # Use your existing Claude instructions as shared project instructions.
 project_doc_fallback_filenames = ["CLAUDE.md"]
+plan_mode_reasoning_effort = "high"
+model = "gpt-6.1-sol"
+model_reasoning_effort = "ultra"
+service_tier = "default"
 
 [features]
 memories = true
