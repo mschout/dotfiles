@@ -3,8 +3,8 @@
 # sdkman-java-prune
 #
 # For each (major version, vendor) pair under ~/.sdkman/candidates/java,
-# keep the highest X.Y.Z and remove the rest. Also create/update a
-# 'MAJOR-VENDOR' symlink pointing at that latest install. Finally,
+# keep the highest version (including its build number) and remove the rest.
+# Also create/update a 'MAJOR-VENDOR' symlink pointing at that latest install. Finally,
 # remove any dangling symlinks (symlinks whose target no longer exists).
 #
 # Usage:
@@ -21,8 +21,8 @@ usage() {
 Usage: $(basename "$0") [-f|--force] [-h|--help]
 
 Lists Java versions in $JAVA_DIR and, for each (major version, vendor) pair,
-keeps the highest X.Y.Z and removes the rest. Also creates or updates a
-'MAJOR-VENDOR' symlink (e.g. '25-tem -> 25.0.3-tem') pointing at the
+keeps the highest version (including its build number) and removes the rest.
+Also creates or updates a 'MAJOR-VENDOR' symlink (e.g. '25-tem -> 25.0.3-tem') pointing at the
 latest install for that pair. Whatever 'current' symlinks to is always kept.
 Any dangling symlinks remaining at the end (other than 'current') are removed.
 
@@ -45,25 +45,25 @@ if [[ -L "$JAVA_DIR/current" ]]; then
     current_target="$(basename "$(readlink "$JAVA_DIR/current")")"
 fi
 
-# Build a sortable padded version "X.Y.Z" from "X" / "X.Y" / "X.Y.Z..."
-pad_version() {
-    local IFS=. x y z _
-    read -r x y z _ <<<"$1"
-    printf '%d.%d.%d' "${x:-0}" "${y:-0}" "${z:-0}"
-}
-
-# Return 0 if v1 > v2, both in padded "a.b.c" form.
+# Return 0 if v1 > v2. Compare all release components, then optional +build.
 version_gt() {
-    local IFS=. a1 b1 c1 a2 b2 c2
-    read -r a1 b1 c1 <<<"$1"
-    read -r a2 b2 c2 <<<"$2"
-    (( a1 != a2 )) && { (( a1 > a2 )); return; }
-    (( b1 != b2 )) && { (( b1 > b2 )); return; }
-    (( c1 >  c2 ))
+    local IFS=. i n1 n2 build1=0 build2=0
+    local -a parts1 parts2
+    read -r -a parts1 <<<"${1%%+*}"
+    read -r -a parts2 <<<"${2%%+*}"
+    for (( i=0; i<${#parts1[@]} || i<${#parts2[@]}; i++ )); do
+        n1=$((10#${parts1[i]:-0}))
+        n2=$((10#${parts2[i]:-0}))
+        (( n1 != n2 )) && { (( n1 > n2 )); return; }
+    done
+    [[ "$1" == *+* ]] && build1="${1##*+}"
+    [[ "$2" == *+* ]] && build2="${2##*+}"
+    (( 10#$build1 > 10#$build2 ))
 }
 
+version_name_pattern='^([0-9]+(\.[0-9]+)*(\+[0-9]+)?)-([A-Za-z0-9._]+)$'
 declare -A latest_name=()  # key "major|vendor" -> dir name
-declare -A latest_sort=()  # key "major|vendor" -> padded version
+declare -A latest_version=()  # key "major|vendor" -> version including optional build
 
 for entry in "$JAVA_DIR"/*; do
     name="$(basename "$entry")"
@@ -71,16 +71,15 @@ for entry in "$JAVA_DIR"/*; do
     [[ -L "$entry" ]] && continue
     [[ -d "$entry" ]] || continue
 
-    if [[ "$name" =~ ^([0-9]+(\.[0-9]+)*)-([A-Za-z0-9._]+)$ ]]; then
+    if [[ "$name" =~ $version_name_pattern ]]; then
         ver="${BASH_REMATCH[1]}"
-        vendor="${BASH_REMATCH[3]}"
-        major="${ver%%.*}"
-        padded="$(pad_version "$ver")"
+        vendor="${BASH_REMATCH[4]}"
+        major="${ver%%[.+]*}"
         key="${major}|${vendor}"
 
-        if [[ -z "${latest_name[$key]:-}" ]] || version_gt "$padded" "${latest_sort[$key]}"; then
+        if [[ -z "${latest_name[$key]:-}" ]] || version_gt "$ver" "${latest_version[$key]}"; then
             latest_name[$key]="$name"
-            latest_sort[$key]="$padded"
+            latest_version[$key]="$ver"
         fi
     else
         echo "skip (unparsed name): $name" >&2
@@ -100,7 +99,7 @@ for entry in "$JAVA_DIR"/*; do
     [[ "$name" == "current" ]] && continue
     [[ -L "$entry" ]] && continue
     [[ -d "$entry" ]] || continue
-    [[ "$name" =~ ^([0-9]+(\.[0-9]+)*)-([A-Za-z0-9._]+)$ ]] || continue
+    [[ "$name" =~ $version_name_pattern ]] || continue
 
     if [[ -n "${keep[$name]:-}" ]]; then
         marker="keep"
