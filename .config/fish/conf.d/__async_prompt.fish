@@ -1,6 +1,10 @@
 status is-interactive
 or exit 0
 
+# Prompt workers signal the shell PID. Command-only sessions can exec another process.
+isatty stdin
+or return
+
 set -g __async_prompt_tmpdir (command mktemp -d)
 
 # Setup after the user defined prompt functions are loaded.
